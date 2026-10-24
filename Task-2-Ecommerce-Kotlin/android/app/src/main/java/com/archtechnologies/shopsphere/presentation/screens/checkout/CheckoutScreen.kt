@@ -169,7 +169,7 @@ fun CheckoutScreen(
                 )
             }
 
-            Divider(modifier = Modifier.padding(vertical = 20.dp), color = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f))
+            HorizontalDivider(modifier = Modifier.padding(vertical = 20.dp), color = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f))
 
             // Payment Methods Section
             Text(
@@ -203,7 +203,7 @@ fun CheckoutScreen(
                 onClick = { viewModel.updatePaymentMethod(PaymentMethod.CREDIT_CARD) }
             )
 
-            Divider(modifier = Modifier.padding(vertical = 20.dp), color = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f))
+            HorizontalDivider(modifier = Modifier.padding(vertical = 20.dp), color = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f))
 
             // Order Summary Section
             Text(
@@ -234,7 +234,7 @@ fun CheckoutScreen(
                             )
                         }
                     }
-                    Divider(modifier = Modifier.padding(vertical = 8.dp))
+                    HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween

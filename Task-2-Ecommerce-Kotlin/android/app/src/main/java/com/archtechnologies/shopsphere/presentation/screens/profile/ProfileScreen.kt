@@ -9,6 +9,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowForwardIos
+import androidx.compose.material.icons.automirrored.filled.ExitToApp
+import androidx.compose.material.icons.automirrored.filled.ReceiptLong
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -99,7 +101,7 @@ fun ProfileScreen(
             Spacer(modifier = Modifier.height(8.dp))
 
             ProfileMenuItem(
-                icon = Icons.Default.ReceiptLong,
+                icon = Icons.AutoMirrored.Filled.ReceiptLong,
                 title = stringResource(R.string.orders_title),
                 subtitle = "Track orders and fulfillment",
                 onClick = onNavigateToOrders
@@ -184,7 +186,7 @@ fun ProfileScreen(
                 modifier = Modifier.fillMaxWidth().height(48.dp),
                 colors = ButtonDefaults.outlinedButtonColors(contentColor = RoseError)
             ) {
-                Icon(Icons.Default.ExitToApp, contentDescription = null, tint = RoseError)
+                Icon(Icons.AutoMirrored.Filled.ExitToApp, contentDescription = null, tint = RoseError)
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(stringResource(R.string.btn_sign_out), fontWeight = FontWeight.SemiBold)
             }

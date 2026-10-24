@@ -80,4 +80,41 @@ export class SellerService {
       createdAt: o.createdAt.toISOString(),
     }));
   }
+
+  async deleteListing(sellerId: string, productId: string) {
+    const product = await this.prisma.product.findFirst({
+      where: { id: productId, sellerId },
+    });
+    if (!product) {
+      throw new Error('Product not found or not owned by seller');
+    }
+
+    await this.prisma.productImage.deleteMany({ where: { productId } });
+    await this.prisma.cartItem.deleteMany({ where: { productId } });
+    await this.prisma.product.delete({ where: { id: productId } });
+
+    return { message: 'Product listing removed successfully', productId };
+  }
+
+  async updateOrderStatus(sellerId: string, orderId: string, newStatus: string) {
+    const order = await this.prisma.order.findUnique({
+      where: { id: orderId },
+      include: { items: { include: { product: true } } },
+    });
+    if (!order) {
+      throw new Error('Order not found');
+    }
+
+    const hasItem = order.items.some((i) => i.product.sellerId === sellerId);
+    if (!hasItem) {
+      throw new Error('Order does not contain products owned by this seller');
+    }
+
+    const updated = await this.prisma.order.update({
+      where: { id: orderId },
+      data: { status: newStatus as any },
+    });
+
+    return { message: 'Order status updated successfully', status: updated.status };
+  }
 }

@@ -42,6 +42,7 @@ class MainActivity : ComponentActivity() {
                         cartRepository = app.cartRepository,
                         orderRepository = app.orderRepository,
                         preferencesManager = app.preferencesManager,
+                        sellerRepository = app.sellerRepository,
                         isKhmerLocale = isKhmer
                     )
                 }

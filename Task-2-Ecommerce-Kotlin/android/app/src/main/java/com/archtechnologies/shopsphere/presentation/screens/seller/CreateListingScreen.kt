@@ -1,6 +1,9 @@
 package com.archtechnologies.shopsphere.presentation.screens.seller
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -8,11 +11,17 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.archtechnologies.shopsphere.R
+import com.archtechnologies.shopsphere.presentation.components.CategoryChip
 import com.archtechnologies.shopsphere.presentation.components.ShopSphereTopBar
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -38,6 +47,13 @@ fun CreateListingScreen(
             selectedCategoryId = uiState.categories.first().id
         }
     }
+
+    val conditions = listOf(
+        "BRAND_NEW" to "Brand New",
+        "LIKE_NEW" to "Like New",
+        "REFURBISHED" to "Refurbished",
+        "USED_GOOD" to "Used (Good)"
+    )
 
     Scaffold(
         topBar = {
@@ -68,6 +84,48 @@ fun CreateListingScreen(
                     )
                 }
             }
+
+            // Category Selection Chips
+            Text(
+                text = "Select Category *",
+                style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.SemiBold)
+            )
+            Spacer(modifier = Modifier.height(6.dp))
+            LazyRow(
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                items(uiState.categories) { cat ->
+                    CategoryChip(
+                        name = cat.name,
+                        isSelected = selectedCategoryId == cat.id,
+                        onClick = { selectedCategoryId = cat.id }
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // Condition Chips
+            Text(
+                text = "Item Condition *",
+                style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.SemiBold)
+            )
+            Spacer(modifier = Modifier.height(6.dp))
+            LazyRow(
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                items(conditions) { (key, label) ->
+                    FilterChip(
+                        selected = selectedCondition == key,
+                        onClick = { selectedCondition = key },
+                        label = { Text(label) }
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
 
             OutlinedTextField(
                 value = title,
@@ -116,10 +174,33 @@ fun CreateListingScreen(
                 value = imageUrl,
                 onValueChange = { imageUrl = it },
                 label = { Text("Product Image URL") },
-                placeholder = { Text("https://...") },
+                placeholder = { Text("https://images.unsplash.com/...") },
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth()
             )
+
+            // Live Image Preview if URL provided
+            if (imageUrl.isNotBlank()) {
+                Spacer(modifier = Modifier.height(12.dp))
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(160.dp)
+                        .clip(RoundedCornerShape(8.dp))
+                        .border(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.5f), RoundedCornerShape(8.dp)),
+                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
+                ) {
+                    AsyncImage(
+                        model = ImageRequest.Builder(LocalContext.current)
+                            .data(imageUrl)
+                            .crossfade(true)
+                            .build(),
+                        contentDescription = "Image Preview",
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier.fillMaxSize()
+                    )
+                }
+            }
 
             Spacer(modifier = Modifier.height(28.dp))
 

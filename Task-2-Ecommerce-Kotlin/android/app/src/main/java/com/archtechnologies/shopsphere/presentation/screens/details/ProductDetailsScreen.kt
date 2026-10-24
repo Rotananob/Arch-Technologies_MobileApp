@@ -188,7 +188,7 @@ fun ProductDetailsScreen(
                             )
                         }
 
-                        Divider(modifier = Modifier.padding(vertical = 16.dp), color = MaterialTheme.colorScheme.outline.copy(alpha = 0.4f))
+                        HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp), color = MaterialTheme.colorScheme.outline.copy(alpha = 0.4f))
 
                         // Quantity Selector
                         Row(
@@ -227,7 +227,7 @@ fun ProductDetailsScreen(
                             }
                         }
 
-                        Divider(modifier = Modifier.padding(vertical = 16.dp), color = MaterialTheme.colorScheme.outline.copy(alpha = 0.4f))
+                        HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp), color = MaterialTheme.colorScheme.outline.copy(alpha = 0.4f))
 
                         // Seller Info
                         Card(

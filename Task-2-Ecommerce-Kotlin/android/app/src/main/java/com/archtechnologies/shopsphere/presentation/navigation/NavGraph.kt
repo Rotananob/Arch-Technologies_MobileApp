@@ -54,6 +54,7 @@ fun NavGraph(
     cartRepository: CartRepository,
     orderRepository: OrderRepository,
     preferencesManager: PreferencesManager,
+    sellerRepository: SellerRepository? = null,
     isKhmerLocale: Boolean = false
 ) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -217,7 +218,7 @@ fun NavGraph(
             }
 
             composable(Screen.Sell.route) {
-                val sellerViewModel = remember { SellerViewModel(productRepository) }
+                val sellerViewModel = remember { SellerViewModel(productRepository, sellerRepository) }
                 SellerScreen(
                     viewModel = sellerViewModel,
                     onNavigateToCreateListing = { navController.navigate(Screen.CreateListing.route) },
@@ -226,7 +227,7 @@ fun NavGraph(
             }
 
             composable(Screen.CreateListing.route) {
-                val sellerViewModel = remember { SellerViewModel(productRepository) }
+                val sellerViewModel = remember { SellerViewModel(productRepository, sellerRepository) }
                 CreateListingScreen(
                     viewModel = sellerViewModel,
                     onNavigateBack = { navController.popBackStack() }

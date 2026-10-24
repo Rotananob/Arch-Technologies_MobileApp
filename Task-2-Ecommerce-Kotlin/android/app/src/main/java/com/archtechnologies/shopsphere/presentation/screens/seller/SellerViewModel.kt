@@ -3,7 +3,9 @@ package com.archtechnologies.shopsphere.presentation.screens.seller
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.archtechnologies.shopsphere.data.repository.ProductRepository
+import com.archtechnologies.shopsphere.data.repository.SellerRepository
 import com.archtechnologies.shopsphere.domain.model.Category
+import com.archtechnologies.shopsphere.domain.model.Order
 import com.archtechnologies.shopsphere.domain.model.Product
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -12,7 +14,9 @@ import kotlinx.coroutines.launch
 
 data class SellerUiState(
     val isLoading: Boolean = false,
+    val selectedTab: Int = 0,
     val myListings: List<Product> = emptyList(),
+    val customerOrders: List<Order> = emptyList(),
     val categories: List<Category> = emptyList(),
     val isCreatingListing: Boolean = false,
     val listingSuccessMessage: String? = null,
@@ -20,7 +24,8 @@ data class SellerUiState(
 )
 
 class SellerViewModel(
-    private val productRepository: ProductRepository
+    private val productRepository: ProductRepository,
+    private val sellerRepository: SellerRepository? = null
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(SellerUiState())
@@ -30,20 +35,50 @@ class SellerViewModel(
         loadSellerData()
     }
 
+    fun onTabSelected(tab: Int) {
+        _uiState.value = _uiState.value.copy(selectedTab = tab)
+    }
+
     fun loadSellerData() {
         _uiState.value = _uiState.value.copy(isLoading = true)
         viewModelScope.launch {
             productRepository.getCategories().onSuccess { catList ->
                 _uiState.value = _uiState.value.copy(categories = catList)
             }
-            productRepository.fetchProducts().onSuccess { allProducts ->
-                // In local app, show user's listings or first 5 as demo
+
+            if (sellerRepository != null) {
+                sellerRepository.getMyListings().onSuccess { listings ->
+                    _uiState.value = _uiState.value.copy(myListings = listings)
+                }.onFailure {
+                    // Fall back to productRepository
+                    productRepository.fetchProducts().onSuccess { all ->
+                        _uiState.value = _uiState.value.copy(myListings = all)
+                    }
+                }
+
+                sellerRepository.getSellerSalesOrders().onSuccess { orders ->
+                    _uiState.value = _uiState.value.copy(customerOrders = orders)
+                }
+            } else {
+                productRepository.fetchProducts().onSuccess { allProducts ->
+                    _uiState.value = _uiState.value.copy(myListings = allProducts)
+                }
+            }
+
+            _uiState.value = _uiState.value.copy(isLoading = false)
+        }
+    }
+
+    fun deleteListing(productId: String) {
+        viewModelScope.launch {
+            if (sellerRepository != null) {
+                sellerRepository.deleteListing(productId).onSuccess {
+                    loadSellerData()
+                }
+            } else {
                 _uiState.value = _uiState.value.copy(
-                    isLoading = false,
-                    myListings = allProducts
+                    myListings = _uiState.value.myListings.filter { it.id != productId }
                 )
-            }.onFailure {
-                _uiState.value = _uiState.value.copy(isLoading = false)
             }
         }
     }

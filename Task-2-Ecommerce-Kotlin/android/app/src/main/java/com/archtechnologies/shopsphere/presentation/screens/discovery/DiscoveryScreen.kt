@@ -57,7 +57,7 @@ fun DiscoveryScreen(
             // Category Filter Pills
             if (uiState.categories.isNotEmpty()) {
                 LazyRow(
-                    contentPadding = PaddingValues(horizontal = 16.dp, vertical = 6.dp),
+                    contentPadding = PaddingValues(horizontal = 16.dp, vertical = 4.dp),
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     item {
@@ -74,6 +74,41 @@ fun DiscoveryScreen(
                             onClick = { viewModel.onCategorySelected(category.id) }
                         )
                     }
+                }
+            }
+
+            // Sorting & Availability Filter Row
+            LazyRow(
+                contentPadding = PaddingValues(horizontal = 16.dp, vertical = 6.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                item {
+                    FilterChip(
+                        selected = uiState.selectedSort == SortOption.NEWEST,
+                        onClick = { viewModel.onSortSelected(SortOption.NEWEST) },
+                        label = { Text("Newest") }
+                    )
+                }
+                item {
+                    FilterChip(
+                        selected = uiState.selectedSort == SortOption.PRICE_LOW_TO_HIGH,
+                        onClick = { viewModel.onSortSelected(SortOption.PRICE_LOW_TO_HIGH) },
+                        label = { Text("Price: Low → High") }
+                    )
+                }
+                item {
+                    FilterChip(
+                        selected = uiState.selectedSort == SortOption.PRICE_HIGH_TO_LOW,
+                        onClick = { viewModel.onSortSelected(SortOption.PRICE_HIGH_TO_LOW) },
+                        label = { Text("Price: High → Low") }
+                    )
+                }
+                item {
+                    FilterChip(
+                        selected = uiState.inStockOnly,
+                        onClick = { viewModel.onToggleInStockOnly() },
+                        label = { Text("In Stock Only") }
+                    )
                 }
             }
 

@@ -26,6 +26,9 @@ class ShopSphereApp : Application() {
     lateinit var orderRepository: OrderRepository
         private set
 
+    lateinit var sellerRepository: SellerRepository
+        private set
+
     override fun onCreate() {
         super.onCreate()
 
@@ -38,5 +41,6 @@ class ShopSphereApp : Application() {
         productRepository = ProductRepository(apiService, database.productDao())
         cartRepository = CartRepository(apiService, database.cartDao())
         orderRepository = OrderRepository(apiService)
+        sellerRepository = SellerRepository(apiService)
     }
 }

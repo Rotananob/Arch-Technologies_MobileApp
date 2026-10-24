@@ -92,7 +92,7 @@ fun CartScreen(
                             )
                         }
 
-                        Divider(modifier = Modifier.padding(vertical = 10.dp), color = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f))
+                        HorizontalDivider(modifier = Modifier.padding(vertical = 10.dp), color = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f))
 
                         Row(
                             modifier = Modifier.fillMaxWidth(),
