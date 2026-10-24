@@ -1,0 +1,50 @@
+# Dependencies
+node_modules/
+*/node_modules/
+*/*/node_modules/
+.pnp
+.pnp.js
+
+# Build and caches
+dist/
+build/
+*/build/
+*/*/build/
+.gradle/
+*/.gradle/
+*/*/gradle/
+app/build/
+
+# Flutter / Dart
+.dart_tool/
+*/.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+
+# Android / Kotlin
+*.apk
+*.aab
+local.properties
+.cxx/
+captures/
+
+# IDE / Editor
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+
+# Environment & Logs
+.env
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS Files
+.DS_Store
+Thumbs.db
