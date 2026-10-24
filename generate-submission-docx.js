@@ -91,6 +91,7 @@ async function createSubmissionDocx() {
               createTableRow('Phone Number', '+855 87 986 045', false),
               createTableRow('Submission Target', 'submissions.archtech@gmail.com', false),
               createTableRow('Expected File Name', 'Rotana_Nob_AndroidAppDevelopment_Month1.pdf', false),
+              createTableRow('GitHub Profile', 'https://github.com/Rotananob', false),
               createTableRow('GitHub Repository', 'https://github.com/Rotananob/Arch-Technologies_MobileApp', false),
             ],
           }),
@@ -107,7 +108,7 @@ async function createSubmissionDocx() {
             children: [
               new TextRun({
                 text:
-                  'During Month 1 of the Arch Technologies Remote Mobile App Development Internship, two complete, production-grade applications were designed, developed, and verified to rigorous software engineering standards:\n\n' +
+                  'During my first month in the Arch Technologies Remote Mobile App Development Internship, I designed, developed, and verified two complete, production-grade applications meeting real-world industry standards:\n\n' +
                   '• Task 1 — College Alert Application: Engineered with Flutter 3.x, Riverpod 2.6, and a NestJS + PostgreSQL backend. It delivers real-time campus event alerts, interactive calendars, bookmarking, and native bilingual localization (English & Khmer).\n' +
                   '• Task 2 — ShopSphere E-Commerce Application: Built with 100% Native Android Kotlin, Jetpack Compose, Room Database, and NestJS + PostgreSQL. Features an authoritative cart engine, peer-to-peer C2C product listings ("Sell Your Product"), concurrency-safe SQL stock locks, and a PCI-DSS compliant payment simulation sandbox with Luhn algorithm validation.\n\n' +
                   'Both projects follow Clean Architecture, run reliably with zero external paid third-party dependencies, and pass all automated tests.',

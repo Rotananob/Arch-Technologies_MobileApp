@@ -14,8 +14,9 @@
 | **Phone Number** | `+855 87 986 045` |
 | **Organization** | **Arch Technologies** |
 | **Submission Month** | Month 1 (October 2026) |
-| **Submission Destination** | `submissions.archtech@gmail.com` |
+| **Submission Target** | `submissions.archtech@gmail.com` |
 | **Standard File Name** | `Rotana_Nob_AndroidAppDevelopment_Month1.pdf` |
+| **GitHub Profile** | [https://github.com/Rotananob](https://github.com/Rotananob) |
 | **Repository URL** | [https://github.com/Rotananob/Arch-Technologies_MobileApp](https://github.com/Rotananob/Arch-Technologies_MobileApp) |
 
 ---
@@ -41,12 +42,12 @@
 
 ## 1. Executive Summary
 
-During Month 1 of the **Arch Technologies Remote Mobile App Development Internship**, two complete, production-grade mobile applications were engineered and delivered to software industry standards:
+During my first month in the **Arch Technologies Remote Mobile App Development Internship**, I designed, engineered, and verified two complete, production-grade mobile applications following industry Clean Architecture standards:
 
 1. **Task 1 — College Alert Application**: Built with **Flutter 3.x**, **Riverpod 2.6**, and **NestJS + PostgreSQL**. A full-featured campus notification platform delivering real-time event alerts, interactive calendars, bookmarking, and native bilingual localization (English and Khmer).
 2. **Task 2 — ShopSphere Mobile E-Commerce Application**: Built with **100% Native Android Kotlin**, **Jetpack Compose**, **Room Database**, and **NestJS + PostgreSQL**. An advanced mobile marketplace featuring authoritative cart arithmetic, C2C seller inventory listings ("Sell Your Product"), concurrency-safe SQL transaction locks, and a multi-tier PCI-DSS compliant simulated payment sandbox.
 
-Both applications strictly adhere to **Clean Architecture**, utilize local PostgreSQL databases with zero runtime third-party dependency failures, and pass comprehensive automated test suites.
+Both applications strictly adhere to **Clean Architecture**, run with local PostgreSQL databases with zero runtime third-party dependency failures, and pass all automated test suites.
 
 ---
 
