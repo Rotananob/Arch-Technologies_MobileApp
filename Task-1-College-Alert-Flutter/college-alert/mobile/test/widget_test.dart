@@ -1,30 +1,63 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:college_alert/main.dart';
+import 'package:college_alert/core/widgets/status_badge.dart';
+import 'package:college_alert/core/widgets/empty_state_view.dart';
+import 'package:college_alert/core/widgets/loading_view.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('StatusBadge displays label and custom colors correctly', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: Scaffold(
+          body: StatusBadge(
+            label: 'PRIORITY ALERT',
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+            icon: Icons.warning,
+          ),
+        ),
+      ),
+    );
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    expect(find.text('PRIORITY ALERT'), findsOneWidget);
+    expect(find.byIcon(Icons.warning), findsOneWidget);
+  });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+  testWidgets('EmptyStateView renders title, subtitle, and action button', (WidgetTester tester) async {
+    bool actionTapped = false;
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: EmptyStateView(
+            icon: Icons.event_busy,
+            title: 'No events found',
+            subtitle: 'Try adjusting your filters',
+            actionLabel: 'Reset',
+            onAction: () => actionTapped = true,
+          ),
+        ),
+      ),
+    );
+
+    expect(find.text('No events found'), findsOneWidget);
+    expect(find.text('Try adjusting your filters'), findsOneWidget);
+    expect(find.text('Reset'), findsOneWidget);
+
+    await tester.tap(find.text('Reset'));
+    expect(actionTapped, isTrue);
+  });
+
+  testWidgets('LoadingView renders with optional status message', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: Scaffold(
+          body: LoadingView(message: 'Connecting to server...'),
+        ),
+      ),
+    );
+
+    expect(find.byType(CircularProgressIndicator), findsOneWidget);
+    expect(find.text('Connecting to server...'), findsOneWidget);
   });
 }

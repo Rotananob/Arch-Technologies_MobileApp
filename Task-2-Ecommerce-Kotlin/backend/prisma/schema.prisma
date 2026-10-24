@@ -1,0 +1,231 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  BUYER
+  SELLER
+  ADMIN
+}
+
+enum ProductCondition {
+  BRAND_NEW
+  LIKE_NEW
+  GOOD
+}
+
+enum ProductStatus {
+  ACTIVE
+  SOLD_OUT
+  SUSPENDED
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+enum PaymentMethod {
+  MOCK_PAYMENT
+  CASH_ON_DELIVERY
+  CREDIT_CARD
+}
+
+enum PaymentStatus {
+  PENDING
+  SUCCESSFUL
+  FAILED
+  CANCELLED
+}
+
+model User {
+  id               String          @id @default(uuid())
+  email            String          @unique
+  passwordHash     String
+  fullName         String
+  phoneNumber      String?
+  role             Role            @default(BUYER)
+  avatarUrl        String?
+  refreshTokenHash String?
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+
+  sellerProfile    SellerProfile?
+  addresses        Address[]
+  cart             Cart?
+  orders           Order[]
+  productsListed   Product[]       @relation("UserProducts")
+
+  @@map("users")
+}
+
+model SellerProfile {
+  id          String   @id @default(uuid())
+  userId      String   @unique
+  storeName   String
+  description String?
+  rating      Float    @default(5.0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("seller_profiles")
+}
+
+model Category {
+  id          String    @id @default(uuid())
+  name        String    @unique
+  nameKh      String
+  slug        String    @unique
+  iconName    String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  products    Product[]
+
+  @@map("categories")
+}
+
+model Product {
+  id             String           @id @default(uuid())
+  title          String
+  titleKh        String?
+  description    String
+  descriptionKh  String?
+  price          Float
+  originalPrice  Float?
+  categoryId     String
+  sellerId       String
+  stockQuantity  Int              @default(1)
+  condition      ProductCondition @default(BRAND_NEW)
+  isFeatured     Boolean          @default(false)
+  isPromotion    Boolean          @default(false)
+  status         ProductStatus    @default(ACTIVE)
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+
+  category       Category         @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  seller         User             @relation("UserProducts", fields: [sellerId], references: [id], onDelete: Cascade)
+  images         ProductImage[]
+  cartItems      CartItem[]
+  orderItems     OrderItem[]
+
+  @@map("products")
+}
+
+model ProductImage {
+  id        String   @id @default(uuid())
+  productId String
+  imageUrl  String
+  isPrimary Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@map("product_images")
+}
+
+model Cart {
+  id        String     @id @default(uuid())
+  userId    String     @unique
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items     CartItem[]
+
+  @@map("carts")
+}
+
+model CartItem {
+  id        String   @id @default(uuid())
+  cartId    String
+  productId String
+  quantity  Int      @default(1)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  cart      Cart     @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([cartId, productId])
+  @@map("cart_items")
+}
+
+model Address {
+  id             String   @id @default(uuid())
+  userId         String
+  recipientName  String
+  phoneNumber    String
+  streetAddress  String
+  city           String
+  campusBuilding String?
+  isDefault      Boolean  @default(false)
+  createdAt      DateTime @default(now())
+
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  orders         Order[]
+
+  @@map("addresses")
+}
+
+model Order {
+  id             String        @id @default(uuid())
+  orderNumber    String        @unique
+  userId         String
+  addressId      String
+  subtotal       Float
+  deliveryFee    Float         @default(2.0)
+  totalAmount    Float
+  status         OrderStatus   @default(PENDING)
+  paymentMethod  PaymentMethod @default(MOCK_PAYMENT)
+  paymentStatus  PaymentStatus @default(PENDING)
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  user           User          @relation(fields: [userId], references: [id], onDelete: Restrict)
+  shippingAddress Address      @relation(fields: [addressId], references: [id], onDelete: Restrict)
+  items          OrderItem[]
+  payments       Payment[]
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id        String   @id @default(uuid())
+  orderId   String
+  productId String
+  unitPrice Float
+  quantity  Int
+  createdAt DateTime @default(now())
+
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Restrict)
+
+  @@map("order_items")
+}
+
+model Payment {
+  id            String        @id @default(uuid())
+  orderId       String
+  amount        Float
+  status        PaymentStatus @default(PENDING)
+  transactionId String?
+  provider      String        @default("MOCK_GATEWAY")
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  order         Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@map("payments")
+}

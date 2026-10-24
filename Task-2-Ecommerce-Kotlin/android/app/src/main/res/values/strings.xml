@@ -1,0 +1,126 @@
+<resources>
+    <string name="app_name">ShopSphere</string>
+    <string name="tagline">Modern Marketplace for Buying and Selling</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_explore">Explore</string>
+    <string name="nav_cart">Cart</string>
+    <string name="nav_sell">Sell</string>
+    <string name="nav_profile">Profile</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Discover Quality Products</string>
+    <string name="onboarding_desc_1">Explore verified products from independent sellers and trusted brands in your campus community.</string>
+    <string name="onboarding_title_2">Secure and Transparent Orders</string>
+    <string name="onboarding_desc_2">Every transaction is protected with authoritative server-side checks and transparent status tracking.</string>
+    <string name="onboarding_title_3">Turn Your Items into Earnings</string>
+    <string name="onboarding_desc_3">List your own gadgets, textbooks, and gear in seconds. Reach genuine buyers with ease.</string>
+    <string name="btn_skip">Skip</string>
+    <string name="btn_next">Next</string>
+    <string name="btn_get_started">Get Started</string>
+
+    <!-- Authentication -->
+    <string name="auth_welcome_back">Welcome Back</string>
+    <string name="auth_sign_in_sub">Enter your credentials to access your orders and listings.</string>
+    <string name="auth_create_account">Create an Account</string>
+    <string name="auth_sign_up_sub">Join our community to start buying and selling securely.</string>
+    <string name="label_email">Email Address</string>
+    <string name="label_password">Password</string>
+    <string name="label_full_name">Full Name</string>
+    <string name="label_phone">Phone Number</string>
+    <string name="btn_sign_in">Sign In</string>
+    <string name="btn_sign_up">Sign Up</string>
+    <string name="prompt_no_account">Don\'t have an account? Sign up</string>
+    <string name="prompt_have_account">Already have an account? Sign in</string>
+    <string name="btn_forgot_password">Forgot Password?</string>
+    <string name="btn_reset_password">Send Reset Link</string>
+    <string name="msg_password_reset_sent">Password reset instructions sent to your email.</string>
+
+    <!-- Home & Discovery -->
+    <string name="search_hint">Search products, brands, or categories...</string>
+    <string name="section_categories">Categories</string>
+    <string name="section_featured">Featured Picks</string>
+    <string name="section_recent">Recently Added</string>
+    <string name="section_promotions">Special Offers</string>
+    <string name="filter_all">All</string>
+    <string name="filter_price_low_high">Price: Low to High</string>
+    <string name="filter_price_high_low">Price: High to Low</string>
+    <string name="filter_newest">Newest First</string>
+    <string name="label_in_stock">In Stock</string>
+    <string name="label_out_of_stock">Out of Stock</string>
+    <string name="empty_products">No products found matching your criteria.</string>
+
+    <!-- Product Details -->
+    <string name="btn_add_to_cart">Add to Cart</string>
+    <string name="btn_buy_now">Buy Now</string>
+    <string name="label_seller">Seller</string>
+    <string name="label_condition">Condition</string>
+    <string name="label_available_stock">Available Units</string>
+    <string name="label_delivery_info">Delivery</string>
+    <string name="delivery_estimate">Dispatched within 24-48 hours with local tracking</string>
+    <string name="condition_brand_new">Brand New</string>
+    <string name="condition_like_new">Like New</string>
+    <string name="condition_good">Good Condition</string>
+    <string name="msg_added_to_cart">Product added to your cart</string>
+
+    <!-- Cart & Checkout -->
+    <string name="cart_title">Shopping Cart</string>
+    <string name="cart_empty_title">Your cart is empty</string>
+    <string name="cart_empty_desc">Looks like you haven\'t added any products to your cart yet.</string>
+    <string name="label_subtotal">Subtotal</string>
+    <string name="label_delivery_fee">Delivery Fee</string>
+    <string name="label_total">Total Amount</string>
+    <string name="btn_proceed_to_checkout">Proceed to Checkout</string>
+    <string name="checkout_title">Review &amp; Checkout</string>
+    <string name="section_shipping_address">Delivery Address</string>
+    <string name="section_order_summary">Order Summary</string>
+    <string name="section_payment_method">Payment Method</string>
+    <string name="payment_mock">Sandbox Mock Payment (Instant)</string>
+    <string name="payment_cod">Cash on Delivery</string>
+    <string name="payment_card">Credit / Debit Card</string>
+    <string name="btn_confirm_order">Confirm &amp; Place Order</string>
+    <string name="order_placed_success">Order successfully placed!</string>
+
+    <!-- Orders -->
+    <string name="orders_title">My Orders</string>
+    <string name="order_number">Order #</string>
+    <string name="status_pending">Pending</string>
+    <string name="status_confirmed">Confirmed</string>
+    <string name="status_processing">Processing</string>
+    <string name="status_shipped">Shipped</string>
+    <string name="status_delivered">Delivered</string>
+    <string name="status_cancelled">Cancelled</string>
+    <string name="btn_cancel_order">Cancel Order</string>
+
+    <!-- Seller -->
+    <string name="seller_dashboard">Seller Center</string>
+    <string name="btn_create_listing">Create Listing</string>
+    <string name="label_product_title">Product Title</string>
+    <string name="label_product_price">Price (USD)</string>
+    <string name="label_product_description">Description</string>
+    <string name="label_product_category">Category</string>
+    <string name="label_product_quantity">Stock Quantity</string>
+    <string name="label_product_image_url">Image URL</string>
+    <string name="btn_save_listing">Publish Listing</string>
+    <string name="my_listings">My Active Listings</string>
+    <string name="sales_orders">Customer Orders</string>
+
+    <!-- Profile & Settings -->
+    <string name="profile_title">Account Settings</string>
+    <string name="label_language">Language</string>
+    <string name="lang_english">English (Default)</string>
+    <string name="lang_khmer">ភាសាខ្មែរ (Khmer)</string>
+    <string name="label_theme">Appearance</string>
+    <string name="theme_light">Light Mode</string>
+    <string name="theme_dark">Dark Mode</string>
+    <string name="btn_sign_out">Sign Out</string>
+
+    <!-- Errors & Validation -->
+    <string name="err_required_field">This field is required</string>
+    <string name="err_invalid_email">Please enter a valid email address</string>
+    <string name="err_password_short">Password must be at least 8 characters</string>
+    <string name="err_network">Unable to connect to server. Check your connection.</string>
+    <string name="err_unknown">An unexpected error occurred. Please try again.</string>
+    <string name="btn_retry">Retry</string>
+</resources>

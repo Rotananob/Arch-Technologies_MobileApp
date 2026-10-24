@@ -1,0 +1,126 @@
+<resources>
+    <string name="app_name">ShopSphere</string>
+    <string name="tagline">ផ្សារទំនើបឌីជីថលសម្រាប់ការទិញ និងលក់ទំនិញ</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">ទំព័រដើម</string>
+    <string name="nav_explore">រុករក</string>
+    <string name="nav_cart">កន្ត្រក</string>
+    <string name="nav_sell">ដាក់លក់</string>
+    <string name="nav_profile">គណនី</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">ស្វែងរកទំនិញគុណភាពខ្ពស់</string>
+    <string name="onboarding_desc_1">រុករកទំនិញដែលមានការផ្ទៀងផ្ទាត់ត្រឹមត្រូវពីអ្នកលក់ក្នុងសហគមន៍សាកលវិទ្យាល័យ។</string>
+    <string name="onboarding_title_2">ការបញ្ជាទិញប្រកបដោយសុវត្ថិភាព</string>
+    <string name="onboarding_desc_2">គ្រប់ប្រតិបត្តិការទាំងអស់ត្រូវបានការពារដោយប្រព័ន្ធសុវត្ថិភាពម៉ាស៊ីនបម្រើ និងអាចតាមដានស្ថានភាពបានយ៉ាងច្បាស់លាស់។</string>
+    <string name="onboarding_title_3">ប្រែក្លាយរបស់របរទៅជាប្រាក់ចំណូល</string>
+    <string name="onboarding_desc_3">ចុះបញ្ជីលក់សម្ភារៈសិក្សា ឧបករណ៍បច្ចេកវិទ្យា និងសៀវភៅរបស់អ្នកបានយ៉ាងរហ័ស។</string>
+    <string name="btn_skip">រំលង</string>
+    <string name="btn_next">បន្ទាប់</string>
+    <string name="btn_get_started">ចាប់ផ្តើមឥឡូវនេះ</string>
+
+    <!-- Authentication -->
+    <string name="auth_welcome_back">សូមស្វាគមន៍មកកាន់គណនី</string>
+    <string name="auth_sign_in_sub">សូមបញ្ចូលព័ត៌មានរបស់អ្នកដើម្បីពិនិត្យការបញ្ជាទិញ និងបញ្ជីទំនិញលក់។</string>
+    <string name="auth_create_account">ចុះឈ្មោះគណនីថ្មី</string>
+    <string name="auth_sign_up_sub">ចូលរួមជាមួយយើងដើម្បីចាប់ផ្តើមទិញនិងលក់ដោយសុវត្ថិភាព។</string>
+    <string name="label_email">អាសយដ្ឋានអ៊ីមែល</string>
+    <string name="label_password">ពាក្យសម្ងាត់</string>
+    <string name="label_full_name">ឈ្មោះពេញ</string>
+    <string name="label_phone">លេខទូរស័ព្ទ</string>
+    <string name="btn_sign_in">ចូលគណនី</string>
+    <string name="btn_sign_up">ចុះឈ្មោះ</string>
+    <string name="prompt_no_account">មិនទាន់មានគណនីមែនទេ? ចុះឈ្មោះ</string>
+    <string name="prompt_have_account">មានគណនីរួចហើយមែនទេ? ចូលគណនី</string>
+    <string name="btn_forgot_password">ភ្លេចពាក្យសម្ងាត់?</string>
+    <string name="btn_reset_password">ផ្ញើតំណភ្ជាប់កំណត់ឡើងវិញ</string>
+    <string name="msg_password_reset_sent">ការណែនាំអំពីការកំណត់ពាក្យសម្ងាត់ត្រូវបានផ្ញើទៅកាន់អ៊ីមែលរបស់អ្នក។</string>
+
+    <!-- Home & Discovery -->
+    <string name="search_hint">ស្វែងរកទំនិញ ម៉ាក ឬប្រភេទទំនិញ...</string>
+    <string name="section_categories">ប្រភេទទំនិញ</string>
+    <string name="section_featured">ទំនិញពិសេស</string>
+    <string name="section_recent">ទំនិញទើបមកដល់</string>
+    <string name="section_promotions">ការផ្ដល់ជូនពិសេស</string>
+    <string name="filter_all">ទាំងអស់</string>
+    <string name="filter_price_low_high">តម្លៃ៖ ទាបទៅខ្ពស់</string>
+    <string name="filter_price_high_low">តម្លៃ៖ ខ្ពស់ទៅទាប</string>
+    <string name="filter_newest">ថ្មីបំផុត</string>
+    <string name="label_in_stock">មានក្នុងស្តុក</string>
+    <string name="label_out_of_stock">អស់ពីស្តុក</string>
+    <string name="empty_products">រកមិនឃើញទំនិញដែលត្រូវនឹងការស្វែងរករបស់អ្នកទេ។</string>
+
+    <!-- Product Details -->
+    <string name="btn_add_to_cart">ដាក់ចូលកន្ត្រក</string>
+    <string name="btn_buy_now">ទិញឥឡូវនេះ</string>
+    <string name="label_seller">អ្នកលក់</string>
+    <string name="label_condition">ស្ថានភាពទំនិញ</string>
+    <string name="label_available_stock">ចំនួនដែលនៅសល់</string>
+    <string name="label_delivery_info">ការដឹកជញ្ជូន</string>
+    <string name="delivery_estimate">រៀបចំដឹកជញ្ជូនក្នុងរយៈពេល ២៤ ទៅ ៤៨ ម៉ោង</string>
+    <string name="condition_brand_new">ថ្មីស្រឡាង</string>
+    <string name="condition_like_new">ស្ទើរតែថ្មី</string>
+    <string name="condition_good">ស្ថានភាពល្អសមរម្យ</string>
+    <string name="msg_added_to_cart">បានបន្ថែមទំនិញទៅក្នុងកន្ត្រករបស់អ្នក</string>
+
+    <!-- Cart & Checkout -->
+    <string name="cart_title">កន្ត្រកទំនិញ</string>
+    <string name="cart_empty_title">កន្ត្រករបស់អ្នកមិនទាន់មានទំនិញទេ</string>
+    <string name="cart_empty_desc">អ្នកមិនទាន់បានជ្រើសរើសទំនិញណាមួយដាក់ក្នុងកន្ត្រកនៅឡើយទេ។</string>
+    <string name="label_subtotal">តម្លៃទំនិញសរុប</string>
+    <string name="label_delivery_fee">ថ្លៃសេវាដឹកជញ្ជូន</string>
+    <string name="label_total">ទឹកប្រាក់សរុប</string>
+    <string name="btn_proceed_to_checkout">បន្តទៅកាន់ការទូទាត់</string>
+    <string name="checkout_title">ត្រួតពិនិត្យ និងទូទាត់</string>
+    <string name="section_shipping_address">អាសយដ្ឋានដឹកជញ្ជូន</string>
+    <string name="section_order_summary">សេចក្តីសង្ខេបនៃការបញ្ជាទិញ</string>
+    <string name="section_payment_method">វិធីសាស្ត្រទូទាត់ប្រាក់</string>
+    <string name="payment_mock">ការទូទាត់ប្រាក់សាកល្បងភ្លាមៗ</string>
+    <string name="payment_cod">ទូទាត់ប្រាក់ពេលទំនិញមកដល់</string>
+    <string name="payment_card">កាតធនាគារ</string>
+    <string name="btn_confirm_order">បញ្ជាក់ការបញ្ជាទិញ</string>
+    <string name="order_placed_success">ការបញ្ជាទិញរបស់អ្នកទទួលបានជោគជ័យ!</string>
+
+    <!-- Orders -->
+    <string name="orders_title">ប្រវត្តិនៃការបញ្ជាទិញ</string>
+    <string name="order_number">លេខបញ្ជាទិញ #</string>
+    <string name="status_pending">កំពុងរង់ចាំ</string>
+    <string name="status_confirmed">បានបញ្ជាក់</string>
+    <string name="status_processing">កំពុងរៀបចំ</string>
+    <string name="status_shipped">កំពុងដឹកជញ្ជូន</string>
+    <string name="status_delivered">បានដឹកដល់</string>
+    <string name="status_cancelled">បានបោះបង់</string>
+    <string name="btn_cancel_order">បោះបង់ការបញ្ជាទិញ</string>
+
+    <!-- Seller -->
+    <string name="seller_dashboard">មជ្ឈមណ្ឌលអ្នកលក់</string>
+    <string name="btn_create_listing">បង្កើតបញ្ជីទំនិញថ្មី</string>
+    <string name="label_product_title">ឈ្មោះទំនិញ</string>
+    <string name="label_product_price">តម្លៃគិតជាដុល្លារ</string>
+    <string name="label_product_description">ការពិពណ៌នាលម្អិត</string>
+    <string name="label_product_category">ប្រភេទទំនិញ</string>
+    <string name="label_product_quantity">ចំនួនក្នុងស្តុក</string>
+    <string name="label_product_image_url">តំណភ្ជាប់រូបភាពទំនិញ</string>
+    <string name="btn_save_listing">ផ្សព្វផ្សាយទំនិញ</string>
+    <string name="my_listings">ទំនិញដែលកំពុងដាក់លក់</string>
+    <string name="sales_orders">ការបញ្ជាទិញពីអតិថិជន</string>
+
+    <!-- Profile & Settings -->
+    <string name="profile_title">ការកំណត់គណនី</string>
+    <string name="label_language">ភាសា</string>
+    <string name="lang_english">ភាសាអង់គ្លេស</string>
+    <string name="lang_khmer">ភាសាខ្មែរ</string>
+    <string name="label_theme">ទម្រង់បង្ហាញ</string>
+    <string name="theme_light">ទម្រង់ពន្លឺ</string>
+    <string name="theme_dark">ទម្រង់ងងឹត</string>
+    <string name="btn_sign_out">ចាកចេញពីគណនី</string>
+
+    <!-- Errors & Validation -->
+    <string name="err_required_field">សូមកុំទុកចន្លោះនេះទំនេរ</string>
+    <string name="err_invalid_email">សូមបញ្ចូលអាសយដ្ឋានអ៊ីមែលដែលត្រឹមត្រូវ</string>
+    <string name="err_password_short">ពាក្យសម្ងាត់ត្រូវមានយ៉ាងតិច ៨ តួអក្សរ</string>
+    <string name="err_network">មិនអាចភ្ជាប់ទៅកាន់ប្រព័ន្ធបានទេ។ សូមពិនិត្យអ៊ីនធឺណិតរបស់អ្នក។</string>
+    <string name="err_unknown">មានបញ្ហាមិនប្រក្រតីបានកើតឡើង។ សូមព្យាយាមម្តងទៀត។</string>
+    <string name="btn_retry">ព្យាយាមម្តងទៀត</string>
+</resources>
