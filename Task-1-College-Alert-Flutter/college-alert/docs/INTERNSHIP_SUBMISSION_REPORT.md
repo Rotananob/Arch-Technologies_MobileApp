@@ -6,11 +6,12 @@
 # 📄 INTERNSHIP PROJECT REPORT
 ## Task 1: College Alert — Android Application
 
-**Candidate Full Name:** Rotana Nob  
+**Candidate Full Name:** Rotana NOB  
 **Internship Domain:** Android App Development  
+**University:** Asia Euro University  
 **Submission Cycle:** Month 1 Assignment  
-**Email Address:** rotana.nob@university.edu  
-**Contact Phone:** +855 12 345 678  
+**Email Address:** nobrothana180703@gmail.com  
+**Contact Phone:** +855 87 986 045  
 **Submission Target:** submissions.archtech@gmail.com  
 **Expected PDF Filename:** `Rotana_Nob_AndroidAppDevelopment_Month1.pdf`  
 **Submission Date:** October 2026  

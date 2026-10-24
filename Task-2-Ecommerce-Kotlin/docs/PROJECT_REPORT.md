@@ -5,8 +5,11 @@
 ---
 
 ## 👤 Front Page & Candidate Information
-- **Intern Name**: Rotana Nob
+- **Intern Name**: Rotana NOB
 - **Internship Domain**: Android App Development / Mobile App Development
+- **University**: Asia Euro University
+- **Email**: nobrothana180703@gmail.com
+- **Phone**: +855 87 986 045
 - **Organization**: Arch Technologies
 - **Submission Date**: October 2026
 - **Submission File**: `Rotana_Nob_AndroidAppDevelopment_Month1.pdf`

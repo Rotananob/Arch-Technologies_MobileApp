@@ -1,50 +1,120 @@
-# Dependencies
+# ==============================================================================
+# Arch Technologies — Multi-Project Professional .gitignore
+# Covers: Flutter, Android (Kotlin/Gradle), NestJS (Node.js), Prisma, IDEs & OS
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# Node.js & NestJS Backend
+# ------------------------------------------------------------------------------
 node_modules/
 */node_modules/
 */*/node_modules/
+*/*/*/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 .pnp
 .pnp.js
 
-# Build and caches
+# Build outputs & caches
 dist/
-build/
-*/build/
-*/*/build/
-.gradle/
-*/.gradle/
-*/*/gradle/
-app/build/
+*/dist/
+*/*/dist/
+.tscache/
 
-# Flutter / Dart
+# ------------------------------------------------------------------------------
+# Flutter & Dart
+# ------------------------------------------------------------------------------
 .dart_tool/
 */.dart_tool/
+*/*/.dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
 .packages
 .pub-cache/
 .pub/
 
-# Android / Kotlin
+# Flutter build outputs
+build/
+*/build/
+*/*/build/
+*/*/*/build/
+
+# Flutter symbols
+*.symbols
+*.symbols.zip
+
+# ------------------------------------------------------------------------------
+# Android Native (Kotlin & Gradle)
+# ------------------------------------------------------------------------------
+# Built-in Gradle caches (Keep wrapper and libs.versions.toml!)
+.gradle/
+*/.gradle/
+*/*/.gradle/
+
+# Kotlin build caches
+.kotlin/
+*/.kotlin/
+*/*/.kotlin/
+
+# Output artifacts
 *.apk
 *.aab
+*.ap_
+output-metadata.json
+
+# Local SDK and keystore paths
 local.properties
+*.keystore
+*.jks
+
+# C/C++ build caches
 .cxx/
+*/.cxx/
+*/*/.cxx/
+
+# Android Studio Profiler & Captures
 captures/
 
-# IDE / Editor
+# ------------------------------------------------------------------------------
+# Database & Environment Secrets
+# ------------------------------------------------------------------------------
+.env
+.env.local
+.env.*.local
+*.log
+
+# ------------------------------------------------------------------------------
+# IDEs, Editors & Tooling
+# ------------------------------------------------------------------------------
+# JetBrains / Android Studio
 .idea/
+*/.idea/
+*/*/.idea/
 *.iml
+*.ipr
+*.iws
+
+# Visual Studio Code
 .vscode/
+*/.vscode/
+*/*/.vscode/
+
+# Editor temporary files
 *.swp
 *.swo
+*~
+*.bak
 
-# Environment & Logs
-.env
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# OS Files
+# ------------------------------------------------------------------------------
+# Operating System Files
+# ------------------------------------------------------------------------------
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db

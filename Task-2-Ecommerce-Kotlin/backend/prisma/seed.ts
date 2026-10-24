@@ -25,10 +25,10 @@ async function main() {
   // 1. Create Users
   const rotana = await prisma.user.create({
     data: {
-      email: 'rotananob@archtech.edu',
+      email: 'nobrothana180703@gmail.com',
       passwordHash: commonPasswordHash,
-      fullName: 'Rotana Nob',
-      phoneNumber: '+855 12 345 678',
+      fullName: 'Rotana NOB',
+      phoneNumber: '+855 87 986 045',
       role: Role.SELLER,
       sellerProfile: {
         create: {

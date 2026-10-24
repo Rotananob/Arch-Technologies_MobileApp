@@ -1,7 +1,8 @@
 # 📘 College Alert — Engineering Implementation Report
 **Document Code:** CA-ENG-2026-M1  
 **Project:** College Alert Android Application & Backend System  
-**Author:** Rotana Nob  
+**Author:** Rotana NOB  
+**University:** Asia Euro University  
 **Internship Organization:** Arch Technologies  
 **Date:** October 2026  
 

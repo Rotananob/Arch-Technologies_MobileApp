@@ -7,11 +7,11 @@
 
 | Field | Submission Details |
 |---|---|
-| **Full Name** | **Rotana Nob** |
+| **Full Name** | **Rotana NOB** |
 | **Internship Domain** | **Android App Development** |
-| **Primary Email** | `rotana.nob@university.edu` |
-| **Secondary Email** | `ROTANANOB@GMAIL.COM` |
-| **Phone Number** | `+855 12 345 678` |
+| **Email Address** | `nobrothana180703@gmail.com` |
+| **University** | **Asia Euro University** |
+| **Phone Number** | `+855 87 986 045` |
 | **Organization** | **Arch Technologies** |
 | **Submission Month** | Month 1 (October 2026) |
 | **Submission Destination** | `submissions.archtech@gmail.com` |
@@ -41,19 +41,19 @@
 
 ## 1. Executive Summary
 
-During Month 1 of the **Arch Technologies Remote Mobile App Development Internship**, two complete, enterprise-grade mobile software systems were engineered and delivered to production standards:
+During Month 1 of the **Arch Technologies Remote Mobile App Development Internship**, two complete, production-grade mobile applications were engineered and delivered to software industry standards:
 
-1. **Task 1 — College Alert Application**: Built with **Flutter 3.x**, **Riverpod**, and **NestJS + PostgreSQL**. A full-featured campus notification platform delivering real-time event alerts, interactive calendars, bookmarking, and native bilingual localization (English and Khmer).
+1. **Task 1 — College Alert Application**: Built with **Flutter 3.x**, **Riverpod 2.6**, and **NestJS + PostgreSQL**. A full-featured campus notification platform delivering real-time event alerts, interactive calendars, bookmarking, and native bilingual localization (English and Khmer).
 2. **Task 2 — ShopSphere Mobile E-Commerce Application**: Built with **100% Native Android Kotlin**, **Jetpack Compose**, **Room Database**, and **NestJS + PostgreSQL**. An advanced mobile marketplace featuring authoritative cart arithmetic, C2C seller inventory listings ("Sell Your Product"), concurrency-safe SQL transaction locks, and a multi-tier PCI-DSS compliant simulated payment sandbox.
 
-Both applications strictly adhere to **Clean Architecture**, utilize local PostgreSQL databases with zero runtime third-party failures, and pass comprehensive automated test suites.
+Both applications strictly adhere to **Clean Architecture**, utilize local PostgreSQL databases with zero runtime third-party dependency failures, and pass comprehensive automated test suites.
 
 ---
 
 ## 2. Task 1: College Alert Application
 
 ### 2.1 Project Overview & Architecture
-College Alert enables students to discover academic deadlines, workshops, cultural celebrations, and emergency broadcasts with zero friction.
+College Alert enables university students to discover academic deadlines, workshops, cultural celebrations, and emergency broadcasts with zero friction.
 
 ```mermaid
 flowchart TD
@@ -302,14 +302,12 @@ export class OrdersService {
 
       let subtotal = 0;
       for (const item of cart.items) {
-        // Concurrency-safe stock verification
         if (item.product.stockQuantity < item.quantity) {
           throw new BadRequestException(
             `Insufficient stock for product: ${item.product.title}`,
           );
         }
 
-        // Atomic inventory decrement
         await tx.product.update({
           where: { id: item.productId },
           data: { stockQuantity: { decrement: item.quantity } },
@@ -336,7 +334,6 @@ export class OrdersService {
         },
       });
 
-      // Clear cart items
       await tx.cartItem.deleteMany({ where: { cartId: cart.id } });
 
       return order;
@@ -399,7 +396,7 @@ GitHub Repository: https://github.com/Rotananob/Arch-Technologies_MobileApp
 ## 6. Formal Email Submission Template
 
 **To:** `submissions.archtech@gmail.com`  
-**Subject:** `Month 1 Task Submission – Rotana Nob – Android App Development`  
+**Subject:** `Month 1 Task Submission – Rotana NOB – Android App Development`  
 **Attachment:** `Rotana_Nob_AndroidAppDevelopment_Month1.pdf`  
 
 ```text
@@ -410,10 +407,11 @@ I hope this email finds you well.
 I am pleased to submit my completed work and detailed project report for Month 1 of the Android App Development Internship program.
 
 Candidate Information:
-- Full Name: Rotana Nob
+- Full Name: Rotana NOB
 - Internship Domain: Android App Development
-- Registered Email: rotana.nob@university.edu
-- Contact Phone: +855 12 345 678
+- University: Asia Euro University
+- Contact Email: nobrothana180703@gmail.com
+- Contact Phone: +855 87 986 045
 - Submission Period: Month 1 (October 2026)
 
 Completed Tasks Summary:
@@ -428,10 +426,10 @@ Please find the comprehensive report attached in PDF format as required: Rotana_
 Thank you very much for your time, guidance, and evaluation.
 
 Warm regards,
-Rotana Nob
+Rotana NOB
 Intern – Android App Development
 Arch Technologies
 ```
 
 ---
-*Report compiled and verified by Rotana Nob.*
+*Report compiled and verified by Rotana NOB.*

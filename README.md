@@ -4,15 +4,17 @@
 [![Internship Domain](https://img.shields.io/badge/Domain-Android%20App%20Development-blue.svg)](#)
 [![Company](https://img.shields.io/badge/Company-Arch%20Technologies-orange.svg)](#)
 [![Candidate](https://img.shields.io/badge/Candidate-Rotana%20NOB-green.svg)](#)
+[![University](https://img.shields.io/badge/University-Asia%20Euro%20University-blueviolet.svg)](#)
 [![License](https://img.shields.io/badge/License-MIT-purple.svg)](#)
 
 ---
 
 ## 👨‍💻 Candidate & Submission Details
-- **Candidate Name:** Rotana Nob
+- **Candidate Name:** **Rotana NOB**
 - **Internship Domain:** Android App Development
-- **Email:** `rotana.nob@university.edu` / `ROTANANOB@GMAIL.COM`
-- **Phone:** `+855 12 345 678`
+- **University:** Asia Euro University
+- **Email:** `nobrothana180703@gmail.com`
+- **Phone:** `+855 87 986 045`
 - **Submission Destination:** `submissions.archtech@gmail.com`
 - **Submission Title:** `Rotana_Nob_AndroidAppDevelopment_Month1`
 
@@ -33,8 +35,15 @@ Arch-Technologies_MobileApp/
 ├── Task-2-Ecommerce-Kotlin/              # Task 2: ShopSphere E-Commerce Application
 │   ├── android/                          # Native Android Kotlin Client (Jetpack Compose, Room)
 │   ├── backend/                          # NestJS REST API (Prisma ORM, PostgreSQL)
-│   └── docs/                         # Technical Specs, Reports & DB Design
+│   └── docs/                             # Technical Specs, Reports & DB Design
 │
+├── docs/                                 # Official Month 1 Master Submission Report
+│   └── Rotana_Nob_AndroidAppDevelopment_Month1_Final_Report.md
+│
+├── run-all-tests.bat                     # Automated Test Runner (One-Click)
+├── run-all-tests.ps1                     # PowerShell Test Verification Script
+├── start-task1.bat                       # Launch Task 1 NestJS Backend (Port 3000)
+├── start-task2.bat                       # Launch Task 2 ShopSphere Backend (Port 3001)
 └── README.md                             # Repository Master Documentation
 ```
 
@@ -123,10 +132,10 @@ cd ../android
 
 ## 🧪 Testing & Verification
 Both projects include rigorous automated test suites:
-- **Task 1 Mobile:** `flutter test` (Widget & Unit Tests)
-- **Task 1 Backend:** `npm test` (Jest Test Suite)
-- **Task 2 Android:** `./gradlew test` (JUnit Unit Tests)
-- **Task 2 Backend:** `npm test` (Jest Integration Tests)
+- **Task 1 Mobile:** `flutter test` (8 Tests Passed)
+- **Task 1 Backend:** `npm test` (6 Tests Passed)
+- **Task 2 Backend:** `npm test` (12 Tests Passed)
+- **Unified One-Click Runner:** Run `.\run-all-tests.bat` or `.\run-all-tests.ps1` to test everything across both projects!
 
 ---
 
@@ -138,4 +147,4 @@ Both projects include rigorous automated test suites:
 - [x] Code tested with zero critical compile or lint errors.
 
 ---
-*Created with dedication by Rotana Nob for the Arch Technologies Internship Program.*
+*Created with dedication by Rotana NOB for the Arch Technologies Internship Program.*

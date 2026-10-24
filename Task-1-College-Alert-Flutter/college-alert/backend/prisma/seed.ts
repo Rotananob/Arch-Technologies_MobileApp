@@ -22,12 +22,12 @@ async function main() {
 
   const studentUser = await prisma.user.create({
     data: {
-      email: 'rotana.nob@university.edu',
+      email: 'nobrothana180703@gmail.com',
       passwordHash: studentPasswordHash,
-      fullName: 'Rotana Nob',
+      fullName: 'Rotana NOB',
       studentId: 'STU-2026-089',
-      department: 'Computer Science & Software Engineering',
-      phoneNumber: '+85512345678',
+      department: 'Computer Science - Asia Euro University',
+      phoneNumber: '+85587986045',
       role: Role.STUDENT,
       avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400',
       preferences: {
