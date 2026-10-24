@@ -92,7 +92,7 @@ class ScaffoldWithNavBar extends ConsumerWidget {
                       message: isKhmer ? 'Switch to English' : 'ប្ដូរទៅភាសាខ្មែរ',
                       child: OutlinedButton(
                         onPressed: () {
-                          final next = isKhmer ? const Locale('en') : const Locale('km');
+                          final next = isKhmer ? 'en' : 'km';
                           ref.read(localeProvider.notifier).setLocale(next);
                         },
                         style: OutlinedButton.styleFrom(

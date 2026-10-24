@@ -138,7 +138,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           // 1-Tap Language Switcher (EN <-> KM)
           InkWell(
             onTap: () {
-              final next = isKhmer ? const Locale('en') : const Locale('km');
+              final next = isKhmer ? 'en' : 'km';
               ref.read(localeProvider.notifier).setLocale(next);
             },
             borderRadius: BorderRadius.circular(16),
@@ -445,6 +445,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 ),
               ),
             ),
+          ),
     );
   }
 
