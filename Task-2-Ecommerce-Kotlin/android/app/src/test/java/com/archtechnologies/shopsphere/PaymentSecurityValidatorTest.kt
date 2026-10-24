@@ -66,11 +66,11 @@ class PaymentSecurityValidatorTest {
     @Test
     fun luhnAlgorithm_validatesLegitimateCardsAndRejectsInvalidNumbers() {
         // Known valid test card numbers (Luhn compliant)
-        assertTrue("Valid Visa passes Luhn", isValidLuhn("49927398716"))
+        assertTrue("Valid Visa passes Luhn", isValidLuhn("4242424242424242"))
         assertTrue("Valid Mastercard passes Luhn", isValidLuhn("5500000000000004"))
 
         // Known invalid test numbers
-        assertFalse("Corrupted card number fails Luhn", isValidLuhn("49927398717"))
+        assertFalse("Corrupted card number fails Luhn", isValidLuhn("4242424242424241"))
         assertFalse("Alphabetic strings fail Luhn", isValidLuhn("4992abcd8716"))
         assertFalse("Empty string fails Luhn", isValidLuhn(""))
     }
