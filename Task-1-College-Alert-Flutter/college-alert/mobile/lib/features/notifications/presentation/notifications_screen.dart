@@ -69,8 +69,9 @@ class _NotificationsScreenState extends ConsumerState<NotificationsScreen> {
         if (item.isNotEmpty) item['isRead'] = true;
       });
       final count = ref.read(unreadNotificationsCountProvider);
-      if (count > 0)
+      if (count > 0) {
         ref.read(unreadNotificationsCountProvider.notifier).state = count - 1;
+      }
     } catch (_) {}
   }
 
@@ -97,16 +98,20 @@ class _NotificationsScreenState extends ConsumerState<NotificationsScreen> {
       backgroundColor:
           isDark ? AppColors.backgroundDark : AppColors.backgroundLight,
       appBar: AppBar(
-        title: Text(l10n.notificationsTitle),
+        title: Text(
+          isKhmer ? 'ការជូនដំណឹង' : l10n.notificationsTitle,
+          style: const TextStyle(fontWeight: FontWeight.w700),
+        ),
         actions: [
           if (_notifications.any((n) => n['isRead'] == false))
-            TextButton(
+            TextButton.icon(
               onPressed: _markAllRead,
-              child: Text(
-                l10n.markAllAsRead,
+              icon: const Icon(Icons.done_all_rounded, size: 16),
+              label: Text(
+                isKhmer ? 'អានទាំងអស់' : l10n.markAllAsRead,
                 style: const TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 13,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 12.5,
                 ),
               ),
             ),
@@ -138,59 +143,73 @@ class _NotificationsScreenState extends ConsumerState<NotificationsScreen> {
               : _notifications.isEmpty
               ? EmptyStateView(
                 icon: Icons.notifications_none_rounded,
-                title: l10n.noNotifications,
-                subtitle: l10n.noNotificationsSubtitle,
+                title: isKhmer ? 'ពុំទាន់មានដំណឹងនៅឡើយទេ' : l10n.noNotifications,
+                subtitle: isKhmer
+                    ? 'ដំណឹងថ្មីៗ និងការដាស់តឿននឹងបង្ហាញនៅទីនេះ។'
+                    : l10n.noNotificationsSubtitle,
               )
               : RefreshIndicator(
                 onRefresh: _loadNotifications,
-                child: ListView.separated(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 12,
-                  ),
-                  itemCount: _notifications.length,
-                  separatorBuilder: (_, __) => const SizedBox(height: 8),
-                  itemBuilder: (context, index) {
-                    final n = _notifications[index];
-                    final isRead = n['isRead'] == true;
-                    final title =
-                        isKhmer && n['titleKh'] != null
-                            ? n['titleKh']
-                            : n['title'];
-                    final message =
-                        isKhmer && n['messageKh'] != null
-                            ? n['messageKh']
-                            : n['message'];
-                    final type = n['type'] as String? ?? 'GENERAL';
-                    final eventId = n['eventId'] as String?;
+                child: Center(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 700),
+                    child: ListView.separated(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 12,
+                      ),
+                      itemCount: _notifications.length,
+                      separatorBuilder: (_, __) => const SizedBox(height: 10),
+                      itemBuilder: (context, index) {
+                        final n = _notifications[index];
+                        final isRead = n['isRead'] == true;
 
-                    DateTime? createdAt;
-                    if (n['createdAt'] != null) {
-                      try {
-                        createdAt = DateTime.parse(n['createdAt']);
-                      } catch (_) {}
-                    }
-                    final timeStr =
-                        createdAt != null
+                        // Safe non-null string parsing
+                        final title = (isKhmer &&
+                                n['titleKh'] != null &&
+                                (n['titleKh'] as String).isNotEmpty)
+                            ? n['titleKh'] as String
+                            : (n['title'] as String? ?? 'Campus Notice');
+
+                        final message = (isKhmer &&
+                                n['messageKh'] != null &&
+                                (n['messageKh'] as String).isNotEmpty)
+                            ? n['messageKh'] as String
+                            : (n['message'] as String? ??
+                                n['body'] as String? ??
+                                '');
+
+                        final type = (n['type'] as String? ?? 'GENERAL');
+                        final eventId = n['eventId'] as String?;
+
+                        DateTime? createdAt;
+                        if (n['createdAt'] != null) {
+                          try {
+                            createdAt = DateTime.parse(n['createdAt']);
+                          } catch (_) {}
+                        }
+                        final timeStr = createdAt != null
                             ? DateFormat('MMM dd • hh:mm a').format(createdAt)
                             : '';
 
-                    return _buildNotificationTile(
-                      title: title,
-                      message: message,
-                      timeStr: timeStr,
-                      isRead: isRead,
-                      type: type,
-                      isDark: isDark,
-                      onTap: () async {
-                        if (!isRead) await _markRead(n['id']);
-                        if (!context.mounted) return;
-                        if (eventId != null) {
-                          context.push('/event-details/$eventId');
-                        }
+                        return _buildNotificationTile(
+                          title: title,
+                          message: message,
+                          timeStr: timeStr,
+                          isRead: isRead,
+                          type: type,
+                          isDark: isDark,
+                          onTap: () async {
+                            if (!isRead) await _markRead(n['id'] as String);
+                            if (!context.mounted) return;
+                            if (eventId != null) {
+                              context.push('/event-details/$eventId');
+                            }
+                          },
+                        );
                       },
-                    );
-                  },
+                    ),
+                  ),
                 ),
               ),
     );
@@ -207,53 +226,72 @@ class _NotificationsScreenState extends ConsumerState<NotificationsScreen> {
   }) {
     IconData iconData = Icons.notifications_outlined;
     Color iconColor = AppColors.secondary;
+    Color iconBgColor = AppColors.secondary.withOpacity(0.12);
 
-    if (type.contains('ANNOUNCEMENT') ||
-        title.contains('⚠️') ||
-        title.contains('Urgent')) {
+    final upperTitle = title.toUpperCase();
+    final upperType = type.toUpperCase();
+
+    if (upperType.contains('ALERT') ||
+        upperTitle.contains('⚠️') ||
+        upperTitle.contains('URGENT') ||
+        upperTitle.contains('បន្ទាន់')) {
       iconData = Icons.warning_amber_rounded;
       iconColor = AppColors.error;
-    } else if (type.contains('CONFIRMED')) {
-      iconData = Icons.check_circle_outline;
+      iconBgColor = AppColors.error.withOpacity(0.12);
+    } else if (upperType.contains('REGISTRATION') || upperType.contains('CONFIRMED')) {
+      iconData = Icons.check_circle_outline_rounded;
       iconColor = AppColors.success;
-    } else if (type.contains('REMINDER')) {
+      iconBgColor = AppColors.success.withOpacity(0.12);
+    } else if (upperType.contains('REMINDER')) {
       iconData = Icons.alarm_rounded;
       iconColor = AppColors.warning;
+      iconBgColor = AppColors.warning.withOpacity(0.12);
     }
 
     return Container(
       decoration: BoxDecoration(
-        color:
-            isRead
-                ? (isDark ? AppColors.surfaceDark : Colors.white)
-                : (isDark ? const Color(0xFF192A47) : const Color(0xFFEFF6FF)),
-        borderRadius: BorderRadius.circular(10),
+        color: isRead
+            ? (isDark ? AppColors.surfaceDark : Colors.white)
+            : (isDark ? const Color(0xFF132238) : const Color(0xFFF0F7FF)),
+        borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color:
-              isRead
-                  ? (isDark ? AppColors.borderDark : AppColors.borderLight)
-                  : AppColors.secondary.withOpacity(0.3),
+          color: isRead
+              ? (isDark ? AppColors.borderDark : AppColors.borderLight)
+              : AppColors.secondary.withOpacity(0.35),
+          width: isRead ? 1 : 1.5,
         ),
+        boxShadow: [
+          if (!isRead)
+            BoxShadow(
+              color: AppColors.secondary.withOpacity(0.08),
+              blurRadius: 6,
+              offset: const Offset(0, 2),
+            ),
+        ],
       ),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(12),
           onTap: onTap,
           child: Padding(
             padding: const EdgeInsets.all(14),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Icon Container
                 Container(
-                  padding: const EdgeInsets.all(8),
+                  width: 40,
+                  height: 40,
                   decoration: BoxDecoration(
-                    color: iconColor.withOpacity(0.12),
-                    shape: BoxShape.circle,
+                    color: iconBgColor,
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Icon(iconData, size: 20, color: iconColor),
+                  child: Icon(iconData, color: iconColor, size: 22),
                 ),
-                const SizedBox(width: 12),
+                const SizedBox(width: 14),
+
+                // Text Content
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -264,16 +302,14 @@ class _NotificationsScreenState extends ConsumerState<NotificationsScreen> {
                           Expanded(
                             child: Text(
                               title,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight:
                                     isRead ? FontWeight.w600 : FontWeight.w800,
-                                color:
-                                    isDark
-                                        ? AppColors.textPrimaryDark
-                                        : AppColors.textPrimaryLight,
+                                color: isDark
+                                    ? AppColors.textPrimaryDark
+                                    : AppColors.textPrimaryLight,
+                                height: 1.3,
                               ),
                             ),
                           ),
@@ -281,6 +317,7 @@ class _NotificationsScreenState extends ConsumerState<NotificationsScreen> {
                             Container(
                               width: 8,
                               height: 8,
+                              margin: const EdgeInsets.only(left: 6),
                               decoration: const BoxDecoration(
                                 color: AppColors.secondary,
                                 shape: BoxShape.circle,
@@ -288,31 +325,32 @@ class _NotificationsScreenState extends ConsumerState<NotificationsScreen> {
                             ),
                         ],
                       ),
-                      const SizedBox(height: 4),
-                      Text(
-                        message,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontSize: 13,
-                          height: 1.3,
-                          color:
-                              isDark
-                                  ? AppColors.textSecondaryDark
-                                  : AppColors.textSecondaryLight,
+                      if (message.isNotEmpty) ...[
+                        const SizedBox(height: 5),
+                        Text(
+                          message,
+                          style: TextStyle(
+                            fontSize: 12.5,
+                            color: isDark
+                                ? AppColors.textSecondaryDark
+                                : AppColors.textSecondaryLight,
+                            height: 1.45,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 6),
-                      Text(
-                        timeStr,
-                        style: TextStyle(
-                          fontSize: 11,
-                          color:
-                              isDark
-                                  ? AppColors.textMutedDark
-                                  : AppColors.textMutedLight,
+                      ],
+                      if (timeStr.isNotEmpty) ...[
+                        const SizedBox(height: 8),
+                        Text(
+                          timeStr,
+                          style: TextStyle(
+                            fontSize: 11,
+                            color: isDark
+                                ? AppColors.textMutedDark
+                                : AppColors.textMutedLight,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
-                      ),
+                      ],
                     ],
                   ),
                 ),

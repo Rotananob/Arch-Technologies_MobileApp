@@ -86,11 +86,11 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     final user = authState.user;
-    final fullName = user?['fullName'] ?? 'Rotana Nob';
-    final email = user?['email'] ?? 'rotana.nob@university.edu';
+    final fullName = user?['fullName'] ?? 'Rotana NOB';
+    final email = user?['email'] ?? 'nobrothana180703@gmail.com';
     final studentId = user?['studentId'] ?? 'STU-2026-089';
     final dept =
-        user?['department'] ?? 'Computer Science & Software Engineering';
+        user?['department'] ?? 'Computer Science - Asia Euro University';
 
     return Scaffold(
       backgroundColor:

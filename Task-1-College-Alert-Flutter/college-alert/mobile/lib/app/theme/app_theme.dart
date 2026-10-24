@@ -12,7 +12,7 @@ class AppTheme {
     final isKhmer = localeCode == 'km';
     final baseTextTheme =
         isKhmer
-            ? GoogleFonts.notoSansKhmerTextTheme()
+            ? GoogleFonts.kantumruyProTextTheme()
             : GoogleFonts.interTextTheme();
 
     return ThemeData(
@@ -31,6 +31,7 @@ class AppTheme {
         onError: Colors.white,
       ),
       textTheme: baseTextTheme.apply(
+        fontFamilyFallback: const ['Kantumruy Pro', 'Noto Sans Khmer', 'Battambang', 'sans-serif'],
         bodyColor: AppColors.textPrimaryLight,
         displayColor: AppColors.textPrimaryLight,
       ),
@@ -148,7 +149,7 @@ class AppTheme {
     final isKhmer = localeCode == 'km';
     final baseTextTheme =
         isKhmer
-            ? GoogleFonts.notoSansKhmerTextTheme()
+            ? GoogleFonts.kantumruyProTextTheme()
             : GoogleFonts.interTextTheme();
 
     return ThemeData(
@@ -167,6 +168,7 @@ class AppTheme {
         onError: Colors.white,
       ),
       textTheme: baseTextTheme.apply(
+        fontFamilyFallback: const ['Kantumruy Pro', 'Noto Sans Khmer', 'Battambang', 'sans-serif'],
         bodyColor: AppColors.textPrimaryDark,
         displayColor: AppColors.textPrimaryDark,
       ),

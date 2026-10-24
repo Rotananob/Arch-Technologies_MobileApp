@@ -135,6 +135,30 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ],
         ),
         actions: [
+          // 1-Tap Language Switcher (EN <-> KM)
+          InkWell(
+            onTap: () {
+              final next = isKhmer ? const Locale('en') : const Locale('km');
+              ref.read(localeProvider.notifier).setLocale(next);
+            },
+            borderRadius: BorderRadius.circular(16),
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              decoration: BoxDecoration(
+                color: isDark ? const Color(0xFF1E293B) : const Color(0xFFF1F5F9),
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(
+                  color: isDark ? const Color(0xFF334155) : const Color(0xFFCBD5E1),
+                ),
+              ),
+              child: Text(
+                isKhmer ? '🇰🇭 ខ្មែរ' : '🇬🇧 EN',
+                style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+              ),
+            ),
+          ),
+          const SizedBox(width: 4),
+
           // Notification Bell with Badge
           Stack(
             clipBehavior: Clip.none,
@@ -206,7 +230,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               )
               : RefreshIndicator(
                 onRefresh: _loadData,
-                child: SingleChildScrollView(
+                child: Center(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 820),
+                    child: SingleChildScrollView(
                   physics: const AlwaysScrollableScrollPhysics(),
                   padding: const EdgeInsets.symmetric(
                     horizontal: 20,
@@ -377,19 +404,29 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       const SizedBox(height: 8),
 
                       // Upcoming Events List
-                      if (_upcomingEvents.isEmpty)
-                        EmptyStateView(
-                          icon: Icons.event_busy_outlined,
-                          title: l10n.noEventsFound,
-                          subtitle: l10n.noEventsFoundSubtitle,
-                        )
-                      else
-                        ListView.builder(
+                      Builder(builder: (context) {
+                        final displayedEvents = _selectedCategoryId == null
+                            ? _upcomingEvents
+                            : _upcomingEvents
+                                .where(
+                                  (e) => e['categoryId'] == _selectedCategoryId,
+                                )
+                                .toList();
+
+                        if (displayedEvents.isEmpty) {
+                          return EmptyStateView(
+                            icon: Icons.event_busy_outlined,
+                            title: l10n.noEventsFound,
+                            subtitle: l10n.noEventsFoundSubtitle,
+                          );
+                        }
+
+                        return ListView.builder(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
-                          itemCount: _upcomingEvents.length,
+                          itemCount: displayedEvents.length,
                           itemBuilder: (context, index) {
-                            final event = _upcomingEvents[index];
+                            final event = displayedEvents[index];
                             return EventCard(
                               event: event,
                               isKhmer: isKhmer,
@@ -401,11 +438,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                               onBookmarkToggle: () => _toggleBookmark(event),
                             );
                           },
-                        ),
+                        );
+                      }),
                     ],
                   ),
                 ),
               ),
+            ),
     );
   }
 

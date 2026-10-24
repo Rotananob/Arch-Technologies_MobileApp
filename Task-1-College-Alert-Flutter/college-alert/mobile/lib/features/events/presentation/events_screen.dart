@@ -127,8 +127,13 @@ class _EventsScreenState extends ConsumerState<EventsScreen> {
     return Scaffold(
       backgroundColor:
           isDark ? AppColors.backgroundDark : AppColors.backgroundLight,
-      appBar: AppBar(title: Text(l10n.browseEvents)),
-      body: Column(
+      appBar: AppBar(
+        title: Text(isKhmer ? 'កម្មវិធីសាកលវិទ្យាល័យ' : l10n.browseEvents),
+      ),
+      body: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 820),
+          child: Column(
         children: [
           // Search & Filter Header
           Container(
@@ -270,6 +275,8 @@ class _EventsScreenState extends ConsumerState<EventsScreen> {
           ),
         ],
       ),
-    );
+    ),
+  ),
+);
   }
 }
