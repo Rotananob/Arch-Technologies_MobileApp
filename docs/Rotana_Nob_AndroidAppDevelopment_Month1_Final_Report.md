@@ -182,7 +182,20 @@ export class EventsService {
 }
 ```
 
-### 2.4 Testing & Verification
+### 2.4 Application Visual Showcase & Mobile Interface
+
+The interface features an authentic university brand aesthetic: deep navy primary accents, restrained typography, and a mobile-optimized responsive layout that adapts dynamically whether run on an Android phone, tablet, or desktop container.
+
+![Figure 1: College Alert Campus Home Feed](./screenshots/task1_home.png)
+*Figure 1: Task 1 College Alert — Campus Home Feed with Priority Exam Notice, Featured Expo Hero & Categories*
+
+![Figure 2: College Alert Event Details & Live Capacity Tracker](./screenshots/task1_event_detail.png)
+*Figure 2: Task 1 College Alert — Event Details Screen with Live Capacity Tracker (142/300 spots) and Booking CTA*
+
+![Figure 3: College Alert Notifications Center](./screenshots/task1_notifications.png)
+*Figure 3: Task 1 College Alert — Notifications Center with Urgent Exam Dispatch & Unread Badges*
+
+### 2.5 Testing & Verification
 - **Flutter Widget & Unit Tests:** 8 tests passing (`flutter test` exit code 0).
 - **Backend Jest Tests:** 6 unit tests passing (`npm test` exit code 0).
 - **Swagger Documentation:** Available on `http://localhost:3000/api/docs`.
@@ -343,7 +356,14 @@ export class OrdersService {
 }
 ```
 
-### 3.5 Testing & Verification
+### 3.5 Application Visual Showcase & Jetpack Compose UI
+
+The native Android user interface incorporates Material Design 3 guidelines with smooth animations, intuitive product filtering, and instant shopping cart badging.
+
+![Figure 4: ShopSphere Jetpack Compose E-Commerce Catalog](./screenshots/task2_shopsphere_catalog.png)
+*Figure 4: Task 2 ShopSphere — Native Android Kotlin Jetpack Compose Product Catalog with Student Pricing & Cart Badges*
+
+### 3.6 Testing & Verification
 - **Android Unit Tests:** `CartCalculationTest.kt`, `PaymentSecurityValidatorTest.kt`, `ProductFilterTest.kt` passing.
 - **Backend Jest Tests:** 12 tests passing across `payments.spec.ts`, `products.spec.ts`, and `e2e-cart-order.spec.ts`.
 - **Database Seeding:** 11 database tables created and seeded with realistic electronics, books, and student gear.
@@ -353,6 +373,9 @@ export class OrdersService {
 ## 4. Consolidated Automated Test Results
 
 The unified automated runner (`run-all-tests.ps1`) executed all project test suites:
+
+![Figure 5: Verification of 35/35 Automated Tests Passing](./screenshots/test_suite_passed.png)
+*Figure 5: Multi-Platform Automated Test Suite Execution (35/35 Passed across Flutter and NestJS Suites)*
 
 | Test Suite | Framework / Tool | Tests Count | Status | Notes |
 |---|---|---|---|---|

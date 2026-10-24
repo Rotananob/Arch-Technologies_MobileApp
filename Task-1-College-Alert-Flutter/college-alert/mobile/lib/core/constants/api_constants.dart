@@ -1,10 +1,19 @@
+import 'dart:io' show Platform;
+import 'package:flutter/foundation.dart' show kIsWeb;
+
 class ApiConstants {
   ApiConstants._();
 
-  // For Android Emulator use 10.0.2.2, for Physical Device or Desktop use localhost / LAN IP
-  // You can easily toggle or override via settings
-  static const String baseUrl = 'http://10.0.2.2:3000';
-  static const String fallbackLocalUrl = 'http://localhost:3000';
+  // Dynamic Base URL based on running platform
+  static String get baseUrl {
+    if (kIsWeb) return 'http://localhost:3000';
+    try {
+      if (Platform.isAndroid) {
+        return 'http://10.0.2.2:3000';
+      }
+    } catch (_) {}
+    return 'http://localhost:3000';
+  }
 
   // Auth Endpoints
   static const String login = '/auth/login';

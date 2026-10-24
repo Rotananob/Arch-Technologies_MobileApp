@@ -1,6 +1,10 @@
 # Arch Technologies Internship Test Suite Runner
 $rootPath = $PSScriptRoot
 
+if (!(Test-Path "D:\temp")) { New-Item -ItemType Directory -Path "D:\temp" -Force | Out-Null }
+$env:TEMP = "D:\temp"
+$env:TMP = "D:\temp"
+
 Write-Host "==================================================================" -ForegroundColor Cyan
 Write-Host " Arch Technologies - Verification and Automated Test Suite Runner " -ForegroundColor Cyan
 Write-Host " Candidate: Rotana Nob | Domain: Android App Development         " -ForegroundColor Cyan

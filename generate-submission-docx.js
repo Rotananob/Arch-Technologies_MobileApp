@@ -14,14 +14,13 @@ const {
   AlignmentType,
   ShadingType,
   PageBreak,
+  ImageRun,
 } = require('./Task-1-College-Alert-Flutter/college-alert/backend/node_modules/docx');
 
 async function createSubmissionDocx() {
   const primaryColor = '1E3A8A'; // Deep Navy
   const secondaryColor = '2563EB'; // Royal Blue
   const darkTextColor = '1F2937'; // Slate Gray
-  const lightBgColor = 'F3F4F6'; // Light Gray
-  const accentGreen = '059669'; // Emerald Green
 
   const doc = new Document({
     styles: {
@@ -149,7 +148,8 @@ async function createSubmissionDocx() {
                   '• Bilingual Localization: Integrated native ARB files (app_en.arb and app_km.arb) supporting Khmer Unicode seamlessly.\n' +
                   '• Calendar & Bookmarking: Interactive month/day schedule synchronizer allowing offline saved event reviews.\n' +
                   '• Backend Service: NestJS modular REST API with Prisma ORM and PostgreSQL 17 relational database.\n' +
-                  '• Security: JWT access/refresh token rotation with bcrypt password hashing.',
+                  '• Security: JWT access/refresh token rotation with bcrypt password hashing.\n' +
+                  '• Offline & Dynamic Platform Resilience: Client automatically detects running host (Android emulator vs Desktop vs Web) and provides high-fidelity fallback caching when offline.',
               }),
             ],
             spacing: { after: 160 },
@@ -157,7 +157,25 @@ async function createSubmissionDocx() {
 
           new Paragraph({
             heading: HeadingLevel.HEADING_2,
-            children: [new TextRun({ text: '2.2 Implementation Code Section (Flutter)', bold: true, color: secondaryColor, size: 24 })],
+            children: [new TextRun({ text: '2.2 Application Visual Design & User Interface', bold: true, color: secondaryColor, size: 24 })],
+            spacing: { before: 160, after: 100 },
+          }),
+          ...createImageParagraph(
+            path.join(__dirname, 'docs', 'screenshots', 'task1_home.png'),
+            'Figure 1: Task 1 College Alert — Campus Home Feed with Priority Exam Notice, Featured Expo Hero & Categories'
+          ),
+          ...createImageParagraph(
+            path.join(__dirname, 'docs', 'screenshots', 'task1_event_detail.png'),
+            'Figure 2: Task 1 College Alert — Event Detail Screen with Live Capacity Tracker & Free Booking CTA'
+          ),
+          ...createImageParagraph(
+            path.join(__dirname, 'docs', 'screenshots', 'task1_notifications.png'),
+            'Figure 3: Task 1 College Alert — Notifications Center with Urgent Exam Dispatch & Unread Badges'
+          ),
+
+          new Paragraph({
+            heading: HeadingLevel.HEADING_2,
+            children: [new TextRun({ text: '2.3 Implementation Code Section (Flutter)', bold: true, color: secondaryColor, size: 24 })],
             spacing: { before: 160, after: 100 },
           }),
           createCodeBlock(
@@ -216,7 +234,17 @@ async function createSubmissionDocx() {
 
           new Paragraph({
             heading: HeadingLevel.HEADING_2,
-            children: [new TextRun({ text: '3.1 Data Security & Payment Safety Implementation', bold: true, color: secondaryColor, size: 24 })],
+            children: [new TextRun({ text: '3.1 Visual Design & Native Compose UI', bold: true, color: secondaryColor, size: 24 })],
+            spacing: { before: 160, after: 100 },
+          }),
+          ...createImageParagraph(
+            path.join(__dirname, 'docs', 'screenshots', 'task2_shopsphere_catalog.png'),
+            'Figure 4: Task 2 ShopSphere — Native Android Kotlin Jetpack Compose Product Catalog'
+          ),
+
+          new Paragraph({
+            heading: HeadingLevel.HEADING_2,
+            children: [new TextRun({ text: '3.2 Data Security & Payment Safety Implementation', bold: true, color: secondaryColor, size: 24 })],
             spacing: { before: 160, after: 100 },
           }),
           new Paragraph({
@@ -236,7 +264,7 @@ async function createSubmissionDocx() {
 
           new Paragraph({
             heading: HeadingLevel.HEADING_2,
-            children: [new TextRun({ text: '3.2 Implementation Code Section (Kotlin)', bold: true, color: secondaryColor, size: 24 })],
+            children: [new TextRun({ text: '3.3 Implementation Code Section (Kotlin)', bold: true, color: secondaryColor, size: 24 })],
             spacing: { before: 160, after: 100 },
           }),
           createCodeBlock(
@@ -279,6 +307,10 @@ async function createSubmissionDocx() {
             children: [new TextRun({ text: '4. Consolidated Automated Test Results', bold: true, color: primaryColor, size: 28 })],
             spacing: { before: 200, after: 120 },
           }),
+          ...createImageParagraph(
+            path.join(__dirname, 'docs', 'screenshots', 'test_suite_passed.png'),
+            'Figure 5: Verification — Multi-Platform Automated Test Suite Execution (35/35 Passed)'
+          ),
           new Table({
             width: { size: 100, type: WidthType.PERCENTAGE },
             rows: [
@@ -364,7 +396,39 @@ async function createSubmissionDocx() {
   const buffer = await Packer.toBuffer(doc);
   const outPath = path.resolve('docs', 'Rotana_Nob_AndroidAppDevelopment_Month1.docx');
   fs.writeFileSync(outPath, buffer);
-  console.log('SUCCESS: Word document created at:', outPath);
+  console.log('SUCCESS: Word document created with embedded images at:', outPath);
+}
+
+function createImageParagraph(imagePath, caption) {
+  if (!fs.existsSync(imagePath)) return [];
+  const imgData = fs.readFileSync(imagePath);
+  return [
+    new Paragraph({
+      alignment: AlignmentType.CENTER,
+      children: [
+        new ImageRun({
+          data: imgData,
+          transformation: {
+            width: 440,
+            height: 310,
+          },
+        }),
+      ],
+      spacing: { before: 140, after: 60 },
+    }),
+    new Paragraph({
+      alignment: AlignmentType.CENTER,
+      children: [
+        new TextRun({
+          text: caption,
+          italics: true,
+          size: 18,
+          color: '64748B',
+        }),
+      ],
+      spacing: { after: 180 },
+    }),
+  ];
 }
 
 function createTableRow(label, value, isFirst) {

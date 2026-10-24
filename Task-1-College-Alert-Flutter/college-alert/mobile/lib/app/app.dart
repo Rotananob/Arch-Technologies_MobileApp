@@ -32,6 +32,19 @@ class CollegeAlertApp extends ConsumerWidget {
         Locale('en', ''), // English
         Locale('km', ''), // Khmer
       ],
+      builder: (context, child) {
+        final isDark = Theme.of(context).brightness == Brightness.dark;
+        return Container(
+          color: isDark ? const Color(0xFF090D16) : const Color(0xFFE2E8F0),
+          alignment: Alignment.center,
+          child: ClipRect(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 480),
+              child: child ?? const SizedBox.shrink(),
+            ),
+          ),
+        );
+      },
     );
   }
 }

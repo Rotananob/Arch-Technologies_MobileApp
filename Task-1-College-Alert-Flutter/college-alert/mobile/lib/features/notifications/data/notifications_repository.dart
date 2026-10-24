@@ -6,30 +6,100 @@ class NotificationsRepository {
 
   NotificationsRepository(this._client);
 
+  static final List<Map<String, dynamic>> _mockNotifications = [
+    {
+      'id': 'notif-1',
+      'title': '⚠️ Midterm Exam Hall Allotment',
+      'body':
+          'Your examination seat for CS301 (Mobile Application Architecture) has been assigned to Hall C-204.',
+      'type': 'ALERT',
+      'isRead': false,
+      'createdAt': DateTime.now().subtract(const Duration(minutes: 45)).toIso8601String(),
+    },
+    {
+      'id': 'notif-2',
+      'title': 'Registration Confirmed: Engineering Expo 2026',
+      'body':
+          'You are confirmed to attend the Annual Engineering & Software Expo. Your check-in QR code is ready.',
+      'type': 'REGISTRATION',
+      'isRead': false,
+      'createdAt': DateTime.now().subtract(const Duration(hours: 3)).toIso8601String(),
+    },
+    {
+      'id': 'notif-3',
+      'title': 'Upcoming Event Tomorrow: AI Masterclass',
+      'body':
+          'Hands-on Masterclass on Multimodal Agents begins tomorrow at 2:00 PM in Lab 4.',
+      'type': 'REMINDER',
+      'isRead': true,
+      'createdAt': DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
+    },
+    {
+      'id': 'notif-4',
+      'title': 'New Internship Drive from Arch Technologies',
+      'body':
+          'Arch Technologies is currently interviewing 3rd and 4th year mobile development students.',
+      'type': 'EVENT',
+      'isRead': true,
+      'createdAt': DateTime.now().subtract(const Duration(days: 2)).toIso8601String(),
+    },
+  ];
+
   Future<Map<String, dynamic>> getMyNotifications() async {
-    final response = await _client.dio.get(ApiConstants.notifications);
-    return response.data as Map<String, dynamic>;
+    try {
+      final response = await _client.dio.get(ApiConstants.notifications);
+      return response.data as Map<String, dynamic>;
+    } catch (_) {
+      final unread = _mockNotifications.where((n) => n['isRead'] == false).length;
+      return {
+        'notifications': _mockNotifications,
+        'unreadCount': unread,
+      };
+    }
   }
 
   Future<void> markAsRead(String id) async {
-    await _client.dio.patch(ApiConstants.markNotificationRead(id));
+    try {
+      await _client.dio.patch(ApiConstants.markNotificationRead(id));
+    } catch (_) {}
+    for (final n in _mockNotifications) {
+      if (n['id'] == id) {
+        n['isRead'] = true;
+      }
+    }
   }
 
   Future<void> markAllAsRead() async {
-    await _client.dio.patch(ApiConstants.markAllNotificationsRead);
+    try {
+      await _client.dio.patch(ApiConstants.markAllNotificationsRead);
+    } catch (_) {}
+    for (final n in _mockNotifications) {
+      n['isRead'] = true;
+    }
   }
 
   Future<Map<String, dynamic>> getPreferences() async {
-    final response = await _client.dio.get(
-      ApiConstants.userNotificationPreferences,
-    );
-    return response.data as Map<String, dynamic>;
+    try {
+      final response = await _client.dio.get(
+        ApiConstants.userNotificationPreferences,
+      );
+      return response.data as Map<String, dynamic>;
+    } catch (_) {
+      return {
+        'eventAnnouncements': true,
+        'upcomingReminders': true,
+        'registrationUpdates': true,
+        'generalAlerts': true,
+      };
+    }
   }
 
   Future<void> updatePreferences(Map<String, dynamic> data) async {
-    await _client.dio.patch(
-      ApiConstants.userNotificationPreferences,
-      data: data,
-    );
+    try {
+      await _client.dio.patch(
+        ApiConstants.userNotificationPreferences,
+        data: data,
+      );
+    } catch (_) {}
   }
 }

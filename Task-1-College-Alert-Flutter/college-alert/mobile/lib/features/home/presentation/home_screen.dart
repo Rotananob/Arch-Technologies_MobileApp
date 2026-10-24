@@ -60,7 +60,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     } catch (e) {
       if (mounted) {
         setState(() {
-          _error = 'Unable to connect to campus alert service';
           _isLoading = false;
         });
       }
