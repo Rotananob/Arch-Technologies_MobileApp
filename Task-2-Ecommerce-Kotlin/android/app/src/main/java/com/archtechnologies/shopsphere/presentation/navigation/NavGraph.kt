@@ -43,7 +43,8 @@ import kotlinx.coroutines.runBlocking
 data class BottomNavItem(
     val route: String,
     val titleRes: Int,
-    val icon: ImageVector
+    val selectedIcon: ImageVector,
+    val unselectedIcon: ImageVector
 )
 
 @Composable
@@ -61,11 +62,11 @@ fun NavGraph(
     val currentRoute = navBackStackEntry?.destination?.route
 
     val bottomNavItems = listOf(
-        BottomNavItem(Screen.Home.route, R.string.nav_home, Icons.Default.Home),
-        BottomNavItem(Screen.Explore.route, R.string.nav_explore, Icons.Default.Search),
-        BottomNavItem(Screen.Cart.route, R.string.nav_cart, Icons.Default.ShoppingCart),
-        BottomNavItem(Screen.Sell.route, R.string.nav_sell, Icons.Default.Storefront),
-        BottomNavItem(Screen.Profile.route, R.string.nav_profile, Icons.Default.Person)
+        BottomNavItem(Screen.Home.route, R.string.nav_home, Icons.Filled.Home, Icons.Outlined.Home),
+        BottomNavItem(Screen.Explore.route, R.string.nav_explore, Icons.Filled.Search, Icons.Outlined.Search),
+        BottomNavItem(Screen.Cart.route, R.string.nav_cart, Icons.Filled.ShoppingCart, Icons.Outlined.ShoppingCart),
+        BottomNavItem(Screen.Sell.route, R.string.nav_sell, Icons.Filled.Storefront, Icons.Outlined.Storefront),
+        BottomNavItem(Screen.Profile.route, R.string.nav_profile, Icons.Filled.Person, Icons.Outlined.Person)
     )
 
     val showBottomBar = currentRoute in bottomNavItems.map { it.route }
@@ -73,23 +74,51 @@ fun NavGraph(
     Scaffold(
         bottomBar = {
             if (showBottomBar) {
-                NavigationBar {
-                    bottomNavItems.forEach { item ->
-                        val isSelected = currentRoute == item.route
-                        NavigationBarItem(
-                            selected = isSelected,
-                            onClick = {
-                                navController.navigate(item.route) {
-                                    popUpTo(navController.graph.findStartDestination().id) {
-                                        saveState = true
+                Column {
+                    HorizontalDivider(
+                        color = MaterialTheme.colorScheme.outline.copy(alpha = 0.35f),
+                        thickness = 0.75.dp
+                    )
+                    NavigationBar(
+                        containerColor = MaterialTheme.colorScheme.surface,
+                        tonalElevation = 0.dp
+                    ) {
+                        bottomNavItems.forEach { item ->
+                            val isSelected = currentRoute == item.route
+                            NavigationBarItem(
+                                selected = isSelected,
+                                onClick = {
+                                    navController.navigate(item.route) {
+                                        popUpTo(navController.graph.findStartDestination().id) {
+                                            saveState = true
+                                        }
+                                        launchSingleTop = true
+                                        restoreState = true
                                     }
-                                    launchSingleTop = true
-                                    restoreState = true
-                                }
-                            },
-                            icon = { Icon(item.icon, contentDescription = null) },
-                            label = { Text(stringResource(item.titleRes)) }
-                        )
+                                },
+                                icon = {
+                                    Icon(
+                                        imageVector = if (isSelected) item.selectedIcon else item.unselectedIcon,
+                                        contentDescription = null
+                                    )
+                                },
+                                label = {
+                                    Text(
+                                        text = stringResource(item.titleRes),
+                                        style = MaterialTheme.typography.labelSmall.copy(
+                                            fontWeight = if (isSelected) androidx.compose.ui.text.font.FontWeight.Bold else androidx.compose.ui.text.font.FontWeight.Normal
+                                        )
+                                    )
+                                },
+                                colors = NavigationBarItemDefaults.colors(
+                                    indicatorColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.6f),
+                                    selectedIconColor = MaterialTheme.colorScheme.primary,
+                                    selectedTextColor = MaterialTheme.colorScheme.primary,
+                                    unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            )
+                        }
                     }
                 }
             }
