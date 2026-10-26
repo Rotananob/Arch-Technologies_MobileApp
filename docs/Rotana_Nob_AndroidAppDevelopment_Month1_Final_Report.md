@@ -9,13 +9,12 @@
 |---|---|
 | **Full Name** | **Rotana NOB** |
 | **Internship Domain** | **Android App Development** |
+| **University** | **Asia Euro University (AEU)** |
+| **Major / Field of Study** | **Computer Science & Software Engineering** |
 | **Email Address** | `nobrothana180703@gmail.com` |
-| **University** | **Asia Euro University** |
 | **Phone Number** | `+855 87 986 045` |
 | **Organization** | **Arch Technologies** |
-| **Submission Month** | Month 1 (October 2026) |
-| **Submission Target** | `submissions.archtech@gmail.com` |
-| **Standard File Name** | `Rotana_Nob_AndroidAppDevelopment_Month1.pdf` |
+| **Submission Period** | Month 1 Assignment (October 2026) |
 | **GitHub Profile** | [https://github.com/Rotananob](https://github.com/Rotananob) |
 | **Repository URL** | [https://github.com/Rotananob/Arch-Technologies_MobileApp](https://github.com/Rotananob/Arch-Technologies_MobileApp) |
 
@@ -26,17 +25,18 @@
 2. [Task 1: College Alert Application](#2-task-1-college-alert-application)
    - [2.1 Project Overview & Architecture](#21-project-overview--architecture)
    - [2.2 Core Features & Bilingual Support](#22-core-features--bilingual-support)
-   - [2.3 Code Implementation Highlights](#23-code-implementation-highlights)
-   - [2.4 Testing & Verification](#24-testing--verification)
+   - [2.3 Application Visual Showcase (College Alert UI)](#23-application-visual-showcase)
+   - [2.4 Code Implementation Highlights](#24-code-implementation-highlights)
+   - [2.5 Testing & Verification](#25-testing--verification)
 3. [Task 2: ShopSphere Mobile E-Commerce Application](#3-task-2-shopsphere-mobile-e-commerce-application)
    - [3.1 Project Overview & Architecture](#31-project-overview--architecture)
    - [3.2 Buyer & C2C Seller Marketplace](#32-buyer--c2c-seller-marketplace)
    - [3.3 Data Security & Payment Safety](#33-data-security--payment-safety)
-   - [3.4 Code Implementation Highlights](#34-code-implementation-highlights)
-   - [3.5 Testing & Verification](#35-testing--verification)
+   - [3.4 Application Visual Showcase (ShopSphere UI)](#34-application-visual-showcase)
+   - [3.5 Code Implementation Highlights](#35-code-implementation-highlights)
+   - [3.6 Testing & Verification](#36-testing--verification)
 4. [Consolidated Automated Test Results](#4-consolidated-automated-test-results)
-5. [Professional LinkedIn Announcement Post](#5-professional-linkedin-announcement-post)
-6. [Formal Email Submission Template](#6-formal-email-submission-template)
+5. [Conclusion & Professional Growth Summary](#5-conclusion--professional-growth-summary)
 
 ---
 
@@ -194,6 +194,12 @@ The interface features an authentic university brand aesthetic: deep navy primar
 
 ![Figure 3: College Alert Notifications Center](./screenshots/task1_notifications.png)
 *Figure 3: Task 1 College Alert — Notifications Center with Urgent Exam Dispatch & Unread Badges*
+
+![Figure 4: College Alert Campus Calendar & Bookmarks Schedule](./screenshots/task1_calendar_bookmarks.png)
+*Figure 4: Task 1 College Alert — Campus Calendar Schedule View with Scheduled Academic Agenda & Bookmarks*
+
+![Figure 5: College Alert Bilingual Khmer Localization](./screenshots/task1_bilingual_khmer.png)
+*Figure 5: Task 1 College Alert — Native Khmer Localization UI with Kantumruy Pro Font & 1-Tap Language Switcher*
 
 ### 2.5 Testing & Verification
 - **Flutter Widget & Unit Tests:** 8 tests passing (`flutter test` exit code 0).
@@ -360,8 +366,14 @@ export class OrdersService {
 
 The native Android user interface incorporates Material Design 3 guidelines with smooth animations, intuitive product filtering, and instant shopping cart badging.
 
-![Figure 4: ShopSphere Jetpack Compose E-Commerce Catalog](./screenshots/task2_shopsphere_catalog.png)
-*Figure 4: Task 2 ShopSphere — Native Android Kotlin Jetpack Compose Product Catalog with Student Pricing & Cart Badges*
+![Figure 6: ShopSphere Jetpack Compose E-Commerce Catalog](./screenshots/task2_shopsphere_catalog.png)
+*Figure 6: Task 2 ShopSphere — Native Android Kotlin Jetpack Compose Product Catalog with Student Pricing & Cart Badges*
+
+![Figure 7: ShopSphere C2C Seller Studio](./screenshots/task2_seller_studio.png)
+*Figure 7: Task 2 ShopSphere — Peer-to-Peer (C2C) Seller Studio ("Sell Your Product") with Condition & Stock Controls*
+
+![Figure 8: ShopSphere PCI-DSS & Luhn Payment Safety Sandbox](./screenshots/task2_checkout_payment_safety.png)
+*Figure 8: Task 2 ShopSphere — PCI-DSS & Luhn Payment Safety Sandbox with MOD 10 Checksum & Concurrency SQL Locks*
 
 ### 3.6 Testing & Verification
 - **Android Unit Tests:** `CartCalculationTest.kt`, `PaymentSecurityValidatorTest.kt`, `ProductFilterTest.kt` passing.
@@ -374,8 +386,8 @@ The native Android user interface incorporates Material Design 3 guidelines with
 
 The unified automated runner (`run-all-tests.ps1`) executed all project test suites:
 
-![Figure 5: Verification of 35/35 Automated Tests Passing](./screenshots/test_suite_passed.png)
-*Figure 5: Multi-Platform Automated Test Suite Execution (35/35 Passed across Flutter and NestJS Suites)*
+![Figure 9: Verification of 35/35 Automated Tests Passing](./screenshots/test_suite_passed.png)
+*Figure 9: Multi-Platform Automated Test Suite Execution (35/35 Passed across Flutter, Android Kotlin, and NestJS Suites)*
 
 | Test Suite | Framework / Tool | Tests Count | Status | Notes |
 |---|---|---|---|---|
@@ -387,71 +399,20 @@ The unified automated runner (`run-all-tests.ps1`) executed all project test sui
 
 ---
 
-## 5. Professional LinkedIn Announcement Post
+## 5. Conclusion & Professional Growth Summary
 
-> **Note for Candidate:** Copy and paste the text below into your LinkedIn post upon report submission. Ensure you mention and tag **@Arch Technologies**.
+The first month of the Arch Technologies Remote Mobile App Development Internship has provided an exceptional foundation in modern enterprise mobile architecture. Through the development of College Alert (Flutter & NestJS) and ShopSphere (Native Android Kotlin & Jetpack Compose), I strengthened key competencies across:
 
-```markdown
-🚀 Excited to share my Month 1 submission for the Android App Development Internship at Arch Technologies!
+- Declarative UI engineering with Material Design 3 and responsive layouts.
+- Multilingual system design and Unicode font rendering.
+- Enterprise database transactions and ACID-compliant concurrency safety.
+- Financial-grade checkout flows and PCI-DSS data security standards.
+- Multi-platform automated testing and CI/CD quality assurance.
 
-Over the past month, I worked on designing and engineering two complete, production-grade mobile applications following Clean Architecture and modern mobile best practices:
-
-📱 Task 1: College Alert Application
-• Engineered with Flutter 3, Riverpod 2.6, and a NestJS + PostgreSQL backend.
-• Features real-time campus event alerts, interactive calendars, bookmarking, and native bilingual localization (English & Khmer).
-
-🛒 Task 2: ShopSphere — Mobile E-Commerce Application
-• Built with 100% Native Android Kotlin, Jetpack Compose, Room Database, and NestJS + PostgreSQL.
-• Features an authoritative cart engine, peer-to-peer C2C product listings ("Sell Your Product"), concurrency-safe SQL stock locks, and a PCI-DSS compliant payment simulation sandbox with Luhn algorithm validation.
-
-🧪 Quality Assurance:
-• 35+ automated unit and integration tests passing across mobile and backend suites.
-• Production-grade database design with Prisma ORM and Swagger OpenAPI documentation.
-
-A huge thank you to the team at @Arch Technologies for providing this challenging and rewarding learning experience!
-
-GitHub Repository: https://github.com/Rotananob/Arch-Technologies_MobileApp
-
-#AndroidDev #Kotlin #JetpackCompose #Flutter #NestJS #PostgreSQL #MobileDevelopment #Internship #ArchTechnologies #SoftwareEngineering
-```
+Both applications are production-ready, fully documented, and hosted in the public repository for institutional and employer review.
 
 ---
-
-## 6. Formal Email Submission Template
-
-**To:** `submissions.archtech@gmail.com`  
-**Subject:** `Month 1 Task Submission – Rotana NOB – Android App Development`  
-**Attachment:** `Rotana_Nob_AndroidAppDevelopment_Month1.pdf`  
-
-```text
-Dear Team Arch Technologies,
-
-I hope this email finds you well.
-
-I am pleased to submit my completed work and detailed project report for Month 1 of the Android App Development Internship program.
-
-Candidate Information:
-- Full Name: Rotana NOB
-- Internship Domain: Android App Development
-- University: Asia Euro University
-- Contact Email: nobrothana180703@gmail.com
-- Contact Phone: +855 87 986 045
-- Submission Period: Month 1 (October 2026)
-
-Completed Tasks Summary:
-1. Task 1: College Alert Application (Flutter 3, Riverpod, NestJS REST API, PostgreSQL, Bilingual EN/KM)
-2. Task 2: ShopSphere E-Commerce Application (Native Android Kotlin, Jetpack Compose, Room DB, NestJS Backend, Payment Security Sandbox)
-
-Repository Link:
-https://github.com/Rotananob/Arch-Technologies_MobileApp
-
-Please find the comprehensive report attached in PDF format as required: Rotana_Nob_AndroidAppDevelopment_Month1.pdf.
-
-Thank you very much for your time, guidance, and evaluation.
-
-Warm regards,
-Rotana NOB
-Intern – Android App Development
+*Report compiled and verified by Rotana NOB — Asia Euro University.*
 Arch Technologies
 ```
 

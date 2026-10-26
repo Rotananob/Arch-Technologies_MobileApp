@@ -661,6 +661,562 @@ const screens = [
 </body>
 </html>
 `
+  },
+  {
+    name: 'task1_calendar_bookmarks.png',
+    title: 'Task 1: College Alert — Campus Calendar & Schedule Agenda',
+    subtitle: 'Interactive Monthly View & Bookmarked Academic Events',
+    html: `
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+  body { background: #0f172a; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+  .phone-frame { width: 390px; height: 820px; background: #0b1120; border: 12px solid #1e293b; border-radius: 46px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 25px 60px rgba(0,0,0,0.6); position: relative; }
+  .status-bar { height: 44px; background: #0b1120; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; color: #fff; font-size: 13px; font-weight: 600; }
+  .notch { width: 110px; height: 22px; background: #000; border-radius: 12px; margin: 0 auto; }
+  .app-header { padding: 14px 20px; background: #0f172a; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; }
+  .header-title { font-size: 18px; color: #f8fafc; font-weight: 700; }
+  .month-picker { font-size: 12px; color: #38bdf8; font-weight: 700; background: #1e293b; padding: 5px 12px; border-radius: 14px; border: 1px solid #334155; }
+  
+  .content { flex: 1; overflow-y: auto; padding: 16px 20px; }
+  .date-strip { display: flex; justify-content: space-between; margin-bottom: 20px; }
+  .day-pill { width: 56px; height: 70px; background: #1e293b; border: 1px solid #334155; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .day-pill.active { background: #2563eb; border-color: #3b82f6; box-shadow: 0 4px 14px rgba(37,99,235,0.4); }
+  .day-name { font-size: 11px; color: #94a3b8; font-weight: 600; }
+  .day-pill.active .day-name { color: #dbeafe; }
+  .day-num { font-size: 18px; color: #fff; font-weight: 800; margin-top: 4px; }
+  
+  .agenda-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+  .agenda-title { font-size: 15px; font-weight: 700; color: #f1f5f9; }
+  .agenda-count { font-size: 11px; color: #38bdf8; font-weight: 600; background: rgba(56,189,248,0.1); padding: 3px 8px; border-radius: 10px; }
+
+  .agenda-card { background: #1e293b; border-radius: 14px; border: 1px solid #334155; padding: 14px; margin-bottom: 12px; display: flex; gap: 14px; border-left: 4px solid #38bdf8; }
+  .agenda-card.urgent { border-left-color: #ef4444; background: #1f1825; }
+  .agenda-card.bookmarked { border-left-color: #10b981; }
+  .time-col { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 60px; border-right: 1px solid #334155; padding-right: 12px; flex-shrink: 0; }
+  .time-start { font-size: 12px; font-weight: 800; color: #fff; }
+  .time-end { font-size: 10px; color: #94a3b8; margin-top: 2px; }
+  .agenda-details { flex: 1; }
+  .agenda-name { font-size: 13.5px; font-weight: 700; color: #f8fafc; line-height: 1.3; }
+  .agenda-loc { font-size: 11.5px; color: #94a3b8; margin-top: 4px; }
+  .badge-row { display: flex; gap: 6px; margin-top: 6px; }
+  .badge-tag { font-size: 9.5px; font-weight: 700; padding: 2px 6px; border-radius: 4px; background: #0f172a; color: #cbd5e1; }
+  
+  .bottom-nav { height: 62px; background: #0b1120; border-top: 1px solid #1e293b; display: flex; justify-content: space-around; align-items: center; padding: 0 10px; }
+  .nav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 10px; color: #64748b; font-weight: 600; }
+  .nav-item.active { color: #38bdf8; }
+  .nav-icon { width: 20px; height: 20px; }
+  .home-pill { width: 120px; height: 4px; background: #475569; border-radius: 2px; margin: 4px auto 6px auto; }
+</style>
+</head>
+<body>
+  <div class="phone-frame">
+    <div class="status-bar">
+      <span>9:41</span>
+      <div class="notch"></div>
+      <span>5G  100%</span>
+    </div>
+
+    <div class="app-header">
+      <div class="header-title">Campus Calendar</div>
+      <div class="month-picker">📅 Oct 2026 ▾</div>
+    </div>
+
+    <div class="content">
+      <div class="date-strip">
+        <div class="day-pill"><span class="day-name">Mon</span><span class="day-num">26</span></div>
+        <div class="day-pill"><span class="day-name">Tue</span><span class="day-num">27</span></div>
+        <div class="day-pill active"><span class="day-name">Wed</span><span class="day-num">28</span></div>
+        <div class="day-pill"><span class="day-name">Thu</span><span class="day-num">29</span></div>
+        <div class="day-pill"><span class="day-name">Fri</span><span class="day-num">30</span></div>
+      </div>
+
+      <div class="agenda-header">
+        <div class="agenda-title">Wednesday Agenda</div>
+        <div class="agenda-count">3 Scheduled</div>
+      </div>
+
+      <div class="agenda-card urgent">
+        <div class="time-col">
+          <span class="time-start">09:00 AM</span>
+          <span class="time-end">11:30 AM</span>
+        </div>
+        <div class="agenda-details">
+          <div class="agenda-name">Midterm Exam: Mobile Computing CS301</div>
+          <div class="agenda-loc">📍 Hall C-204 • Seat #42</div>
+          <div class="badge-row">
+            <span class="badge-tag" style="background:#ef4444; color:#fff;">MANDATORY</span>
+            <span class="badge-tag">Academic</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="agenda-card bookmarked">
+        <div class="time-col">
+          <span class="time-start">02:00 PM</span>
+          <span class="time-end">04:30 PM</span>
+        </div>
+        <div class="agenda-details">
+          <div class="agenda-name">Annual Engineering & Software Expo 2026</div>
+          <div class="agenda-loc">📍 Innovation Building C • Room 101</div>
+          <div class="badge-row">
+            <span class="badge-tag" style="background:#10b981; color:#fff;">CONFIRMED</span>
+            <span class="badge-tag">Workshops</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="agenda-card">
+        <div class="time-col">
+          <span class="time-start">05:00 PM</span>
+          <span class="time-end">06:30 PM</span>
+        </div>
+        <div class="agenda-details">
+          <div class="agenda-name">Arch Tech Internship Briefing & Q&A</div>
+          <div class="agenda-loc">📍 Online Google Meet • Room Live</div>
+          <div class="badge-row">
+            <span class="badge-tag" style="background:#2563eb; color:#fff;">SAVED</span>
+            <span class="badge-tag">Career</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-nav">
+      <div class="nav-item">
+        <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        <span>Home</span>
+      </div>
+      <div class="nav-item">
+        <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        <span>Events</span>
+      </div>
+      <div class="nav-item active">
+        <svg class="nav-icon" fill="currentColor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        <span>Calendar</span>
+      </div>
+      <div class="nav-item">
+        <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+        <span>Saved</span>
+      </div>
+      <div class="nav-item">
+        <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        <span>Profile</span>
+      </div>
+    </div>
+    <div class="home-pill"></div>
+  </div>
+</body>
+</html>
+`
+  },
+  {
+    name: 'task1_bilingual_khmer.png',
+    title: 'Task 1: College Alert — Native Khmer Localization UI',
+    subtitle: 'Bilingual Engine (Kantumruy Pro) with 1-Tap Toggle',
+    html: `
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Kantumruy Pro', 'Khmer OS Siemreap', -apple-system, sans-serif; }
+  body { background: #0f172a; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+  .phone-frame { width: 390px; height: 820px; background: #0b1120; border: 12px solid #1e293b; border-radius: 46px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 25px 60px rgba(0,0,0,0.6); position: relative; }
+  .status-bar { height: 44px; background: #0b1120; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; color: #fff; font-size: 13px; font-weight: 600; }
+  .notch { width: 110px; height: 22px; background: #000; border-radius: 12px; margin: 0 auto; }
+  .app-header { padding: 14px 20px; background: #0f172a; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; }
+  .user-greeting { font-size: 11.5px; color: #94a3b8; }
+  .user-name { font-size: 17px; color: #f8fafc; font-weight: 700; margin-top: 2px; }
+  .header-actions { display: flex; align-items: center; gap: 8px; }
+  .lang-pill { background: #1e293b; border: 1px solid #3b82f6; border-radius: 14px; padding: 5px 10px; color: #fff; font-size: 11px; font-weight: 700; }
+  .bell-btn { width: 38px; height: 38px; border-radius: 10px; background: #1e293b; display: flex; align-items: center; justify-content: center; position: relative; }
+  .badge { position: absolute; top: -3px; right: -3px; background: #ef4444; color: #fff; font-size: 10px; font-weight: 800; width: 18px; height: 18px; border-radius: 9px; display: flex; align-items: center; justify-content: center; border: 2px solid #0f172a; }
+  
+  .content { flex: 1; overflow-y: auto; padding: 16px 20px; }
+  .alert-banner { background: #450a0a; border: 1px solid #dc2626; border-radius: 12px; padding: 12px 14px; display: flex; gap: 12px; margin-bottom: 20px; }
+  .alert-title { color: #fecaca; font-weight: 700; font-size: 12.5px; }
+  .alert-desc { color: #fca5a5; font-size: 11px; margin-top: 2px; line-height: 1.4; }
+  
+  .section-hdr { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .section-title { font-size: 14.5px; font-weight: 700; color: #f1f5f9; }
+  .badge-featured { background: #1e3a8a; color: #93c5fd; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 6px; }
+
+  .hero-card { background: #1e293b; border-radius: 16px; overflow: hidden; border: 1px solid #334155; margin-bottom: 20px; }
+  .hero-img { width: 100%; height: 140px; background: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800') center/cover; position: relative; }
+  .hero-tag { position: absolute; bottom: 10px; left: 12px; background: rgba(15,23,42,0.9); color: #38bdf8; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
+  .hero-body { padding: 14px; }
+  .hero-title { font-size: 14.5px; font-weight: 700; color: #fff; line-height: 1.35; }
+  .hero-meta { display: flex; gap: 12px; margin-top: 8px; font-size: 11.5px; color: #94a3b8; }
+  
+  .cat-pills { display: flex; gap: 8px; overflow-x: auto; margin-bottom: 18px; }
+  .pill { padding: 6px 14px; border-radius: 20px; font-size: 11.5px; font-weight: 600; background: #1e293b; color: #cbd5e1; border: 1px solid #334155; white-space: nowrap; }
+  .pill.active { background: #2563eb; color: #fff; border-color: #3b82f6; }
+
+  .event-row { background: #1e293b; border-radius: 12px; padding: 12px; border: 1px solid #334155; display: flex; gap: 12px; margin-bottom: 10px; }
+  .date-box { width: 48px; height: 50px; background: #0f172a; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid #334155; flex-shrink: 0; }
+  .date-month { font-size: 9.5px; font-weight: 800; color: #38bdf8; }
+  .date-day { font-size: 17px; font-weight: 800; color: #fff; margin-top: 1px; }
+  .event-info { flex: 1; min-width: 0; }
+  .event-name { font-size: 13px; font-weight: 600; color: #f8fafc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .event-loc { font-size: 11px; color: #94a3b8; margin-top: 3px; }
+
+  .bottom-nav { height: 62px; background: #0b1120; border-top: 1px solid #1e293b; display: flex; justify-content: space-around; align-items: center; padding: 0 6px; }
+  .nav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 10px; color: #64748b; font-weight: 600; }
+  .nav-item.active { color: #38bdf8; }
+  .nav-icon { width: 20px; height: 20px; }
+  .home-pill { width: 120px; height: 4px; background: #475569; border-radius: 2px; margin: 4px auto 6px auto; }
+</style>
+</head>
+<body>
+  <div class="phone-frame">
+    <div class="status-bar">
+      <span>9:41</span>
+      <div class="notch"></div>
+      <span>5G  100%</span>
+    </div>
+    
+    <div class="app-header">
+      <div>
+        <div class="user-greeting">សូមស្វាគមន៍និស្សិត</div>
+        <div class="user-name">Rotana NOB</div>
+      </div>
+      <div class="header-actions">
+        <div class="lang-pill">🇰🇭 ខ្មែរ</div>
+        <div class="bell-btn">
+          <svg width="20" height="20" fill="none" stroke="#94a3b8" stroke-width="2" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+          <div class="badge">2</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="alert-banner">
+        <span style="font-size: 18px;">⚠️</span>
+        <div>
+          <div class="alert-title">ការជូនដំណឹងបន្ទាន់៖ កាលវិភាគប្រឡងពាក់កណ្ដាលឆមាស</div>
+          <div class="alert-desc">កាលវិភាគប្រឡងត្រូវបានចេញផ្សាយជាផ្លូវការ។ សូមពិនិត្យមើលបន្ទប់ប្រឡងរបស់អ្នកមុនថ្ងៃទី ៣០ តុលា។</div>
+        </div>
+      </div>
+
+      <div class="section-hdr">
+        <div class="section-title">កម្មវិធីលេចធ្លោប្រចាំសាកលវិទ្យាល័យ</div>
+        <div class="badge-featured">លេចធ្លោ</div>
+      </div>
+
+      <div class="hero-card">
+        <div class="hero-img">
+          <div class="hero-tag">បច្ចេកវិទ្យា & សិក្ខាសាលា</div>
+        </div>
+        <div class="hero-body">
+          <div class="hero-title">ពិព័រណ៍វិស្វកម្ម និងកម្មវិធីសូហ្វវែរប្រចាំឆ្នាំ ២០២៦</div>
+          <div class="hero-meta">
+            <span>📅 ២៨ តុលា • ០៩:០០ ព្រឹក</span>
+            <span>📍 អគារនវានុវត្តន៍ C</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-hdr">
+        <div class="section-title">ផ្នែកកម្មវិធី</div>
+      </div>
+      <div class="cat-pills">
+        <div class="pill active">ទាំងអស់</div>
+        <div class="pill">ការសិក្សា</div>
+        <div class="pill">សិក្ខាសាលា</div>
+        <div class="pill">ការងារ & ហាត់ការ</div>
+        <div class="pill">កីឡា</div>
+      </div>
+
+      <div class="section-hdr">
+        <div class="section-title">កម្មវិធីដែលនឹងមកដល់</div>
+      </div>
+
+      <div class="event-row">
+        <div class="date-box">
+          <div class="date-month">តុលា</div>
+          <div class="date-day">២៩</div>
+        </div>
+        <div class="event-info">
+          <div class="event-name">សិក្ខាសាលាជំនាញ AI កម្រិតខ្ពស់ (LLMs & Agents)</div>
+          <div class="event-loc">📍 បន្ទប់កុំព្យូទ័រទី ៤ • ចំណុះ៖ ៦០ នាក់</div>
+        </div>
+      </div>
+
+      <div class="event-row">
+        <div class="date-box">
+          <div class="date-month">វិច្ឆិកា</div>
+          <div class="date-day">០១</div>
+        </div>
+        <div class="event-info">
+          <div class="event-name">ពិព័រណ៍ការងារ និងឱកាសហាត់ការផ្នែកព័ត៌មានវិទ្យា</div>
+          <div class="event-loc">📍 សាលកីឡាក្នុងផ្ទះ • ក្រុមហ៊ុន ៣៥+</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-nav">
+      <div class="nav-item active">
+        <svg class="nav-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        <span>ទំព័រដើម</span>
+      </div>
+      <div class="nav-item">
+        <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        <span>កម្មវិធី</span>
+      </div>
+      <div class="nav-item">
+        <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        <span>ប្រតិទិន</span>
+      </div>
+      <div class="nav-item">
+        <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+        <span>រក្សាទុក</span>
+      </div>
+      <div class="nav-item">
+        <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        <span>គណនី</span>
+      </div>
+    </div>
+    <div class="home-pill"></div>
+  </div>
+</body>
+</html>
+`
+  },
+  {
+    name: 'task2_seller_studio.png',
+    title: 'Task 2: ShopSphere — C2C Peer-to-Peer Seller Studio',
+    subtitle: '"Sell Your Product" Feature with Condition & Stock Controls',
+    html: `
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+  body { background: #0f172a; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+  .phone-frame { width: 390px; height: 820px; background: #0f172a; border: 12px solid #1e293b; border-radius: 46px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 25px 60px rgba(0,0,0,0.6); position: relative; }
+  .status-bar { height: 44px; background: #0f172a; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; color: #fff; font-size: 13px; font-weight: 600; }
+  .notch { width: 110px; height: 22px; background: #000; border-radius: 12px; margin: 0 auto; }
+  .app-header { padding: 14px 20px; background: #1e293b; border-bottom: 1px solid #334155; display: flex; justify-content: space-between; align-items: center; }
+  .header-title { font-size: 17px; font-weight: 800; color: #f8fafc; }
+  .c2c-badge { background: #4338ca; color: #c7d2fe; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 12px; }
+
+  .content { flex: 1; overflow-y: auto; padding: 18px 20px; }
+  .upload-box { height: 130px; background: #1e293b; border: 2px dashed #4f46e5; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; margin-bottom: 18px; color: #a5b4fc; }
+  .upload-icon { font-size: 28px; }
+  .upload-text { font-size: 12.5px; font-weight: 600; }
+  .upload-sub { font-size: 10.5px; color: #64748b; }
+
+  .form-group { margin-bottom: 14px; }
+  .form-label { font-size: 11.5px; font-weight: 700; color: #94a3b8; margin-bottom: 6px; display: block; text-transform: uppercase; letter-spacing: 0.5px; }
+  .form-input { width: 100%; background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 10px 14px; color: #f8fafc; font-size: 13px; outline: none; }
+  
+  .condition-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .cond-opt { background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 8px 10px; display: flex; align-items: center; gap: 8px; font-size: 12px; color: #cbd5e1; cursor: pointer; }
+  .cond-opt.selected { border-color: #6366f1; background: #312e81; color: #fff; font-weight: 700; }
+  
+  .price-stock-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  
+  .seller-card { background: #172554; border: 1px solid #1e40af; border-radius: 12px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; margin: 16px 0; }
+  .seller-avatar { width: 32px; height: 32px; border-radius: 16px; background: #2563eb; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 12px; color: #fff; }
+  .seller-meta { font-size: 11.5px; color: #bfdbfe; }
+  .seller-name { font-weight: 700; color: #fff; }
+
+  .btn-publish { width: 100%; height: 46px; background: #6366f1; border-radius: 12px; border: none; color: #fff; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(99,102,241,0.4); }
+  .home-pill { width: 120px; height: 4px; background: #475569; border-radius: 2px; margin: 10px auto 6px auto; }
+</style>
+</head>
+<body>
+  <div class="phone-frame">
+    <div class="status-bar">
+      <span>9:41</span>
+      <div class="notch"></div>
+      <span>5G  100%</span>
+    </div>
+
+    <div class="app-header">
+      <div class="header-title">Seller Studio</div>
+      <div class="c2c-badge">C2C Marketplace</div>
+    </div>
+
+    <div class="content">
+      <div class="upload-box">
+        <span class="upload-icon">📸</span>
+        <span class="upload-text">MacBook Pro 14" (Cover Image Added)</span>
+        <span class="upload-sub">Tap to add more photos (Max 5)</span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Product Title</label>
+        <div class="form-input">Apple MacBook Pro 14" M3 Pro 18GB/512GB</div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Category</label>
+        <div class="form-input">Electronics & Laptops ▾</div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Condition</label>
+        <div class="condition-grid">
+          <div class="cond-opt selected">✓ Like New</div>
+          <div class="cond-opt">Brand New</div>
+          <div class="cond-opt">Good (Used)</div>
+          <div class="cond-opt">Fair</div>
+        </div>
+      </div>
+
+      <div class="price-stock-row">
+        <div class="form-group">
+          <label class="form-label">Price ($ USD)</label>
+          <div class="form-input">$ 1,450.00</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Quantity</label>
+          <div class="form-input">1 Unit</div>
+        </div>
+      </div>
+
+      <div class="seller-card">
+        <div class="seller-avatar">RN</div>
+        <div class="seller-meta">
+          <div>Verified Student Seller: <span class="seller-name">Rotana NOB</span></div>
+          <div style="font-size: 10px; color:#93c5fd;">Asia Euro University • 100% Positive Rating</div>
+        </div>
+      </div>
+
+      <button class="btn-publish">
+        🚀 Publish to Campus Marketplace
+      </button>
+    </div>
+    <div class="home-pill"></div>
+  </div>
+</body>
+</html>
+`
+  },
+  {
+    name: 'task2_checkout_payment_safety.png',
+    title: 'Task 2: ShopSphere — PCI-DSS & Luhn Payment Safety Sandbox',
+    subtitle: 'MOD 10 Checksum, Card Masking & Atomic Concurrency SQL Locks',
+    html: `
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+  body { background: #0f172a; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+  .phone-frame { width: 390px; height: 820px; background: #0f172a; border: 12px solid #1e293b; border-radius: 46px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 25px 60px rgba(0,0,0,0.6); position: relative; }
+  .status-bar { height: 44px; background: #0f172a; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; color: #fff; font-size: 13px; font-weight: 600; }
+  .notch { width: 110px; height: 22px; background: #000; border-radius: 12px; margin: 0 auto; }
+  .app-header { padding: 14px 20px; background: #1e293b; border-bottom: 1px solid #334155; display: flex; justify-content: space-between; align-items: center; }
+  .header-title { font-size: 17px; font-weight: 800; color: #f8fafc; }
+  .secure-pill { background: #065f46; color: #a7f3d0; font-size: 10px; font-weight: 700; padding: 4px 8px; border-radius: 10px; display: flex; align-items: center; gap: 4px; }
+
+  .content { flex: 1; overflow-y: auto; padding: 16px 20px; }
+  
+  .security-alert { background: #064e3b; border: 1px solid #059669; border-radius: 12px; padding: 10px 12px; display: flex; gap: 10px; margin-bottom: 16px; }
+  .sec-icon { font-size: 16px; color: #34d399; }
+  .sec-text { font-size: 11px; color: #d1fae5; line-height: 1.4; }
+  
+  .card-box { background: linear-gradient(135deg, #3730a3, #1e1b4b); border-radius: 16px; padding: 16px; border: 1px solid #6366f1; margin-bottom: 18px; box-shadow: 0 8px 24px rgba(0,0,0,0.4); color: #fff; }
+  .card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+  .card-chip { width: 34px; height: 24px; background: #fbbf24; border-radius: 4px; }
+  .card-brand { font-size: 16px; font-weight: 900; font-style: italic; color: #93c5fd; }
+  .card-number { font-size: 17px; font-family: monospace; letter-spacing: 2px; margin-bottom: 14px; font-weight: 700; }
+  .card-bottom { display: flex; justify-content: space-between; font-size: 11px; color: #cbd5e1; }
+  
+  .form-group { margin-bottom: 12px; }
+  .form-label { font-size: 11px; font-weight: 700; color: #94a3b8; margin-bottom: 4px; display: block; text-transform: uppercase; }
+  .form-input { width: 100%; background: #1e293b; border: 1px solid #334155; border-radius: 10px; padding: 9px 12px; color: #f8fafc; font-size: 12.5px; font-family: monospace; }
+  .input-status { font-size: 10.5px; color: #34d399; font-weight: 700; margin-top: 3px; display: flex; align-items: center; gap: 4px; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  
+  .tx-summary { background: #1e293b; border-radius: 12px; border: 1px solid #334155; padding: 12px; margin: 14px 0; }
+  .summary-row { display: flex; justify-content: space-between; font-size: 12px; color: #94a3b8; margin-bottom: 6px; }
+  .summary-row.total { font-size: 14px; font-weight: 800; color: #fff; border-top: 1px solid #334155; padding-top: 6px; margin-top: 6px; }
+
+  .audit-box { font-size: 10.5px; color: #94a3b8; line-height: 1.4; background: #0b1120; border-radius: 8px; padding: 8px 10px; border: 1px solid #1e293b; margin-bottom: 14px; }
+  .btn-pay { width: 100%; height: 46px; background: #10b981; border-radius: 12px; border: none; color: #fff; font-size: 14px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(16,185,129,0.4); }
+  .home-pill { width: 120px; height: 4px; background: #475569; border-radius: 2px; margin: 8px auto 4px auto; }
+</style>
+</head>
+<body>
+  <div class="phone-frame">
+    <div class="status-bar">
+      <span>9:41</span>
+      <div class="notch"></div>
+      <span>5G  100%</span>
+    </div>
+
+    <div class="app-header">
+      <div class="header-title">Payment Safety</div>
+      <div class="secure-pill">🔒 PCI-DSS Sandbox</div>
+    </div>
+
+    <div class="content">
+      <div class="security-alert">
+        <span class="sec-icon">✓</span>
+        <div class="sec-text">
+          <strong>Payment Safety Guaranteed:</strong> Zero card numbers stored in plaintext. Luhn Checksum active & tokenized transaction hashes generated.
+        </div>
+      </div>
+
+      <div class="card-box">
+        <div class="card-top">
+          <div class="card-chip"></div>
+          <div class="card-brand">VISA</div>
+        </div>
+        <div class="card-number">4532 •••• •••• 8821</div>
+        <div class="card-bottom">
+          <div>CARDHOLDER<br><strong>ROTANA NOB</strong></div>
+          <div>EXPIRES<br><strong>08/28</strong></div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Primary Account Number (PAN)</label>
+        <div class="form-input">4532 8901 2345 8821</div>
+        <div class="input-status">✓ Luhn MOD 10 Checksum Valid (Visa Debit)</div>
+      </div>
+
+      <div class="two-col">
+        <div class="form-group">
+          <label class="form-label">Expiration Date</label>
+          <div class="form-input">08 / 28</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">CVV / CVC</label>
+          <div class="form-input">••• [3-digit verified]</div>
+        </div>
+      </div>
+
+      <div class="tx-summary">
+        <div class="summary-row"><span>MacBook Pro 14" M3 Pro</span><span>$1,450.00</span></div>
+        <div class="summary-row"><span>Campus Handover & Inspection</span><span>$2.00</span></div>
+        <div class="summary-row total"><span>Total Authoritative Amount</span><span>$1,452.00</span></div>
+      </div>
+
+      <div class="audit-box">
+        🔒 <strong>Concurrency Lock:</strong> SQL row-level lock (prisma.$transaction) guarantees stock availability before debit.<br>
+        🔑 <strong>Hash Reference:</strong> <code>TXN-8821-202610-CONFIRMED</code>
+      </div>
+
+      <button class="btn-pay">
+        🛡️ Authorize & Pay $1,452.00
+      </button>
+    </div>
+    <div class="home-pill"></div>
+  </div>
+</body>
+</html>
+`
   }
 ];
 

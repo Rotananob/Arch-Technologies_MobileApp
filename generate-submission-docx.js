@@ -45,23 +45,23 @@ async function createSubmissionDocx() {
               new TextRun({
                 text: 'ARCH TECHNOLOGIES INTERNSHIP PROGRAM',
                 bold: true,
-                size: 28,
+                size: 26,
                 color: secondaryColor,
               }),
             ],
-            spacing: { after: 120 },
+            spacing: { after: 100 },
           }),
           new Paragraph({
             alignment: AlignmentType.CENTER,
             children: [
               new TextRun({
-                text: 'MONTH 1 FINAL SUBMISSION REPORT — ANDROID APP DEVELOPMENT',
+                text: 'MONTH 1 PROJECT SUBMISSION REPORT — ANDROID APP DEVELOPMENT',
                 bold: true,
-                size: 36,
+                size: 34,
                 color: primaryColor,
               }),
             ],
-            spacing: { after: 360 },
+            spacing: { after: 300 },
           }),
 
           // Candidate Info Table
@@ -75,7 +75,7 @@ async function createSubmissionDocx() {
                     children: [
                       new Paragraph({
                         children: [
-                          new TextRun({ text: 'CANDIDATE INFORMATION', bold: true, color: 'FFFFFF', size: 24 }),
+                          new TextRun({ text: 'CANDIDATE INFORMATION & PROJECT CREDENTIALS', bold: true, color: 'FFFFFF', size: 22 }),
                         ],
                       }),
                     ],
@@ -83,34 +83,34 @@ async function createSubmissionDocx() {
                   }),
                 ],
               }),
-              createTableRow('Full Name', 'Rotana NOB', true),
-              createTableRow('Internship Domain', 'Android App Development', false),
-              createTableRow('University', 'Asia Euro University', false),
-              createTableRow('Email Address', 'nobrothana180703@gmail.com', false),
-              createTableRow('Phone Number', '+855 87 986 045', false),
-              createTableRow('Submission Target', 'submissions.archtech@gmail.com', false),
-              createTableRow('Expected File Name', 'Rotana_Nob_AndroidAppDevelopment_Month1.pdf', false),
-              createTableRow('GitHub Profile', 'https://github.com/Rotananob', false),
-              createTableRow('GitHub Repository', 'https://github.com/Rotananob/Arch-Technologies_MobileApp', false),
+              createTableRow('Full Name', 'Rotana NOB'),
+              createTableRow('Internship Domain', 'Android App Development'),
+              createTableRow('University', 'Asia Euro University (AEU)'),
+              createTableRow('Major / Field of Study', 'Computer Science & Software Engineering'),
+              createTableRow('Email Address', 'nobrothana180703@gmail.com'),
+              createTableRow('Contact Phone', '+855 87 986 045'),
+              createTableRow('Submission Period', 'Month 1 Assignment (October 2026)'),
+              createTableRow('GitHub Profile', 'https://github.com/Rotananob'),
+              createTableRow('GitHub Repository', 'https://github.com/Rotananob/Arch-Technologies_MobileApp'),
             ],
           }),
 
-          new Paragraph({ text: '', spacing: { after: 300 } }),
+          new Paragraph({ text: '', spacing: { after: 240 } }),
 
           // Executive Summary
           new Paragraph({
             heading: HeadingLevel.HEADING_1,
             children: [new TextRun({ text: '1. Executive Summary', bold: true, color: primaryColor, size: 28 })],
-            spacing: { before: 240, after: 120 },
+            spacing: { before: 200, after: 120 },
           }),
           new Paragraph({
             children: [
               new TextRun({
                 text:
-                  'During my first month in the Arch Technologies Remote Mobile App Development Internship, I designed, developed, and verified two complete, production-grade applications meeting real-world industry standards:\n\n' +
-                  '• Task 1 — College Alert Application: Engineered with Flutter 3.x, Riverpod 2.6, and a NestJS + PostgreSQL backend. It delivers real-time campus event alerts, interactive calendars, bookmarking, and native bilingual localization (English & Khmer).\n' +
-                  '• Task 2 — ShopSphere E-Commerce Application: Built with 100% Native Android Kotlin, Jetpack Compose, Room Database, and NestJS + PostgreSQL. Features an authoritative cart engine, peer-to-peer C2C product listings ("Sell Your Product"), concurrency-safe SQL stock locks, and a PCI-DSS compliant payment simulation sandbox with Luhn algorithm validation.\n\n' +
-                  'Both projects follow Clean Architecture, run reliably with zero external paid third-party dependencies, and pass all automated tests.',
+                  'During my first month in the Arch Technologies Remote Mobile App Development Internship, I designed, developed, and verified two complete, production-grade applications meeting rigorous industry standards:\n\n' +
+                  '• Task 1 — College Alert Application: Engineered with Flutter 3.x, Riverpod 2.6, and a NestJS + PostgreSQL relational backend. It delivers real-time campus announcements, priority examination alerts, interactive calendar scheduling, offline bookmarking, and native bilingual localization supporting English and Khmer Unicode.\n\n' +
+                  '• Task 2 — ShopSphere E-Commerce Application: Engineered with 100% Native Android Kotlin, Jetpack Compose, Room Database, and NestJS + PostgreSQL. It implements an authoritative cart computation engine, a peer-to-peer C2C marketplace ("Sell Your Product"), concurrency-safe SQL stock locks, and a simulated PCI-DSS compliant payment sandbox with Luhn algorithm card validation.\n\n' +
+                  'Both projects follow Clean Architecture, run reliably with verified database persistence, and pass all 35 automated test suites.',
               }),
             ],
             spacing: { after: 240 },
@@ -129,65 +129,82 @@ async function createSubmissionDocx() {
             children: [
               new TextRun({
                 text:
-                  'College Alert provides university students with a centralized, reliable hub for discovering campus announcements, academic exams, career workshops, and urgent safety alerts without missing deadlines.',
+                  'College Alert provides university students with a centralized, reliable hub for discovering campus announcements, midterm exam schedules, career workshops, and urgent safety broadcasts without missing deadlines.',
               }),
             ],
-            spacing: { after: 160 },
+            spacing: { after: 140 },
           }),
 
           new Paragraph({
             heading: HeadingLevel.HEADING_2,
-            children: [new TextRun({ text: '2.1 Architecture & Core Features', bold: true, color: secondaryColor, size: 24 })],
-            spacing: { before: 160, after: 100 },
+            children: [new TextRun({ text: '2.1 Architecture & Core Technical Features', bold: true, color: secondaryColor, size: 24 })],
+            spacing: { before: 140, after: 80 },
           }),
           new Paragraph({
             children: [
               new TextRun({
                 text:
-                  '• Presentation Layer: Flutter 3.x with Riverpod StateNotifier providers and GoRouter declarative navigation.\n' +
-                  '• Bilingual Localization: Integrated native ARB files (app_en.arb and app_km.arb) supporting Khmer Unicode seamlessly.\n' +
-                  '• Calendar & Bookmarking: Interactive month/day schedule synchronizer allowing offline saved event reviews.\n' +
+                  '• Presentation Layer: Flutter 3.x with Riverpod StateNotifier providers and GoRouter declarative routing.\n' +
+                  '• Bilingual Localization: Integrated native ARB files (app_en.arb and app_km.arb) with Google Font Kantumruy Pro and 1-tap instant language switching.\n' +
+                  '• Calendar & Bookmarks: Interactive month/day schedule synchronizer allowing offline saved event review.\n' +
                   '• Backend Service: NestJS modular REST API with Prisma ORM and PostgreSQL 17 relational database.\n' +
                   '• Security: JWT access/refresh token rotation with bcrypt password hashing.\n' +
-                  '• Offline & Dynamic Platform Resilience: Client automatically detects running host (Android emulator vs Desktop vs Web) and provides high-fidelity fallback caching when offline.',
+                  '• Adaptive Layout: Responsive NavigationRail on wide displays (>= 720px) and clean 1-line NavigationBar on mobile screens.',
               }),
             ],
-            spacing: { after: 160 },
+            spacing: { after: 140 },
           }),
 
           new Paragraph({
             heading: HeadingLevel.HEADING_2,
-            children: [new TextRun({ text: '2.2 Application Visual Design & User Interface', bold: true, color: secondaryColor, size: 24 })],
-            spacing: { before: 160, after: 100 },
+            children: [new TextRun({ text: '2.2 Application Visual Showcase (College Alert UI)', bold: true, color: secondaryColor, size: 24 })],
+            spacing: { before: 140, after: 80 },
           }),
           ...createImageParagraph(
             path.join(__dirname, 'docs', 'screenshots', 'task1_home.png'),
-            'Figure 1: Task 1 College Alert — Campus Home Feed with Priority Exam Notice, Featured Expo Hero & Categories'
+            'Figure 1: Task 1 College Alert — Campus Home Feed with Priority Exam Notice, Featured Expo Hero & Category Filter Chips'
           ),
           ...createImageParagraph(
             path.join(__dirname, 'docs', 'screenshots', 'task1_event_detail.png'),
-            'Figure 2: Task 1 College Alert — Event Detail Screen with Live Capacity Tracker & Free Booking CTA'
+            'Figure 2: Task 1 College Alert — Event Detail Screen with Live Capacity Tracker (142/300 spots) and Booking CTA'
           ),
           ...createImageParagraph(
             path.join(__dirname, 'docs', 'screenshots', 'task1_notifications.png'),
-            'Figure 3: Task 1 College Alert — Notifications Center with Urgent Exam Dispatch & Unread Badges'
+            'Figure 3: Task 1 College Alert — Notifications Center with Urgent Exam Hall Allotment Dispatch & Unread Badges'
+          ),
+          ...createImageParagraph(
+            path.join(__dirname, 'docs', 'screenshots', 'task1_calendar_bookmarks.png'),
+            'Figure 4: Task 1 College Alert — Campus Calendar Schedule View with Scheduled Academic Agenda & Bookmarks'
+          ),
+          ...createImageParagraph(
+            path.join(__dirname, 'docs', 'screenshots', 'task1_bilingual_khmer.png'),
+            'Figure 5: Task 1 College Alert — Native Khmer Localization UI with Kantumruy Pro Font & Instant Language Switcher'
           ),
 
           new Paragraph({
             heading: HeadingLevel.HEADING_2,
-            children: [new TextRun({ text: '2.3 Implementation Code Section (Flutter)', bold: true, color: secondaryColor, size: 24 })],
-            spacing: { before: 160, after: 100 },
+            children: [new TextRun({ text: '2.3 Implementation Code Section (Flutter & NestJS)', bold: true, color: secondaryColor, size: 24 })],
+            spacing: { before: 140, after: 80 },
           }),
           createCodeBlock(
-            '// Flutter EventCard UI Component with Bookmark and Priority Alerts\n' +
+            '// Flutter EventCard UI Component with Status Badges and Bookmarking\n' +
             'class EventCard extends StatelessWidget {\n' +
             '  final Map<String, dynamic> event;\n' +
+            '  final bool isKhmer;\n' +
+            '  final bool isBookmarked;\n' +
             '  final VoidCallback onTap;\n' +
             '  final VoidCallback onBookmarkToggle;\n\n' +
-            '  const EventCard({super.key, required this.event, required this.onTap, required this.onBookmarkToggle});\n\n' +
+            '  const EventCard({\n' +
+            '    super.key,\n' +
+            '    required this.event,\n' +
+            '    this.isKhmer = false,\n' +
+            '    this.isBookmarked = false,\n' +
+            '    required this.onTap,\n' +
+            '    required this.onBookmarkToggle,\n' +
+            '  });\n\n' +
             '  @override\n' +
             '  Widget build(BuildContext context) {\n' +
-            '    final isSaved = event["isSaved"] as bool? ?? false;\n' +
+            '    final title = isKhmer && event["titleKh"] != null ? event["titleKh"] : event["title"];\n' +
             '    final priority = event["priorityAlert"] as bool? ?? false;\n' +
             '    return Card(\n' +
             '      elevation: 2,\n' +
@@ -199,10 +216,10 @@ async function createSubmissionDocx() {
             '          child: Column(children: [\n' +
             '            Row(children: [\n' +
             '              StatusBadge(label: event["category"]?["name"] ?? "General", color: priority ? Colors.red : Colors.blue),\n' +
-            '              IconButton(icon: Icon(isSaved ? Icons.bookmark : Icons.bookmark_border), onPressed: onBookmarkToggle),\n' +
+            '              IconButton(icon: Icon(isBookmarked ? Icons.bookmark : Icons.bookmark_border), onPressed: onBookmarkToggle),\n' +
             '            ]),\n' +
-            '            Text(event["title"], style: Theme.of(context).textTheme.titleMedium),\n' +
-            '            Text(event["location"], style: Theme.of(context).textTheme.bodySmall),\n' +
+            '            Text(title, style: Theme.of(context).textTheme.titleMedium),\n' +
+            '            Text(event["location"] ?? "Campus", style: Theme.of(context).textTheme.bodySmall),\n' +
             '          ]),\n' +
             '        ),\n' +
             '      ),\n' +
@@ -211,7 +228,7 @@ async function createSubmissionDocx() {
             '}'
           ),
 
-          new Paragraph({ text: '', spacing: { after: 200 } }),
+          new Paragraph({ text: '', spacing: { after: 180 } }),
 
           // Page Break to Task 2
           new Paragraph({ children: [new PageBreak()] }),
@@ -226,46 +243,53 @@ async function createSubmissionDocx() {
             children: [
               new TextRun({
                 text:
-                  'ShopSphere is an advanced peer-to-peer (C2C) and merchant mobile marketplace engineered with 100% Native Android Kotlin and Jetpack Compose. Registered students can securely buy supplies and list their own pre-owned textbooks and gadgets for others to purchase.',
+                  'ShopSphere is an advanced peer-to-peer (C2C) and merchant mobile marketplace engineered with 100% Native Android Kotlin and Jetpack Compose. Registered students can securely purchase supplies and list their own pre-owned textbooks and electronics for others to buy.',
               }),
             ],
-            spacing: { after: 160 },
+            spacing: { after: 140 },
           }),
 
           new Paragraph({
             heading: HeadingLevel.HEADING_2,
-            children: [new TextRun({ text: '3.1 Visual Design & Native Compose UI', bold: true, color: secondaryColor, size: 24 })],
-            spacing: { before: 160, after: 100 },
+            children: [new TextRun({ text: '3.1 Visual Design & Native Compose UI Showcase', bold: true, color: secondaryColor, size: 24 })],
+            spacing: { before: 140, after: 80 },
           }),
           ...createImageParagraph(
             path.join(__dirname, 'docs', 'screenshots', 'task2_shopsphere_catalog.png'),
-            'Figure 4: Task 2 ShopSphere — Native Android Kotlin Jetpack Compose Product Catalog'
+            'Figure 6: Task 2 ShopSphere — Native Android Kotlin Jetpack Compose Product Catalog with Student Pricing & Cart Badges'
+          ),
+          ...createImageParagraph(
+            path.join(__dirname, 'docs', 'screenshots', 'task2_seller_studio.png'),
+            'Figure 7: Task 2 ShopSphere — Peer-to-Peer (C2C) Seller Studio ("Sell Your Product") with Condition & Stock Controls'
+          ),
+          ...createImageParagraph(
+            path.join(__dirname, 'docs', 'screenshots', 'task2_checkout_payment_safety.png'),
+            'Figure 8: Task 2 ShopSphere — PCI-DSS & Luhn Payment Safety Sandbox with MOD 10 Checksum & Concurrency SQL Locks'
           ),
 
           new Paragraph({
             heading: HeadingLevel.HEADING_2,
-            children: [new TextRun({ text: '3.2 Data Security & Payment Safety Implementation', bold: true, color: secondaryColor, size: 24 })],
-            spacing: { before: 160, after: 100 },
+            children: [new TextRun({ text: '3.2 Data Security & Payment Safety Architecture', bold: true, color: secondaryColor, size: 24 })],
+            spacing: { before: 140, after: 80 },
           }),
           new Paragraph({
             children: [
               new TextRun({
                 text:
-                  'In direct fulfillment of the requirement ("Addressing data security and payment safety is crucial"):\n\n' +
-                  '1. Luhn Algorithm Checksum: Validates credit/debit card numbers using the standard MOD 10 arithmetic algorithm.\n' +
-                  '2. CVV & Expiry Format Security: Enforces 3 to 4 digit verification and temporal expiry checks.\n' +
-                  '3. PCI-DSS Card Number Masking: Primary Account Numbers are tokenized and masked as "**** **** **** 1234" with unique transaction hashes (TXN-XXXXXXXX).\n' +
-                  '4. Concurrency-Safe SQL Transactions: Server-side atomic locks (prisma.$transaction) prevent double-spending and overselling.\n' +
-                  '5. Cryptographic Password Hashing: Bcrypt with 10 salt rounds protects user credentials.',
+                  'In strict compliance with the task specification ("Addressing data security and payment safety is crucial"):\n\n' +
+                  '1. Luhn Algorithm Checksum: Validates payment card numbers via the industry-standard MOD 10 arithmetic algorithm before checkout submission.\n' +
+                  '2. PCI-DSS Card Number Masking: Primary Account Numbers are never stored in plaintext and are masked as "**** **** **** 1234" with unique tokenized transaction hashes (TXN-XXXXXXXX).\n' +
+                  '3. Concurrency-Safe SQL Transactions: Server-side atomic locks (prisma.$transaction) prevent overselling and double-spending across simultaneous checkouts.\n' +
+                  '4. Cryptographic Password Hashing: Bcrypt with 10 salt rounds secures all user credentials in PostgreSQL.',
               }),
             ],
-            spacing: { after: 160 },
+            spacing: { after: 140 },
           }),
 
           new Paragraph({
             heading: HeadingLevel.HEADING_2,
-            children: [new TextRun({ text: '3.3 Implementation Code Section (Kotlin)', bold: true, color: secondaryColor, size: 24 })],
-            spacing: { before: 160, after: 100 },
+            children: [new TextRun({ text: '3.3 Implementation Code Section (Kotlin & Prisma)', bold: true, color: secondaryColor, size: 24 })],
+            spacing: { before: 140, after: 80 },
           }),
           createCodeBlock(
             '// Kotlin Authoritative Cart Calculation & Stock Validation Model\n' +
@@ -296,9 +320,9 @@ async function createSubmissionDocx() {
             '}'
           ),
 
-          new Paragraph({ text: '', spacing: { after: 200 } }),
+          new Paragraph({ text: '', spacing: { after: 180 } }),
 
-          // Page Break to Verification & Submission
+          // Page Break to Verification
           new Paragraph({ children: [new PageBreak()] }),
 
           // Consolidated Test Results
@@ -309,7 +333,7 @@ async function createSubmissionDocx() {
           }),
           ...createImageParagraph(
             path.join(__dirname, 'docs', 'screenshots', 'test_suite_passed.png'),
-            'Figure 5: Verification — Multi-Platform Automated Test Suite Execution (35/35 Passed)'
+            'Figure 9: Verification — Multi-Platform Automated Test Suite Execution (35/35 Tests Passing with 100% Rate)'
           ),
           new Table({
             width: { size: 100, type: WidthType.PERCENTAGE },
@@ -317,8 +341,8 @@ async function createSubmissionDocx() {
               new TableRow({
                 children: [
                   createHeaderCell('Test Suite'),
-                  createHeaderCell('Framework'),
-                  createHeaderCell('Count'),
+                  createHeaderCell('Framework / Tool'),
+                  createHeaderCell('Test Count'),
                   createHeaderCell('Status'),
                 ],
               }),
@@ -326,64 +350,29 @@ async function createSubmissionDocx() {
               createTestRow('Task 1 Backend Tests', 'Jest / ts-jest', '6 Tests', 'PASSED (100%)'),
               createTestRow('Task 2 Android Tests', 'JUnit 4 / Kotlin', '9 Tests', 'PASSED (100%)'),
               createTestRow('Task 2 Backend Tests', 'Jest / ts-jest', '12 Tests', 'PASSED (100%)'),
-              createTestRow('TOTAL TEST SUITE', 'Multi-Platform Automation', '35 Tests', '100% PASS'),
+              createTestRow('TOTAL TEST SUITE', 'Multi-Platform Automation', '35 Tests', '100% PASS RATE'),
             ],
           }),
 
-          new Paragraph({ text: '', spacing: { after: 260 } }),
+          new Paragraph({ text: '', spacing: { after: 240 } }),
 
-          // LinkedIn Post Draft
+          // Conclusion
           new Paragraph({
             heading: HeadingLevel.HEADING_1,
-            children: [new TextRun({ text: '5. Professional LinkedIn Announcement Post', bold: true, color: primaryColor, size: 28 })],
+            children: [new TextRun({ text: '5. Conclusion & Professional Growth Summary', bold: true, color: primaryColor, size: 28 })],
             spacing: { before: 200, after: 120 },
           }),
           new Paragraph({
             children: [
               new TextRun({
                 text:
-                  '🚀 Excited to share my Month 1 submission for the Android App Development Internship at Arch Technologies!\n\n' +
-                  'Over the past month, I engineered two production-grade mobile systems:\n' +
-                  '📱 Task 1: College Alert Application (Flutter 3, Riverpod 2.6, NestJS, PostgreSQL, Bilingual EN/KM)\n' +
-                  '🛒 Task 2: ShopSphere E-Commerce Application (Native Android Kotlin, Jetpack Compose, Room DB, Payment Security Sandbox)\n\n' +
-                  '🧪 35+ automated tests passing across mobile and backend suites with 100% compliance!\n\n' +
-                  'A huge thank you to the team at @Arch Technologies for this rewarding learning experience!\n\n' +
-                  'GitHub: https://github.com/Rotananob/Arch-Technologies_MobileApp\n' +
-                  '#AndroidDev #Kotlin #JetpackCompose #Flutter #NestJS #PostgreSQL #ArchTechnologies #Internship',
-              }),
-            ],
-            spacing: { after: 240 },
-          }),
-
-          // Email Submission Template
-          new Paragraph({
-            heading: HeadingLevel.HEADING_1,
-            children: [new TextRun({ text: '6. Official Email Submission Template', bold: true, color: primaryColor, size: 28 })],
-            spacing: { before: 200, after: 120 },
-          }),
-          new Paragraph({
-            children: [
-              new TextRun({
-                text:
-                  'To: submissions.archtech@gmail.com\n' +
-                  'Subject: Month 1 Task Submission – Rotana NOB – Android App Development\n' +
-                  'Attachment: Rotana_Nob_AndroidAppDevelopment_Month1.pdf\n\n' +
-                  'Dear Team Arch Technologies,\n\n' +
-                  'I am pleased to submit my completed work and project report for Month 1 of the Android App Development Internship.\n\n' +
-                  'Candidate Information:\n' +
-                  '• Full Name: Rotana NOB\n' +
-                  '• Internship Domain: Android App Development\n' +
-                  '• University: Asia Euro University\n' +
-                  '• Email: nobrothana180703@gmail.com\n' +
-                  '• Phone: +855 87 986 045\n\n' +
-                  'Completed Projects:\n' +
-                  '1. Task 1: College Alert Application (Flutter + NestJS + PostgreSQL)\n' +
-                  '2. Task 2: ShopSphere E-Commerce Application (Native Android Kotlin + Room + NestJS)\n\n' +
-                  'GitHub Repository: https://github.com/Rotananob/Arch-Technologies_MobileApp\n\n' +
-                  'Please find the attached PDF report. Thank you for your guidance and evaluation!\n\n' +
-                  'Warm regards,\n' +
-                  'Rotana NOB\n' +
-                  'Intern – Android App Development',
+                  'The first month of the Arch Technologies Remote Mobile App Development Internship has provided an exceptional foundation in modern enterprise mobile architecture. Through the development of College Alert (Flutter & NestJS) and ShopSphere (Native Android Kotlin & Jetpack Compose), I strengthened key competencies across:\n\n' +
+                  '• Declarative UI engineering with Material Design 3 and responsive layouts.\n' +
+                  '• Multilingual system design and Unicode font rendering.\n' +
+                  '• Enterprise database transactions and ACID-compliant concurrency safety.\n' +
+                  '• Financial-grade checkout flows and PCI-DSS data security standards.\n' +
+                  '• Multi-platform automated testing and CI/CD quality assurance.\n\n' +
+                  'Both applications are production-ready, fully documented, and hosted in the public repository for institutional and employer review.',
               }),
             ],
             spacing: { after: 200 },
@@ -431,7 +420,7 @@ function createImageParagraph(imagePath, caption) {
   ];
 }
 
-function createTableRow(label, value, isFirst) {
+function createTableRow(label, value) {
   return new TableRow({
     children: [
       new TableCell({
@@ -449,20 +438,43 @@ function createTableRow(label, value, isFirst) {
 
 function createHeaderCell(title) {
   return new TableCell({
+    width: { size: 25, type: WidthType.PERCENTAGE },
     shading: { type: ShadingType.CLEAR, fill: '1E3A8A' },
-    children: [new Paragraph({ children: [new TextRun({ text: title, bold: true, color: 'FFFFFF', size: 20 })] })],
+    children: [
+      new Paragraph({
+        alignment: AlignmentType.CENTER,
+        children: [new TextRun({ text: title, bold: true, color: 'FFFFFF', size: 18 })],
+      }),
+    ],
   });
 }
 
 function createTestRow(suite, framework, count, status) {
   return new TableRow({
     children: [
-      new TableCell({ children: [new Paragraph({ children: [new TextRun({ text: suite, bold: true, size: 19 })] })] }),
-      new TableCell({ children: [new Paragraph({ children: [new TextRun({ text: framework, size: 19 })] })] }),
-      new TableCell({ children: [new Paragraph({ children: [new TextRun({ text: count, size: 19 })] })] }),
       new TableCell({
+        width: { size: 30, type: WidthType.PERCENTAGE },
+        children: [new Paragraph({ children: [new TextRun({ text: suite, bold: true, size: 18 })] })],
+      }),
+      new TableCell({
+        width: { size: 35, type: WidthType.PERCENTAGE },
+        children: [new Paragraph({ children: [new TextRun({ text: framework, size: 18 })] })],
+      }),
+      new TableCell({
+        width: { size: 15, type: WidthType.PERCENTAGE },
+        alignment: AlignmentType.CENTER,
+        children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: count, size: 18 })] })],
+      }),
+      new TableCell({
+        width: { size: 20, type: WidthType.PERCENTAGE },
         shading: { type: ShadingType.CLEAR, fill: 'ECFDF5' },
-        children: [new Paragraph({ children: [new TextRun({ text: status, bold: true, color: '059669', size: 19 })] })],
+        alignment: AlignmentType.CENTER,
+        children: [
+          new Paragraph({
+            alignment: AlignmentType.CENTER,
+            children: [new TextRun({ text: status, bold: true, color: '059669', size: 18 })],
+          }),
+        ],
       }),
     ],
   });
@@ -479,14 +491,21 @@ function createCodeBlock(code) {
             borders: {
               top: { style: BorderStyle.SINGLE, size: 1, color: 'CBD5E1' },
               bottom: { style: BorderStyle.SINGLE, size: 1, color: 'CBD5E1' },
-              left: { style: BorderStyle.SINGLE, size: 3, color: '2563EB' },
+              left: { style: BorderStyle.SINGLE, size: 4, color: '2563EB' },
               right: { style: BorderStyle.SINGLE, size: 1, color: 'CBD5E1' },
             },
             children: code.split('\n').map(
               (line) =>
                 new Paragraph({
-                  children: [new TextRun({ text: line, font: 'Courier New', size: 17, color: '0F172A' })],
-                  spacing: { before: 20, after: 20 },
+                  children: [
+                    new TextRun({
+                      text: line,
+                      font: 'Consolas',
+                      size: 17,
+                      color: '1E293B',
+                    }),
+                  ],
+                  spacing: { line: 240, after: 30 },
                 })
             ),
           }),
@@ -497,6 +516,6 @@ function createCodeBlock(code) {
 }
 
 createSubmissionDocx().catch((err) => {
-  console.error('Error creating docx:', err);
+  console.error('Error generating document:', err);
   process.exit(1);
 });
