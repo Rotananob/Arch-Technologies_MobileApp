@@ -310,7 +310,7 @@ private fun CartItemRow(
                         )
                         IconButton(
                             onClick = onIncrement,
-                            enabled = item.quantity < item.availableStock,
+                            enabled = item.quantity < item.maxAvailableStock,
                             modifier = Modifier.size(28.dp)
                         ) {
                             Icon(Icons.Default.Add, contentDescription = "Increase", modifier = Modifier.size(12.dp))

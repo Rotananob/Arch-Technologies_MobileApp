@@ -1,13 +1,20 @@
 package com.archtechnologies.shopsphere.presentation.navigation
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Person
+import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material.icons.outlined.ShoppingCart
+import androidx.compose.material.icons.outlined.Storefront
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -62,11 +69,11 @@ fun NavGraph(
     val currentRoute = navBackStackEntry?.destination?.route
 
     val bottomNavItems = listOf(
-        BottomNavItem(Screen.Home.route, R.string.nav_home, Icons.Filled.Home, Icons.Outlined.Home),
-        BottomNavItem(Screen.Explore.route, R.string.nav_explore, Icons.Filled.Search, Icons.Outlined.Search),
-        BottomNavItem(Screen.Cart.route, R.string.nav_cart, Icons.Filled.ShoppingCart, Icons.Outlined.ShoppingCart),
-        BottomNavItem(Screen.Sell.route, R.string.nav_sell, Icons.Filled.Storefront, Icons.Outlined.Storefront),
-        BottomNavItem(Screen.Profile.route, R.string.nav_profile, Icons.Filled.Person, Icons.Outlined.Person)
+        BottomNavItem(Screen.Home.route, R.string.nav_home, Icons.Default.Home, Icons.Outlined.Home),
+        BottomNavItem(Screen.Explore.route, R.string.nav_explore, Icons.Default.Search, Icons.Outlined.Search),
+        BottomNavItem(Screen.Cart.route, R.string.nav_cart, Icons.Default.ShoppingCart, Icons.Outlined.ShoppingCart),
+        BottomNavItem(Screen.Sell.route, R.string.nav_sell, Icons.Default.Storefront, Icons.Outlined.Storefront),
+        BottomNavItem(Screen.Profile.route, R.string.nav_profile, Icons.Default.Person, Icons.Outlined.Person)
     )
 
     val showBottomBar = currentRoute in bottomNavItems.map { it.route }
