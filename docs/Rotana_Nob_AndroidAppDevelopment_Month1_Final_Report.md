@@ -413,8 +413,3 @@ Both applications are production-ready, fully documented, and hosted in the publ
 
 ---
 *Report compiled and verified by Rotana NOB — Asia Euro University.*
-Arch Technologies
-```
-
----
-*Report compiled and verified by Rotana NOB.*

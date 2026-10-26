@@ -118,3 +118,13 @@ captures/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# ------------------------------------------------------------------------------
+# Local Submission Artifacts & Generation Tools (Kept in Local, Excluded from Git)
+# ------------------------------------------------------------------------------
+*.docx
+*.pdf
+docs/*.docx
+docs/*.pdf
+generate-*.js
+temp_*

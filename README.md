@@ -1,49 +1,53 @@
-# Arch Technologies — Android App Development Internship
-### Monthly Task Assignment 1 (Month 1 Submission)
+# Arch Technologies — Remote Mobile App Development Internship
+### Month 1 Final Submission Repository (October 2026)
 
 [![Internship Domain](https://img.shields.io/badge/Domain-Android%20App%20Development-blue.svg)](#)
 [![Company](https://img.shields.io/badge/Company-Arch%20Technologies-orange.svg)](#)
 [![Candidate](https://img.shields.io/badge/Candidate-Rotana%20NOB-green.svg)](#)
 [![University](https://img.shields.io/badge/University-Asia%20Euro%20University-blueviolet.svg)](#)
+[![Tests Passing](https://img.shields.io/badge/Automated%20Tests-35%2F35%20Passed-brightgreen.svg)](#)
 [![License](https://img.shields.io/badge/License-MIT-purple.svg)](#)
 
 ---
 
-## 👨‍💻 Candidate & Submission Details
+## 👨‍💻 Developer & Project Credentials
 - **Candidate Name:** **Rotana NOB**
 - **Internship Domain:** Android App Development
-- **University:** Asia Euro University
+- **Institution:** Asia Euro University (AEU)
+- **Field of Study:** Computer Science & Software Engineering
 - **Email:** `nobrothana180703@gmail.com`
 - **Phone:** `+855 87 986 045`
-- **Submission Destination:** `submissions.archtech@gmail.com`
-- **Submission Title:** `Rotana_Nob_AndroidAppDevelopment_Month1`
+- **GitHub:** [https://github.com/Rotananob](https://github.com/Rotananob)
+- **Repository:** [https://github.com/Rotananob/Arch-Technologies_MobileApp](https://github.com/Rotananob/Arch-Technologies_MobileApp)
 
 ---
 
-## 📁 Repository Overview
+## 📁 Repository Architecture
 
-This repository houses two complete, production-grade applications built for the **Arch Technologies Remote Android App Development Internship**:
+This repository contains two complete, enterprise-grade applications developed for Month 1 of the **Arch Technologies Remote Mobile App Development Internship**:
 
 ```tree
 Arch-Technologies_MobileApp/
 ├── Task-1-College-Alert-Flutter/         # Task 1: College Alert Application
 │   └── college-alert/
-│       ├── mobile/                       # Flutter Mobile Client (Riverpod, GoRouter, Dio)
-│       ├── backend/                      # NestJS REST API (Prisma ORM, PostgreSQL)
-│       └── docs/                         # Reports & Technical Architecture
+│       ├── mobile/                       # Flutter Mobile Client (Riverpod 2.6, GoRouter, ARB Localizations)
+│       ├── backend/                      # NestJS REST API (Prisma ORM, PostgreSQL 17)
+│       └── docs/                         # Architecture & Technical Documentation
 │
 ├── Task-2-Ecommerce-Kotlin/              # Task 2: ShopSphere E-Commerce Application
-│   ├── android/                          # Native Android Kotlin Client (Jetpack Compose, Room)
-│   ├── backend/                          # NestJS REST API (Prisma ORM, PostgreSQL)
-│   └── docs/                             # Technical Specs, Reports & DB Design
+│   ├── android/                          # Native Android Kotlin Client (Jetpack Compose, Room DB, MVVM)
+│   ├── backend/                          # NestJS REST API (Prisma ORM, PostgreSQL 17)
+│   └── docs/                             # Architecture & Database Schema
 │
-├── docs/                                 # Official Month 1 Master Submission Report
+├── docs/                                 # Project Documentation & High-Resolution UI Showcase
+│   ├── screenshots/                      # 9 Full Viewport UI Screenshots (Tasks 1 & 2)
 │   └── Rotana_Nob_AndroidAppDevelopment_Month1_Final_Report.md
 │
-├── run-all-tests.bat                     # Automated Test Runner (One-Click)
-├── run-all-tests.ps1                     # PowerShell Test Verification Script
+├── run-all-tests.bat                     # Unified Multi-Platform Automated Test Runner (Windows Batch)
+├── run-all-tests.ps1                     # Automated Test Verification Script (PowerShell)
 ├── start-task1.bat                       # Launch Task 1 NestJS Backend (Port 3000)
 ├── start-task2.bat                       # Launch Task 2 ShopSphere Backend (Port 3001)
+├── start-web.bat                         # Launch College Alert on Chrome Mobile Viewport (Port 8080)
 └── README.md                             # Repository Master Documentation
 ```
 
@@ -51,51 +55,48 @@ Arch-Technologies_MobileApp/
 
 ## 📌 Task 1: College Alert Application
 
-> **Project Objective:** A comprehensive campus event notification and alert system helping university students stay informed about academic deadlines, campus events, workshops, sports, and emergency announcements.
+> **Overview:** A centralized campus event notification, calendar, and urgent safety alert system engineered to ensure university students stay informed regarding academic exams, departmental announcements, workshops, and career fairs.
 
-### Key Features:
-- 🔔 **Real-Time Notification System:** Push alert simulation and categorized event inbox (Academic, Sports, Cultural, Emergency).
-- 📅 **Interactive Event Calendar:** Day/month calendar views with bookmarking and schedule synchronization.
-- 🌐 **Native Bilingual Localization:** English (`en`) & Khmer (`km`) support with seamless runtime switching.
-- 🔐 **JWT Authentication:** Access and refresh token rotation with role-based authorization (Student & Admin).
-- 💾 **PostgreSQL Database:** Powered by Prisma ORM with pre-seeded campus event categories and test accounts.
+### Key Engineering Features:
+- 🔔 **Real-Time Notifications:** Push alert simulation with unread count badges and categorized emergency dispatches.
+- 📅 **Campus Calendar & Bookmarks:** Interactive month/day schedule synchronizer with offline local bookmarking.
+- 🌐 **Native Bilingual Localization:** Full English (`en`) and Khmer (`km`) support powered by Google Font *Kantumruy Pro* with an instant 1-tap language switch pill.
+- 🔐 **JWT Authentication & Role Security:** Access and refresh token rotation with bcrypt password hashing.
+- 📱 **Adaptive Viewport:** Responsive `NavigationRail` sidebar on wide desktop/tablet screens (&ge; 720px) and clean 1-line `NavigationBar` on mobile phones.
+- 💾 **Relational Persistence:** PostgreSQL 17 database managed via Prisma ORM with comprehensive data seeding.
 
-### Tech Stack:
-- **Mobile:** Flutter 3.x, Dart, Riverpod 2.6, GoRouter, Dio, Flutter Secure Storage.
-- **Backend:** NestJS 10, TypeScript, Prisma ORM, PostgreSQL 17, Swagger OpenAPI.
-
-👉 Detailed technical report: [`Task-1-College-Alert-Flutter/college-alert/docs/INTERNSHIP_SUBMISSION_REPORT.md`](./Task-1-College-Alert-Flutter/college-alert/docs/INTERNSHIP_SUBMISSION_REPORT.md)
-
----
-
-## 📌 Task 2: ShopSphere — Mobile E-Commerce Application
-
-> **Project Objective:** An advanced mobile-only e-commerce marketplace where registered users can securely buy and sell products, manage carts, list inventory, and perform secure simulated checkouts.
-
-### Key Features:
-- 🛒 **Buyer Experience:** Dynamic product catalog, multi-criteria filtering, search, cart management, and order tracking.
-- 🏪 **Seller Studio ("Sell Your Product"):** In-app listing creator allowing users to upload products, define conditions (Brand New, Like New, Good), and track sales.
-- 💳 **Secure Payment Processing:** Multi-tier payment simulation supporting Credit/Debit cards with LUHN validation, CVV checks, end-to-end tokenization, and Cash on Delivery (COD).
-- 📴 **Offline-First Room Caching:** Room Database SQLite cache with repository pattern ensuring instant load times and offline discovery.
-- 🛡️ **Data Security:** Argon2/bcrypt password hashing, rate limiting, and parameter validation.
-
-### Tech Stack:
-- **Mobile:** 100% Native Android Kotlin, Jetpack Compose, Coroutines & Flow, Room Database, Retrofit 2, MVVM.
-- **Backend:** NestJS 10, TypeScript, Prisma ORM, PostgreSQL 17, Swagger OpenAPI.
-
-👉 Detailed technical report: [`Task-2-Ecommerce-Kotlin/docs/PROJECT_REPORT.md`](./Task-2-Ecommerce-Kotlin/docs/PROJECT_REPORT.md)
+### Technology Stack:
+- **Client:** Flutter 3.x, Riverpod 2.6, GoRouter, Kantumruy Pro typography, Material 3.
+- **Backend:** NestJS, TypeScript, Prisma ORM, PostgreSQL 17, Swagger OpenAPI.
 
 ---
 
-## 🚀 Quick Start Guide for Evaluators
+## 📌 Task 2: ShopSphere Mobile E-Commerce Application
 
-### 1. Database Setup (PostgreSQL)
-Ensure PostgreSQL is running on `localhost:5432`:
+> **Overview:** An advanced mobile marketplace where registered students can securely purchase academic supplies and list their own pre-owned textbooks and electronics through a peer-to-peer (C2C) seller studio.
+
+### Key Engineering Features:
+- 🛒 **Buyer Marketplace:** Dynamic catalog with instant search, condition filtering (`Brand New`, `Like New`, `Good`), and real-time cart badging.
+- 🏪 **C2C Seller Studio ("Sell Your Product"):** In-app listing creator enabling students to upload photos, define prices, specify item conditions, and manage inventory.
+- 💳 **PCI-DSS & Luhn Payment Safety Sandbox:** Multi-tier payment validation incorporating the **LUHN algorithm** (MOD 10 checksum), PAN card masking (`**** **** **** 1234`), and unique tokenized transaction hashes (`TXN-XXXXXXXX`).
+- ⚡ **Concurrency-Safe Transactions:** Server-side atomic locks (`prisma.$transaction`) preventing overselling and double-spending.
+- 📴 **Offline-First Room Caching:** Room SQLite database paired with repository architecture for instant offline discovery.
+
+### Technology Stack:
+- **Client:** 100% Native Android Kotlin, Jetpack Compose, Coroutines & StateFlow, Room DB, Retrofit 2, Material 3.
+- **Backend:** NestJS, TypeScript, Prisma ORM, PostgreSQL 17, Swagger OpenAPI.
+
+---
+
+## 🚀 Quick Start Guide
+
+### 1. Database Provisioning (PostgreSQL)
+Ensure PostgreSQL is active on `localhost:5432`:
 ```bash
-# Task 1 Database
+# Provision Task 1 Database
 createdb college_alert_db
 
-# Task 2 Database
+# Provision Task 2 Database
 createdb shopsphere_db
 ```
 
@@ -106,12 +107,12 @@ cd Task-1-College-Alert-Flutter/college-alert/backend
 npm install
 npx prisma db push
 npx ts-node prisma/seed.ts
-npm run start:dev
+npm run start
 
-# Run Mobile Client
+# Launch Frontend Client
 cd ../mobile
 flutter pub get
-flutter run
+flutter run -d chrome
 ```
 
 ### 3. Task 2 Backend & Android
@@ -121,30 +122,38 @@ cd Task-2-Ecommerce-Kotlin/backend
 npm install
 npx prisma db push
 npx ts-node prisma/seed.ts
-npm run start:dev
+npm run start
 
-# Run Android Client
+# Build & Run Android Client
 cd ../android
 ./gradlew assembleDebug
 ```
 
 ---
 
-## 🧪 Testing & Verification
-Both projects include rigorous automated test suites:
-- **Task 1 Mobile:** `flutter test` (8 Tests Passed)
-- **Task 1 Backend:** `npm test` (6 Tests Passed)
-- **Task 2 Backend:** `npm test` (12 Tests Passed)
-- **Unified One-Click Runner:** Run `.\run-all-tests.bat` or `.\run-all-tests.ps1` to test everything across both projects!
+## 🧪 Consolidated Automated Test Suite
+
+Both projects feature comprehensive test suites with **100% pass rate**:
+
+| Suite | Component | Framework / Tool | Test Count | Status |
+|---|---|---|---|:---:|
+| **Task 1** | Mobile Widgets & Business Logic | Flutter Test / WidgetTester | 8 Tests | ✅ **PASSED** |
+| **Task 1** | Backend Auth & Events API | Jest / ts-jest | 6 Tests | ✅ **PASSED** |
+| **Task 2** | Android Cart & Luhn Validation | JUnit 4 / Kotlin | 9 Tests | ✅ **PASSED** |
+| **Task 2** | Backend Payments & Orders API | Jest / ts-jest | 12 Tests | ✅ **PASSED** |
+| **Total** | **Unified Automation** | **Multi-Platform Runner** | **35 Tests** | ✅ **100% PASS** |
+
+To execute the entire test suite in a single command:
+```powershell
+.\run-all-tests.bat
+```
 
 ---
 
-## 📜 Submission Compliance
-- [x] Both Task 1 and Task 2 fully implemented and structured.
-- [x] Clear Clean Architecture / MVVM implemented on both projects.
-- [x] Word/PDF conversion-ready reports created in `docs/` directories.
-- [x] Front page details included: Full Name, Internship Domain, Email, and Phone.
-- [x] Code tested with zero critical compile or lint errors.
+## 📄 Project Documentation
+
+- Detailed Technical Master Report: [`docs/Rotana_Nob_AndroidAppDevelopment_Month1_Final_Report.md`](./docs/Rotana_Nob_AndroidAppDevelopment_Month1_Final_Report.md)
+- Complete UI Screenshots Showcase: [`docs/screenshots/`](./docs/screenshots/)
 
 ---
-*Created with dedication by Rotana NOB for the Arch Technologies Internship Program.*
+*Developed with engineering excellence by Rotana NOB — Asia Euro University.*
