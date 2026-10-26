@@ -8,9 +8,11 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Remove
-import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material.icons.outlined.Delete
+import androidx.compose.material.icons.outlined.LocalShipping
+import androidx.compose.material.icons.outlined.Lock
+import androidx.compose.material.icons.outlined.ShoppingCart
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -31,6 +33,8 @@ import com.archtechnologies.shopsphere.domain.model.CartItem
 import com.archtechnologies.shopsphere.presentation.components.EmptyState
 import com.archtechnologies.shopsphere.presentation.components.LoadingState
 import com.archtechnologies.shopsphere.presentation.components.ShopSphereTopBar
+import com.archtechnologies.shopsphere.presentation.theme.EmeraldSuccess
+import com.archtechnologies.shopsphere.presentation.theme.RoseError
 import java.util.Locale
 
 @Composable
@@ -51,8 +55,12 @@ fun CartScreen(
             if (summary.items.isNotEmpty()) {
                 Surface(
                     color = MaterialTheme.colorScheme.surface,
-                    tonalElevation = 8.dp,
-                    shadowElevation = 8.dp
+                    tonalElevation = 6.dp,
+                    shadowElevation = 8.dp,
+                    border = androidx.compose.foundation.BorderStroke(
+                        0.75.dp,
+                        MaterialTheme.colorScheme.outline.copy(alpha = 0.35f)
+                    )
                 ) {
                     Column(
                         modifier = Modifier
@@ -60,13 +68,14 @@ fun CartScreen(
                             .navigationBarsPadding()
                             .padding(16.dp)
                     ) {
+                        // Subtotal
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.SpaceBetween
                         ) {
                             Text(
                                 text = stringResource(R.string.label_subtotal),
-                                style = MaterialTheme.typography.bodyMedium,
+                                style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
                             Text(
@@ -77,13 +86,14 @@ fun CartScreen(
 
                         Spacer(modifier = Modifier.height(4.dp))
 
+                        // Delivery Fee
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.SpaceBetween
                         ) {
                             Text(
                                 text = stringResource(R.string.label_delivery_fee),
-                                style = MaterialTheme.typography.bodyMedium,
+                                style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
                             Text(
@@ -92,22 +102,33 @@ fun CartScreen(
                             )
                         }
 
-                        HorizontalDivider(modifier = Modifier.padding(vertical = 10.dp), color = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f))
+                        HorizontalDivider(
+                            modifier = Modifier.padding(vertical = 10.dp),
+                            color = MaterialTheme.colorScheme.outline.copy(alpha = 0.35f)
+                        )
 
+                        // Total Row
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Text(
-                                text = stringResource(R.string.label_total),
-                                style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold)
-                            )
+                            Column {
+                                Text(
+                                    text = stringResource(R.string.label_total),
+                                    style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold)
+                                )
+                                Text(
+                                    text = "Inclusive of all local campus fees",
+                                    style = MaterialTheme.typography.bodySmall.copy(fontSize = 11.sp),
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
                             Text(
                                 text = "$${String.format(Locale.US, "%.2f", summary.total)}",
                                 style = MaterialTheme.typography.headlineSmall.copy(
                                     fontWeight = FontWeight.Bold,
-                                    color = MaterialTheme.colorScheme.primary
+                                    color = MaterialTheme.colorScheme.onSurface
                                 )
                             )
                         }
@@ -116,13 +137,21 @@ fun CartScreen(
 
                         Button(
                             onClick = onNavigateToCheckout,
-                            modifier = Modifier.fillMaxWidth().height(48.dp),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(46.dp),
                             shape = RoundedCornerShape(8.dp),
                             colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
                         ) {
+                            Icon(
+                                imageVector = Icons.Outlined.Lock,
+                                contentDescription = null,
+                                modifier = Modifier.size(16.dp)
+                            )
+                            Spacer(modifier = Modifier.width(8.dp))
                             Text(
                                 text = stringResource(R.string.btn_proceed_to_checkout),
-                                style = MaterialTheme.typography.labelLarge
+                                style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold)
                             )
                         }
                     }
@@ -136,8 +165,8 @@ fun CartScreen(
             EmptyState(
                 title = stringResource(R.string.cart_empty_title),
                 description = stringResource(R.string.cart_empty_desc),
-                icon = Icons.Default.ShoppingCart,
-                actionLabel = "Start Shopping",
+                icon = Icons.Outlined.ShoppingCart,
+                actionLabel = "Browse Products",
                 onActionClick = onNavigateToExplore,
                 modifier = Modifier.padding(padding)
             )
@@ -147,12 +176,45 @@ fun CartScreen(
                     .fillMaxSize()
                     .padding(padding),
                 contentPadding = PaddingValues(16.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp)
+                verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
+                // Campus Dispatch Banner
+                item {
+                    Card(
+                        colors = CardDefaults.cardColors(
+                            containerColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.5f)
+                        ),
+                        shape = RoundedCornerShape(8.dp),
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Row(
+                            modifier = Modifier.padding(12.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(10.dp)
+                        ) {
+                            Icon(
+                                imageVector = Icons.Outlined.LocalShipping,
+                                contentDescription = null,
+                                tint = MaterialTheme.colorScheme.primary,
+                                modifier = Modifier.size(20.dp)
+                            )
+                            Text(
+                                text = "Standard Campus Handover & Delivery: $2.00 fixed fee",
+                                style = MaterialTheme.typography.bodySmall.copy(
+                                    fontWeight = FontWeight.Medium,
+                                    fontSize = 12.sp
+                                ),
+                                color = MaterialTheme.colorScheme.onSurface
+                            )
+                        }
+                    }
+                }
+
                 items(summary.items, key = { it.id }) { item ->
                     CartItemRow(
                         item = item,
-                        onQuantityChange = { newQty -> viewModel.updateQuantity(item.id, newQty) },
+                        onIncrement = { viewModel.updateQuantity(item.id, item.quantity + 1) },
+                        onDecrement = { viewModel.updateQuantity(item.id, item.quantity - 1) },
                         onRemove = { viewModel.removeItem(item.id) },
                         isKhmerLocale = isKhmerLocale
                     )
@@ -163,93 +225,119 @@ fun CartScreen(
 }
 
 @Composable
-fun CartItemRow(
+private fun CartItemRow(
     item: CartItem,
-    onQuantityChange: (Int) -> Unit,
+    onIncrement: () -> Unit,
+    onDecrement: () -> Unit,
     onRemove: () -> Unit,
     isKhmerLocale: Boolean = false
 ) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(8.dp))
-            .border(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.6f), RoundedCornerShape(8.dp)),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+            .clip(RoundedCornerShape(10.dp))
+            .border(
+                1.dp,
+                MaterialTheme.colorScheme.outline.copy(alpha = 0.4f),
+                RoundedCornerShape(10.dp)
+            ),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
     ) {
         Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(12.dp),
-            verticalAlignment = Alignment.CenterVertically
+            modifier = Modifier.padding(12.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             // Thumbnail
-            AsyncImage(
-                model = ImageRequest.Builder(LocalContext.current)
-                    .data(item.imageUrl)
-                    .crossfade(true)
-                    .build(),
-                contentDescription = item.productTitle,
+            Box(
                 modifier = Modifier
-                    .size(72.dp)
-                    .clip(RoundedCornerShape(6.dp))
-                    .background(MaterialTheme.colorScheme.surfaceVariant),
-                contentScale = ContentScale.Crop
-            )
-
-            Spacer(modifier = Modifier.width(12.dp))
-
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = if (isKhmerLocale && !item.productTitleKh.isNullOrBlank()) item.productTitleKh else item.productTitle,
-                    style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.SemiBold),
-                    maxLines = 1
-                )
-                Text(
-                    text = "Seller: ${item.sellerName}",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-                Spacer(modifier = Modifier.height(4.dp))
-                Text(
-                    text = "$${String.format(Locale.US, "%.2f", item.unitPrice)}",
-                    style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold)
+                    .size(76.dp)
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(MaterialTheme.colorScheme.surfaceVariant)
+            ) {
+                AsyncImage(
+                    model = ImageRequest.Builder(LocalContext.current)
+                        .data(item.imageUrl)
+                        .crossfade(true)
+                        .build(),
+                    contentDescription = item.productTitle,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize()
                 )
             }
 
-            // Qty Selector
-            Column(horizontalAlignment = Alignment.End) {
-                IconButton(onClick = onRemove, modifier = Modifier.size(28.dp)) {
-                    Icon(
-                        imageVector = Icons.Default.Delete,
-                        contentDescription = "Remove",
-                        tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f),
-                        modifier = Modifier.size(18.dp)
-                    )
-                }
-                Spacer(modifier = Modifier.height(6.dp))
+            // Info Column
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = item.productTitle,
+                    style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.SemiBold),
+                    maxLines = 1
+                )
+                Spacer(modifier = Modifier.height(2.dp))
+                Text(
+                    text = "$${String.format(Locale.US, "%.2f", item.unitPrice)} each",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+
+                // Quantity Stepper
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.border(1.dp, MaterialTheme.colorScheme.outline, RoundedCornerShape(4.dp))
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    IconButton(
-                        onClick = { onQuantityChange(item.quantity - 1) },
-                        modifier = Modifier.size(28.dp)
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier
+                            .border(
+                                1.dp,
+                                MaterialTheme.colorScheme.outline.copy(alpha = 0.5f),
+                                RoundedCornerShape(4.dp)
+                            )
                     ) {
-                        Icon(Icons.Default.Remove, contentDescription = null, modifier = Modifier.size(14.dp))
+                        IconButton(
+                            onClick = onDecrement,
+                            enabled = item.quantity > 1,
+                            modifier = Modifier.size(28.dp)
+                        ) {
+                            Icon(Icons.Default.Remove, contentDescription = "Decrease", modifier = Modifier.size(12.dp))
+                        }
+                        Text(
+                            text = "${item.quantity}",
+                            style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Bold),
+                            modifier = Modifier.padding(horizontal = 8.dp)
+                        )
+                        IconButton(
+                            onClick = onIncrement,
+                            enabled = item.quantity < item.availableStock,
+                            modifier = Modifier.size(28.dp)
+                        ) {
+                            Icon(Icons.Default.Add, contentDescription = "Increase", modifier = Modifier.size(12.dp))
+                        }
                     }
+
                     Text(
-                        text = "${item.quantity}",
-                        style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.SemiBold),
-                        modifier = Modifier.padding(horizontal = 8.dp)
+                        text = "$${String.format(Locale.US, "%.2f", item.totalPrice)}",
+                        style = MaterialTheme.typography.titleSmall.copy(
+                            fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.primary
+                        )
                     )
-                    IconButton(
-                        onClick = { onQuantityChange(item.quantity + 1) },
-                        enabled = item.quantity < item.maxAvailableStock,
-                        modifier = Modifier.size(28.dp)
-                    ) {
-                        Icon(Icons.Default.Add, contentDescription = null, modifier = Modifier.size(14.dp))
-                    }
                 }
+            }
+
+            // Remove Button
+            IconButton(
+                onClick = onRemove,
+                modifier = Modifier.size(32.dp)
+            ) {
+                Icon(
+                    imageVector = Icons.Outlined.Delete,
+                    contentDescription = "Remove Item",
+                    tint = RoseError.copy(alpha = 0.8f),
+                    modifier = Modifier.size(18.dp)
+                )
             }
         }
     }
