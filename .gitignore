@@ -128,5 +128,6 @@ docs/*.docx
 docs/*.pdf
 generate-*.js
 temp_*
-*.bat
 *.ps1
+run-all-tests.bat
+run-app.bat

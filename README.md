@@ -43,6 +43,9 @@ Arch-Technologies_MobileApp/
 │   ├── screenshots/                      # 9 Full Viewport UI Screenshots (Tasks 1 & 2)
 │   └── Rotana_Nob_AndroidAppDevelopment_Month1_Final_Report.md
 │
+├── start-task1.bat                       # Launch Task 1 NestJS Backend (Port 3000)
+├── start-task2.bat                       # Launch Task 2 ShopSphere Backend (Port 3001)
+├── start-web.bat                         # Launch College Alert on Chrome Mobile Viewport (Port 8080)
 ├── .gitignore                            # Multi-Project Git Ignore Rules
 └── README.md                             # Repository Master Documentation
 ```
