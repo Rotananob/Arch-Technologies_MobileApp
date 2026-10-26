@@ -43,11 +43,7 @@ Arch-Technologies_MobileApp/
 │   ├── screenshots/                      # 9 Full Viewport UI Screenshots (Tasks 1 & 2)
 │   └── Rotana_Nob_AndroidAppDevelopment_Month1_Final_Report.md
 │
-├── run-all-tests.bat                     # Unified Multi-Platform Automated Test Runner (Windows Batch)
-├── run-all-tests.ps1                     # Automated Test Verification Script (PowerShell)
-├── start-task1.bat                       # Launch Task 1 NestJS Backend (Port 3000)
-├── start-task2.bat                       # Launch Task 2 ShopSphere Backend (Port 3001)
-├── start-web.bat                         # Launch College Alert on Chrome Mobile Viewport (Port 8080)
+├── .gitignore                            # Multi-Project Git Ignore Rules
 └── README.md                             # Repository Master Documentation
 ```
 
@@ -143,9 +139,15 @@ Both projects feature comprehensive test suites with **100% pass rate**:
 | **Task 2** | Backend Payments & Orders API | Jest / ts-jest | 12 Tests | ✅ **PASSED** |
 | **Total** | **Unified Automation** | **Multi-Platform Runner** | **35 Tests** | ✅ **100% PASS** |
 
-To execute the entire test suite in a single command:
-```powershell
-.\run-all-tests.bat
+To execute the test suites:
+```bash
+# Task 1 Mobile & Backend Tests
+cd Task-1-College-Alert-Flutter/college-alert/mobile && flutter test
+cd ../backend && npm test
+
+# Task 2 Android & Backend Tests
+cd Task-2-Ecommerce-Kotlin/backend && npm test
+cd ../android && ./gradlew test
 ```
 
 ---
