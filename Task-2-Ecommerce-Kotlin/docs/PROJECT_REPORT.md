@@ -1,10 +1,10 @@
-# 📱 INTERNSHIP PROJECT REPORT
+# INTERNSHIP PROJECT REPORT
 # Task 2: Native Android E-Commerce Application — ShopSphere
 ### Arch Technologies Remote Mobile App Development Internship Program
 
 ---
 
-## 👤 Front Page & Candidate Information
+## Candidate & Submission Information
 - **Intern Name**: Rotana NOB
 - **Internship Domain**: Android App Development / Mobile App Development
 - **University**: Asia Euro University

@@ -1,4 +1,4 @@
-# 🛍️ ShopSphere — Native Android E-Commerce Application
+# ShopSphere — Native Android E-Commerce Application
 
 > **Arch Technologies — Android App Development Remote Internship (Task 2)**  
 > **Candidate**: Rotana Nob  
@@ -6,30 +6,30 @@
 
 ---
 
-## 🌟 Overview
+## Overview
 **ShopSphere** is a modern, production-grade native Android marketplace application engineered using **Kotlin**, **Jetpack Compose**, **Material 3**, and a dedicated **NestJS + PostgreSQL** backend. The platform provides a full peer-to-peer (C2C) ecosystem where users can discover products, purchase items securely, and list their own products for sale.
 
 ---
 
-## 📱 Key Features
-- **Modern Human UI**: Designed strictly using Material 3 guidelines; free of generic templates or AI-generated aesthetics.
+## Key Features
+- **Modern Human-Crafted UI**: Designed strictly using Material 3 guidelines; free of generic templates, artificial decorations, or emojis.
 - **Full Localization (English & Khmer)**: Natural string resources (`res/values/strings.xml` and `res/values-km/strings.xml`) with in-app language switching and persistent storage.
-- **Product Discovery**: Search, category chips, price sorting, availability filtering, and detailed product profiles.
+- **Product Discovery**: Search, category chips with vector icons, price sorting, availability filtering, and detailed product profiles.
 - **Authoritative Shopping Cart**: Server-enforced price verification, delivery fee calculations, and real-time stock checks.
 - **Checkout & Payment Sandbox**: Multi-step checkout with delivery address form and simulated payment gateway (Pending, Success, Failed, Cancelled).
 - **C2C Selling Center**: Registered users can publish listings, specify conditions, prices, stock, and view customer sales orders.
-- **Order Lifecycle**: Transparent order tracking (Pending → Confirmed → Processing → Shipped → Delivered).
+- **Order Lifecycle**: Transparent order tracking (Pending -> Confirmed -> Processing -> Shipped -> Delivered).
 - **Dark & Light Mode**: Fluid dynamic theming with persistent preference.
 
 ---
 
-## 🏗️ Tech Stack
+## Tech Stack
 - **Android**: Kotlin 2.0, Jetpack Compose, Material 3, AndroidX ViewModel, Navigation Compose, Retrofit 2, OkHttp 4, Kotlinx Serialization, Coil, Room SQLite, Preferences DataStore.
 - **Backend**: NestJS, TypeScript, PostgreSQL 17, Prisma ORM, Passport JWT, Swagger/OpenAPI.
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Backend Setup
 1. Navigate to the backend directory:
@@ -59,19 +59,19 @@
 
 ### 3. Running Tests
 - **Android Unit Tests**:
-  ```bash
-  cd android
-  ./gradlew testDebugUnitTest
-  ```
+   ```bash
+   cd android
+   ./gradlew testDebugUnitTest
+   ```
 - **Backend Tests**:
-  ```bash
-  cd backend
-  npm test
-  ```
+   ```bash
+   cd backend
+   npm test
+   ```
 
 ---
 
-## 📄 Documentation & Reports
+## Documentation & Reports
 - [Architecture Details](docs/architecture.md)
 - [Database Relational Design](docs/database-design.md)
 - [API Documentation](docs/api-documentation.md)

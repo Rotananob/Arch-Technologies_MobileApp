@@ -1,4 +1,4 @@
-# 🏗️ ShopSphere — System Architecture
+# ShopSphere — System Architecture
 
 ## Overview
 ShopSphere is a full-stack, native Android E-Commerce Marketplace application adhering strictly to Clean Architecture, modern Android standards (Jetpack Compose, Material 3, MVVM), and enterprise-grade backend infrastructure (NestJS, TypeScript, PostgreSQL, Prisma ORM).
@@ -48,4 +48,3 @@ graph TD
 4. **Backend Infrastructure**:
    - NestJS architecture with modular separation of concerns.
    - Database transactions for concurrency-safe stock updates.
-   - Authoritative pricing calculated exclusively on the server.

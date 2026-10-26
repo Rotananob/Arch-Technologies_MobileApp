@@ -1,4 +1,4 @@
-# 🧪 Testing Strategy — ShopSphere
+# Testing Strategy — ShopSphere
 
 ## 1. Android Client Tests
 - **Unit Testing**:

@@ -5,7 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material.icons.outlined.ShoppingCart
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -27,61 +27,69 @@ fun ShopSphereTopBar(
     onCartClick: (() -> Unit)? = null,
     actions: @Composable RowScope.() -> Unit = {}
 ) {
-    TopAppBar(
-        title = {
-            Text(
-                text = title,
-                style = MaterialTheme.typography.titleLarge.copy(
-                    fontWeight = FontWeight.Bold,
-                    letterSpacing = (-0.3).sp
-                ),
-                maxLines = 1
-            )
-        },
-        navigationIcon = {
-            if (canNavigateBack) {
-                IconButton(onClick = onNavigateBack) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = "Back"
-                    )
-                }
-            }
-        },
-        actions = {
-            actions()
-            if (onCartClick != null) {
-                IconButton(onClick = onCartClick) {
-                    Box(contentAlignment = Alignment.TopEnd) {
+    Column {
+        TopAppBar(
+            title = {
+                Text(
+                    text = title,
+                    style = MaterialTheme.typography.titleMedium.copy(
+                        fontWeight = FontWeight.Bold,
+                        letterSpacing = (-0.2).sp,
+                        fontSize = 17.sp
+                    ),
+                    maxLines = 1
+                )
+            },
+            navigationIcon = {
+                if (canNavigateBack) {
+                    IconButton(onClick = onNavigateBack) {
                         Icon(
-                            imageVector = Icons.Default.ShoppingCart,
-                            contentDescription = "Cart"
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Navigate Back",
+                            tint = MaterialTheme.colorScheme.onSurface
                         )
-                        if (cartItemCount > 0) {
-                            Box(
-                                modifier = Modifier
-                                    .size(16.dp)
-                                    .clip(CircleShape)
-                                    .background(OceanBlue),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Text(
-                                    text = if (cartItemCount > 9) "9+" else cartItemCount.toString(),
-                                    color = Color.White,
-                                    fontSize = 9.sp,
-                                    fontWeight = FontWeight.Bold
-                                )
+                    }
+                }
+            },
+            actions = {
+                actions()
+                if (onCartClick != null) {
+                    IconButton(onClick = onCartClick) {
+                        BadgedBox(
+                            badge = {
+                                if (cartItemCount > 0) {
+                                    Badge(
+                                        containerColor = OceanBlue,
+                                        contentColor = Color.White
+                                    ) {
+                                        Text(
+                                            text = if (cartItemCount > 99) "99+" else cartItemCount.toString(),
+                                            fontSize = 9.sp,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    }
+                                }
                             }
+                        ) {
+                            Icon(
+                                imageVector = Icons.Outlined.ShoppingCart,
+                                contentDescription = "Shopping Cart",
+                                tint = MaterialTheme.colorScheme.onSurface
+                            )
                         }
                     }
                 }
-            }
-        },
-        colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = MaterialTheme.colorScheme.surface,
-            titleContentColor = MaterialTheme.colorScheme.onSurface,
-            navigationIconContentColor = MaterialTheme.colorScheme.onSurface,
-            actionIconContentColor = MaterialTheme.colorScheme.onSurface
+            },
+            colors = TopAppBarDefaults.topAppBarColors(
+                containerColor = MaterialTheme.colorScheme.surface,
+                titleContentColor = MaterialTheme.colorScheme.onSurface,
+                navigationIconContentColor = MaterialTheme.colorScheme.onSurface,
+                actionIconContentColor = MaterialTheme.colorScheme.onSurface
+            )
         )
-    )
+        HorizontalDivider(
+            color = MaterialTheme.colorScheme.outline.copy(alpha = 0.35f),
+            thickness = 0.75.dp
+        )
+    }
 }

@@ -1,4 +1,4 @@
-# 📡 REST API Documentation — ShopSphere
+# REST API Documentation — ShopSphere
 
 All endpoints run on `http://localhost:3001` (or `http://10.0.2.2:3001` on Android emulator).
 Interactive Swagger documentation is available at `http://localhost:3001/api/docs`.
