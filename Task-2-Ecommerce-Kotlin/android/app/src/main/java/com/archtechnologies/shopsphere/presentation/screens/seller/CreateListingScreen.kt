@@ -8,21 +8,27 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.archtechnologies.shopsphere.R
 import com.archtechnologies.shopsphere.presentation.components.CategoryChip
 import com.archtechnologies.shopsphere.presentation.components.ShopSphereTopBar
+import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -51,8 +57,7 @@ fun CreateListingScreen(
     val conditions = listOf(
         "BRAND_NEW" to "Brand New",
         "LIKE_NEW" to "Like New",
-        "REFURBISHED" to "Refurbished",
-        "USED_GOOD" to "Used (Good)"
+        "GOOD" to "Good Condition"
     )
 
     Scaffold(
@@ -73,13 +78,20 @@ fun CreateListingScreen(
         ) {
             errorMessage?.let { error ->
                 Card(
-                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.error.copy(alpha = 0.1f)),
+                    colors = CardDefaults.cardColors(
+                        containerColor = MaterialTheme.colorScheme.error.copy(alpha = 0.08f)
+                    ),
+                    shape = RoundedCornerShape(8.dp),
+                    border = androidx.compose.foundation.BorderStroke(
+                        1.dp,
+                        MaterialTheme.colorScheme.error.copy(alpha = 0.3f)
+                    ),
                     modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)
                 ) {
                     Text(
                         text = error,
                         color = MaterialTheme.colorScheme.error,
-                        style = MaterialTheme.typography.bodyMedium,
+                        style = MaterialTheme.typography.bodySmall.copy(fontWeight = FontWeight.Medium),
                         modifier = Modifier.padding(12.dp)
                     )
                 }
@@ -88,7 +100,7 @@ fun CreateListingScreen(
             // Category Selection Chips
             Text(
                 text = "Select Category *",
-                style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.SemiBold)
+                style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold)
             )
             Spacer(modifier = Modifier.height(6.dp))
             LazyRow(
@@ -96,20 +108,22 @@ fun CreateListingScreen(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 items(uiState.categories) { cat ->
+                    val icon = getCategoryIcon(cat.slug)
                     CategoryChip(
                         name = cat.name,
                         isSelected = selectedCategoryId == cat.id,
-                        onClick = { selectedCategoryId = cat.id }
+                        onClick = { selectedCategoryId = cat.id },
+                        icon = icon
                     )
                 }
             }
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Condition Chips
+            // Item Condition Chips
             Text(
                 text = "Item Condition *",
-                style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.SemiBold)
+                style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold)
             )
             Spacer(modifier = Modifier.height(6.dp))
             LazyRow(
@@ -120,7 +134,7 @@ fun CreateListingScreen(
                     FilterChip(
                         selected = selectedCondition == key,
                         onClick = { selectedCondition = key },
-                        label = { Text(label) }
+                        label = { Text(label, style = MaterialTheme.typography.labelSmall) }
                     )
                 }
             }
@@ -131,7 +145,9 @@ fun CreateListingScreen(
                 value = title,
                 onValueChange = { title = it },
                 label = { Text("Product Title *") },
+                placeholder = { Text("e.g. iPad Air M2 128GB with Box") },
                 singleLine = true,
+                shape = RoundedCornerShape(8.dp),
                 modifier = Modifier.fillMaxWidth()
             )
 
@@ -140,9 +156,11 @@ fun CreateListingScreen(
             OutlinedTextField(
                 value = description,
                 onValueChange = { description = it },
-                label = { Text("Product Description *") },
+                label = { Text("Detailed Description *") },
+                placeholder = { Text("Describe item condition, usage history, included cables, and reason for selling...") },
                 minLines = 3,
                 maxLines = 5,
+                shape = RoundedCornerShape(8.dp),
                 modifier = Modifier.fillMaxWidth()
             )
 
@@ -155,6 +173,7 @@ fun CreateListingScreen(
                     label = { Text("Price (USD) *") },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
                     singleLine = true,
+                    shape = RoundedCornerShape(8.dp),
                     modifier = Modifier.weight(1f)
                 )
 
@@ -164,6 +183,7 @@ fun CreateListingScreen(
                     label = { Text("Available Stock *") },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                     singleLine = true,
+                    shape = RoundedCornerShape(8.dp),
                     modifier = Modifier.weight(1f)
                 )
             }
@@ -173,9 +193,10 @@ fun CreateListingScreen(
             OutlinedTextField(
                 value = imageUrl,
                 onValueChange = { imageUrl = it },
-                label = { Text("Product Image URL") },
+                label = { Text("Image URL") },
                 placeholder = { Text("https://images.unsplash.com/...") },
                 singleLine = true,
+                shape = RoundedCornerShape(8.dp),
                 modifier = Modifier.fillMaxWidth()
             )
 
@@ -187,7 +208,11 @@ fun CreateListingScreen(
                         .fillMaxWidth()
                         .height(160.dp)
                         .clip(RoundedCornerShape(8.dp))
-                        .border(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.5f), RoundedCornerShape(8.dp)),
+                        .border(
+                            1.dp,
+                            MaterialTheme.colorScheme.outline.copy(alpha = 0.4f),
+                            RoundedCornerShape(8.dp)
+                        ),
                     colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
                 ) {
                     AsyncImage(
@@ -202,7 +227,36 @@ fun CreateListingScreen(
                 }
             }
 
-            Spacer(modifier = Modifier.height(28.dp))
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // Commission Reassurance Box
+            Card(
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.4f)
+                ),
+                shape = RoundedCornerShape(8.dp),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Row(
+                    modifier = Modifier.padding(12.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(10.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.Outlined.Shield,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.size(20.dp)
+                    )
+                    Text(
+                        text = "0% Listing Fee: You retain 100% of the sale value upon handover with fellow students.",
+                        style = MaterialTheme.typography.bodySmall.copy(fontSize = 11.sp),
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(24.dp))
 
             Button(
                 onClick = {
@@ -228,16 +282,35 @@ fun CreateListingScreen(
                     )
                 },
                 enabled = !uiState.isCreatingListing,
-                modifier = Modifier.fillMaxWidth().height(48.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(46.dp),
                 shape = RoundedCornerShape(8.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
             ) {
                 if (uiState.isCreatingListing) {
-                    CircularProgressIndicator(strokeWidth = 2.dp, modifier = Modifier.size(20.dp), color = MaterialTheme.colorScheme.onPrimary)
+                    CircularProgressIndicator(
+                        strokeWidth = 2.dp,
+                        modifier = Modifier.size(18.dp),
+                        color = MaterialTheme.colorScheme.onPrimary
+                    )
                 } else {
-                    Text(stringResource(R.string.btn_save_listing), style = MaterialTheme.typography.labelLarge)
+                    Text(
+                        text = stringResource(R.string.btn_save_listing),
+                        style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold)
+                    )
                 }
             }
         }
+    }
+}
+
+private fun getCategoryIcon(slug: String): ImageVector {
+    return when {
+        slug.contains("tech") || slug.contains("electronics") -> Icons.Outlined.Devices
+        slug.contains("book") -> Icons.Outlined.MenuBook
+        slug.contains("fashion") || slug.contains("apparel") -> Icons.Outlined.Checkroom
+        slug.contains("stationery") || slug.contains("supplies") -> Icons.Outlined.EditNote
+        else -> Icons.Outlined.Category
     }
 }
